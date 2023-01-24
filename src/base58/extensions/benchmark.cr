@@ -1,3 +1,4 @@
+require "colorize"
 require "benchmark"
 
 module Benchmark
