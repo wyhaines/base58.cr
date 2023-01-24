@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.6.2">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="base58">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="base58">
+  <title>base58 0.1.0</title>
+  <script type="text/javascript">
+  CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          base58
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="base58/Base58" data-name="base58">
+      <a href="Base58.html">Base58</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+      <a href="Base58/Alphabet.html">Alphabet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
+      <a href="Base58/Alphabet/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Flickr" data-name="base58::alphabet::flickr">
+      <a href="Base58/Alphabet/Flickr.html">Flickr</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Monero" data-name="base58::alphabet::monero">
+      <a href="Base58/Alphabet/Monero.html">Monero</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
+      <a href="Base58/Alphabet/Ripple.html">Ripple</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Decoder" data-name="base58::decoder">
+      <a href="Base58/Decoder.html">Decoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
+      <a href="Base58/Decoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Encoder" data-name="base58::encoder">
+      <a href="Base58/Encoder.html">Encoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Encoder/Into" data-name="base58::encoder::into">
+      <a href="Base58/Encoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
+      <a href="Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Benchmark" data-name="benchmark">
+      <a href="Benchmark.html">Benchmark</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
+      <a href="Benchmark/IPS.html">IPS</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Entry" data-name="benchmark::ips::entry">
+      <a href="Benchmark/IPS/Entry.html">Entry</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Job" data-name="benchmark::ips::job">
+      <a href="Benchmark/IPS/Job.html">Job</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Char" data-name="char">
+      <a href="Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
+      <a href="StaticArray.html">StaticArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/String" data-name="string">
+      <a href="String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StringBuffer" data-name="stringbuffer">
+      <a href="StringBuffer.html">StringBuffer</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<p><img src="https://img.shields.io/github/workflow/status/wyhaines/base58.cr/Base58%20CI?style=for-the-badge&amp;logo=GitHub" alt="Base58 CI" />
+<a href="https://github.com/wyhaines/base58.cr/releases"><img src="https://img.shields.io/github/release/wyhaines/base58.cr.svg?style=for-the-badge" alt="GitHub release" /></a>
+<img src="https://img.shields.io/github/commits-since/wyhaines/base58.cr/latest?style=for-the-badge" alt="GitHub commits since latest release (by SemVer)" /></p>
+<h1><a id="base58" class="anchor" href="#base58">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>base58</h1>
+<p>This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well
+as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet.</p>
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+<ol>
+<li>
+<p>Add the dependency to your <code>shard.yml</code>:</p>
+<pre><code class="language-yaml">dependencies:
+  base58:
+    github: wyhaines/base58</code></pre>
+</li>
+<li>
+<p>Run <code>shards install</code></p>
+</li>
+</ol>
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;base58&quot;</span></code></pre>
+<p>The <code>encode</code> and <code>decode</code> methods should operate off of just about any sensible input, and can return most output types that a person may want. To encode into Base58, the basic form is this:</p>
+<pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>)</code></pre>
+<p>This will return the Base58 version of <code>Hello, World!</code> as a <code><a href="String.html">String</a></code>.</p>
+<p>You might want that value returned as a <code>Slice(UInt8)</code> instead:</p>
+<pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: <span class="t">Slice</span>(<span class="t">UInt8</span>))</code></pre>
+<p>If you have an existing <code>Slice(UInt8)</code> that you are using as a reusable buffer, you can use that, too:</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).new(<span class="n">100</span>)
+<span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: buffer)</code></pre>
+<p>Or maybe you have a <code>Slice(UInt8)</code> of bytes to encode, and you want to encode them into a <code><a href="StringBuffer.html">StringBuffer</a></code>.</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).new(<span class="n">100</span>)
+<span class="c"># Stuff happens to get data into `buffer`.</span>
+<span class="t">Base58</span>.encode(buffer, into: <span class="t">StringBuffer</span>)</code></pre>
+<p>Decoding works in the same way, with the same flexibility.</p>
+<p>So, perhaps you have received a Base58 encoded piece of data into a StringBuffer, and want to decode it into another, already-existing StringBuffer:</p>
+<pre><code class="language-crystal">decoded_buffer <span class="o">=</span> <span class="t">StringBuffer</span>.new(<span class="n">256</span>)
+
+<span class="c"># receive data into `recv_buffer`</span>
+
+<span class="t">Base58</span>.decode(recv_buffer, into: decoded_buffer)</code></pre>
+<h3><a id="alphabets" class="anchor" href="#alphabets">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Alphabets</h3>
+<p>There are four supported alphabets. These are the Bitcoin alphabet, the Flickr alphabet, the Ripple alphabet, and the Monero alphabet. Of these, all are encoded and decoded the same except for the Monero alphabet, which for encoding operates on blocks of 8 bytes, padding to 11 bytes, except for the final block. For decoding, it operates on blocks of 11 bytes, returning 8 bytes of decoded data, except for the final block which can be smaller. For the other three alphabets, the final size of the encoded data is variable, but the Monero encoding ensures a consistent final size. Thus, Monero addresses, which are 69 bytes of data, always encode to 95 byte Base58 strings.</p>
+<p>The bitcoin alphabet is the default. To use another alphabet, pass the class of the alphabet as an argument:</p>
+<pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: <span class="t">Slice</span>(<span class="t">UInt8</span>), alphabet: <span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Monero</span>)</code></pre>
+<p>Alphabets support both forward and inverse lookup. Thus, the following will return the original character:</p>
+<pre><code class="language-crystal"><span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>.inverse(<span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>[<span class="s">&#39;a&#39;</span>.ord]).chr</code></pre>
+<p>The alphabets encode the ASCII codes for the characters, since Base58 alphabets all utilize single byte ASCII characters. Thus, to lookup a <code><a href="Char.html">Char</a></code>, it has to be cast to a <code>UInt8</code> first.</p>
+<p>Nil-returning variants of both forward and backward lookups are also supported:</p>
+<pre><code class="language-crystal"><span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>.inverse?(<span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>[some_UTF8_character]?)</code></pre>
+<p>If the character is not found in the alphabet, the forward lookup, via <code>#[]</code>, will return an exception, but if called via <code>#[]?</code>, <code>nil</code> will be returned if it is not found. The inverse lookup returns a <code>0</code> for any ASCII character code that is not found in the alphabet when called with <code>#inverse</code>, and an exception for any non-ASCII character code. When called with <code>inverse?</code>, it returns nil for any code that is not found in the alphabet, ASCII or not.</p>
+<h3><a id="alternative-method-chaining-based-syntax." class="anchor" href="#alternative-method-chaining-based-syntax.">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Alternative, method chaining based syntax.</h3>
+<p>There is an alternative syntax that is supported, though it should be considered to be an experiment. I don't know if I will keep this support as it needs some work to be really transparently usable. Right now <code>.as(TYPE)</code> annotations are needed because I have not fleshed out the implementation. If you feel inspired, and want to offer a PR to help make this better, I would be appreciative.</p>
+<pre><code class="language-crystal">Base58::Encoder.into(String).encode(&quot;some text&quot;).as(String)
+
+buffer = StringBuffer.new(256)
+Base58::Decoder.into(buffer).decode(some_encoded_thing)
+
+as_slice = Base58::Encoder.into(Slice(UInt8)).encode(&quot;some text).as(Slice(UInt8))</code></pre>
+<h2><a id="crystal-extensions-and-other-goodies" class="anchor" href="#crystal-extensions-and-other-goodies">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Crystal Extensions and Other Goodies</h2>
+<p>There are several extensions to Crystal that are bundled into this library pending submitting them as pull requests to Crystal itself.</p>
+<h3><a id="char.static-array" class="anchor" href="#char.static-array">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Char.static_array</h3>
+<p>The number types, such as UInt8, have a macro defined on them to facilitate the creation of a prepopulated StaticArray, <a href="https://crystal-lang.org/api/1.7.1/Number.html#static_array(*nums)-macro">static_array</a>. This extension adds the same macro to <code><a href="Char.html">Char</a></code>.</p>
+<h3><a id="sliceto-unsafe" class="anchor" href="#sliceto-unsafe">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Slice#to_unsafe</h3>
+<p>This adds a method to a <code>Slice</code> that returns a pointer to the first element of the slice.</p>
+<h3><a id="string.static-array" class="anchor" href="#string.static-array">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>String.static_array</h3>
+<p>The number types, such as UInt8, have a macro defined on them to facilitate the creation of a prepopulated StaticArray, <a href="https://crystal-lang.org/api/1.7.1/Number.html#static_array(*nums)-macro">static_array</a>. This extension adds the same macro to <code><a href="String.html">String</a></code>.</p>
+<h3><a id="stringnewstring-string" class="anchor" href="#stringnewstring-string">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>String#new(string : String)</h3>
+<p>This creates a dynamically allocated string, even when passed a string literal. While this is not something that one normally wants, there are times when you want to ensure that a <em>new</em> object, with a new section of memory backing it, is created for a given string literal. This will guarantee that.</p>
+<h3><a id="stringnewsize-int" class="anchor" href="#stringnewsize-int">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>String#new(size : Int)</h3>
+<p>This is a simple helper that creates an empty string in the requested size. This may seem
+useless, as Crystal Strings are immutable. However, this can be useful if you want to say &quot;Not today!&quot; to the god of Immutability and mutate an immutable String as a very very handy buffer with a maximum fixed size.</p>
+<h3><a id="string-buffer" class="anchor" href="#string-buffer">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>StringBuffer</h3>
+<p>Imagine that you want to take some data that is stuffed into a piece of memory, and you want to be able to treat it as a String, doing all the normal String things. But you
+want it to be as fast as possible because you are going to be doing this a lot.</p>
+<p>Say &quot;Hello&quot; to StringBuffer. It is a thin wrapper around a String, and it forwards any unknown method calls to the String that it carries in an instance variable, so it generally behaves like a String. However, it defines a <code>#mutate</code> method that can be called to <em>change</em> the value of the underlying String, with some limits.</p>
+<p>Nothing can be stored in a StringBuffer that is larger than the original capacity of the StringBuffer. However, anything the same size or smaller can be inserted into the String, replacing the previous contents.</p>
+<h2><a id="development" class="anchor" href="#development">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Development</h2>
+<p>The goals are to have a clear, capable, and easy to use API that sits above an implementation that is the fastest available for Crystal, and that is performance competitive with Rust.</p>
+<p>Internals cleanups or optimizations are welcome, as are any bug fixes or improved documentation.</p>
+<h2><a id="contributing" class="anchor" href="#contributing">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributing</h2>
+<ol>
+<li>Fork it (<a href="https://github.com/wyhaines/base58/fork">https://github.com/wyhaines/base58/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+<h2><a id="contributors" class="anchor" href="#contributors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Contributors</h2>
+<ul>
+<li><a href="https://github.com/wyhaines">Kirk Haines</a> - creator and maintainer</li>
+</ul>
+<p><img src="https://img.shields.io/github/languages/code-size/wyhaines/base58.cr?style=for-the-badge" alt="GitHub code size in bytes" />
+<img src="https://img.shields.io/github/issues/wyhaines/base58.cr?style=for-the-badge" alt="GitHub issues" /></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.6.2">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="base58">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="base58">
+  <title>Base58 - base58 0.1.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          base58
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="base58/Base58" data-name="base58">
+      <a href="Base58.html">Base58</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+      <a href="Base58/Alphabet.html">Alphabet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
+      <a href="Base58/Alphabet/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Flickr" data-name="base58::alphabet::flickr">
+      <a href="Base58/Alphabet/Flickr.html">Flickr</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Monero" data-name="base58::alphabet::monero">
+      <a href="Base58/Alphabet/Monero.html">Monero</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
+      <a href="Base58/Alphabet/Ripple.html">Ripple</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Decoder" data-name="base58::decoder">
+      <a href="Base58/Decoder.html">Decoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
+      <a href="Base58/Decoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Encoder" data-name="base58::encoder">
+      <a href="Base58/Encoder.html">Encoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Encoder/Into" data-name="base58::encoder::into">
+      <a href="Base58/Encoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
+      <a href="Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Benchmark" data-name="benchmark">
+      <a href="Benchmark.html">Benchmark</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
+      <a href="Benchmark/IPS.html">IPS</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Entry" data-name="benchmark::ips::entry">
+      <a href="Benchmark/IPS/Entry.html">Entry</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Job" data-name="benchmark::ips::job">
+      <a href="Benchmark/IPS/Job.html">Job</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Char" data-name="char">
+      <a href="Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
+      <a href="StaticArray.html">StaticArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/String" data-name="string">
+      <a href="String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StringBuffer" data-name="stringbuffer">
+      <a href="StringBuffer.html">StringBuffer</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Base58
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p><span class="flag orange">TODO</span>  Write documentation for <code><a href="Base58.html">Base58</a></code></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      base58/alphabet.cr
+    
+    <br/>
+  
+    
+      base58/alphabet/bitcoin.cr
+    
+    <br/>
+  
+    
+      base58/alphabet/flickr.cr
+    
+    <br/>
+  
+    
+      base58/alphabet/monero.cr
+    
+    <br/>
+  
+    
+      base58/alphabet/ripple.cr
+    
+    <br/>
+  
+    
+      base58/decoder.cr
+    
+    <br/>
+  
+    
+      base58/encoder.cr
+    
+    <br/>
+  
+    
+      base58/pointer_collection.cr
+    
+    <br/>
+  
+    
+      base58/version.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="SizeLookup">
+        <strong>SizeLookup</strong> = <code><span class="k">begin</span>
+  <span class="t">Int32</span>.static_array(<span class="n">0</span>, <span class="n">3.365658237309761</span>.to_u32, <span class="n">4.731316474619522</span>.to_u32, <span class="n">6.096974711929283</span>.to_u32, <span class="n">7.462632949239044</span>.to_u32, <span class="n">8.828291186548805</span>.to_u32, <span class="n">10.193949423858566</span>.to_u32, <span class="n">11.559607661168327</span>.to_u32, <span class="n">12.925265898478088</span>.to_u32, <span class="n">14.290924135787849</span>.to_u32, <span class="n">15.65658237309761</span>.to_u32, <span class="n">17.022240610407373</span>.to_u32, <span class="n">18.387898847717132</span>.to_u32, <span class="n">19.75355708502689</span>.to_u32, <span class="n">21.119215322336654</span>.to_u32, <span class="n">22.484873559646417</span>.to_u32, <span class="n">23.850531796956176</span>.to_u32, <span class="n">25.216190034265935</span>.to_u32, <span class="n">26.581848271575698</span>.to_u32, <span class="n">27.94750650888546</span>.to_u32, <span class="n">29.31316474619522</span>.to_u32, <span class="n">30.67882298350498</span>.to_u32, <span class="n">32.044481220814745</span>.to_u32, <span class="n">33.410139458124505</span>.to_u32, <span class="n">34.775797695434264</span>.to_u32, <span class="n">36.14145593274402</span>.to_u32, <span class="n">37.50711417005378</span>.to_u32, <span class="n">38.87277240736355</span>.to_u32, <span class="n">40.23843064467331</span>.to_u32, <span class="n">41.60408888198307</span>.to_u32, <span class="n">42.96974711929283</span>.to_u32, <span class="n">44.33540535660259</span>.to_u32, <span class="n">45.70106359391235</span>.to_u32, <span class="n">47.06672183122211</span>.to_u32, <span class="n">48.43238006853187</span>.to_u32, <span class="n">49.79803830584164</span>.to_u32, <span class="n">51.163696543151396</span>.to_u32, <span class="n">52.529354780461155</span>.to_u32, <span class="n">53.89501301777092</span>.to_u32, <span class="n">55.26067125508068</span>.to_u32, <span class="n">56.62632949239044</span>.to_u32, <span class="n">57.9919877297002</span>.to_u32, <span class="n">59.35764596700996</span>.to_u32, <span class="n">60.723304204319724</span>.to_u32, <span class="n">62.088962441629484</span>.to_u32, <span class="n">63.45462067893924</span>.to_u32, <span class="n">64.82027891624901</span>.to_u32, <span class="n">66.18593715355877</span>.to_u32, <span class="n">67.55159539086853</span>.to_u32, <span class="n">68.91725362817829</span>.to_u32, <span class="n">70.28291186548805</span>.to_u32, <span class="n">71.6485701027978</span>.to_u32, <span class="n">73.01422834010756</span>.to_u32, <span class="n">74.37988657741734</span>.to_u32, <span class="n">75.7455448147271</span>.to_u32, <span class="n">77.11120305203686</span>.to_u32, <span class="n">78.47686128934662</span>.to_u32, <span class="n">79.84251952665637</span>.to_u32, <span class="n">81.20817776396613</span>.to_u32, <span class="n">82.5738360012759</span>.to_u32, <span class="n">83.93949423858567</span>.to_u32, <span class="n">85.30515247589543</span>.to_u32, <span class="n">86.67081071320519</span>.to_u32, <span class="n">88.03646895051494</span>.to_u32, <span class="n">89.4021271878247</span>.to_u32, <span class="n">90.76778542513446</span>.to_u32, <span class="n">92.13344366244422</span>.to_u32, <span class="n">93.49910189975398</span>.to_u32, <span class="n">94.86476013706374</span>.to_u32, <span class="n">96.23041837437351</span>.to_u32, <span class="n">97.59607661168327</span>.to_u32, <span class="n">98.96173484899303</span>.to_u32, <span class="n">100.32739308630279</span>.to_u32, <span class="n">101.69305132361255</span>.to_u32, <span class="n">103.05870956092231</span>.to_u32, <span class="n">104.42436779823207</span>.to_u32, <span class="n">105.79002603554184</span>.to_u32, <span class="n">107.1556842728516</span>.to_u32, <span class="n">108.52134251016136</span>.to_u32, <span class="n">109.88700074747112</span>.to_u32, <span class="n">111.25265898478088</span>.to_u32, <span class="n">112.61831722209064</span>.to_u32, <span class="n">113.9839754594004</span>.to_u32, <span class="n">115.34963369671016</span>.to_u32, <span class="n">116.71529193401992</span>.to_u32, <span class="n">118.08095017132969</span>.to_u32, <span class="n">119.44660840863945</span>.to_u32, <span class="n">120.81226664594921</span>.to_u32, <span class="n">122.17792488325897</span>.to_u32, <span class="n">123.54358312056873</span>.to_u32, <span class="n">124.90924135787849</span>.to_u32, <span class="n">126.27489959518824</span>.to_u32, <span class="n">127.64055783249802</span>.to_u32, <span class="n">129.00621606980778</span>.to_u32, <span class="n">130.37187430711754</span>.to_u32, <span class="n">131.7375325444273</span>.to_u32, <span class="n">133.10319078173706</span>.to_u32, <span class="n">134.46884901904681</span>.to_u32, <span class="n">135.83450725635657</span>.to_u32, <span class="n">137.20016549366633</span>.to_u32, <span class="n">138.5658237309761</span>.to_u32, <span class="n">139.93148196828585</span>.to_u32, <span class="n">141.2971402055956</span>.to_u32, <span class="n">142.66279844290537</span>.to_u32, <span class="n">144.02845668021513</span>.to_u32, <span class="n">145.39411491752492</span>.to_u32, <span class="n">146.75977315483468</span>.to_u32, <span class="n">148.12543139214443</span>.to_u32, <span class="n">149.4910896294542</span>.to_u32, <span class="n">150.85674786676395</span>.to_u32, <span class="n">152.2224061040737</span>.to_u32, <span class="n">153.58806434138347</span>.to_u32, <span class="n">154.95372257869323</span>.to_u32, <span class="n">156.319380816003</span>.to_u32, <span class="n">157.68503905331275</span>.to_u32, <span class="n">159.0506972906225</span>.to_u32, <span class="n">160.41635552793227</span>.to_u32, <span class="n">161.78201376524203</span>.to_u32, <span class="n">163.1476720025518</span>.to_u32, <span class="n">164.51333023986155</span>.to_u32, <span class="n">165.87898847717133</span>.to_u32, <span class="n">167.2446467144811</span>.to_u32, <span class="n">168.61030495179085</span>.to_u32, <span class="n">169.9759631891006</span>.to_u32, <span class="n">171.34162142641037</span>.to_u32, <span class="n">172.70727966372013</span>.to_u32, <span class="n">174.0729379010299</span>.to_u32, <span class="n">175.43859613833965</span>.to_u32, <span class="n">176.8042543756494</span>.to_u32, <span class="n">178.16991261295917</span>.to_u32, <span class="n">179.53557085026893</span>.to_u32, <span class="n">180.90122908757868</span>.to_u32, <span class="n">182.26688732488844</span>.to_u32, <span class="n">183.6325455621982</span>.to_u32, <span class="n">184.99820379950796</span>.to_u32, <span class="n">186.36386203681772</span>.to_u32, <span class="n">187.72952027412748</span>.to_u32, <span class="n">189.09517851143727</span>.to_u32, <span class="n">190.46083674874703</span>.to_u32, <span class="n">191.8264949860568</span>.to_u32, <span class="n">193.19215322336655</span>.to_u32, <span class="n">194.5578114606763</span>.to_u32, <span class="n">195.92346969798606</span>.to_u32, <span class="n">197.28912793529582</span>.to_u32, <span class="n">198.65478617260558</span>.to_u32, <span class="n">200.02044440991534</span>.to_u32, <span class="n">201.3861026472251</span>.to_u32, <span class="n">202.75176088453486</span>.to_u32, <span class="n">204.11741912184462</span>.to_u32, <span class="n">205.48307735915438</span>.to_u32, <span class="n">206.84873559646414</span>.to_u32, <span class="n">208.2143938337739</span>.to_u32, <span class="n">209.58005207108368</span>.to_u32, <span class="n">210.94571030839344</span>.to_u32, <span class="n">212.3113685457032</span>.to_u32, <span class="n">213.67702678301296</span>.to_u32, <span class="n">215.04268502032272</span>.to_u32, <span class="n">216.40834325763248</span>.to_u32, <span class="n">217.77400149494224</span>.to_u32, <span class="n">219.139659732252</span>.to_u32, <span class="n">220.50531796956176</span>.to_u32, <span class="n">221.87097620687152</span>.to_u32, <span class="n">223.23663444418128</span>.to_u32, <span class="n">224.60229268149104</span>.to_u32, <span class="n">225.9679509188008</span>.to_u32, <span class="n">227.33360915611055</span>.to_u32, <span class="n">228.6992673934203</span>.to_u32, <span class="n">230.06492563073007</span>.to_u32, <span class="n">231.43058386803983</span>.to_u32, <span class="n">232.79624210534962</span>.to_u32, <span class="n">234.16190034265938</span>.to_u32, <span class="n">235.52755857996914</span>.to_u32, <span class="n">236.8932168172789</span>.to_u32, <span class="n">238.25887505458866</span>.to_u32, <span class="n">239.62453329189842</span>.to_u32, <span class="n">240.99019152920818</span>.to_u32, <span class="n">242.35584976651793</span>.to_u32, <span class="n">243.7215080038277</span>.to_u32, <span class="n">245.08716624113745</span>.to_u32, <span class="n">246.4528244784472</span>.to_u32, <span class="n">247.81848271575697</span>.to_u32, <span class="n">249.18414095306673</span>.to_u32, <span class="n">250.5497991903765</span>.to_u32, <span class="n">251.91545742768625</span>.to_u32, <span class="n">253.28111566499604</span>.to_u32, <span class="n">254.6467739023058</span>.to_u32, <span class="n">256.01243213961556</span>.to_u32, <span class="n">257.37809037692534</span>.to_u32, <span class="n">258.7437486142351</span>.to_u32, <span class="n">260.1094068515448</span>.to_u32, <span class="n">261.4750650888546</span>.to_u32, <span class="n">262.8407233261643</span>.to_u32, <span class="n">264.2063815634741</span>.to_u32, <span class="n">265.5720398007839</span>.to_u32, <span class="n">266.93769803809363</span>.to_u32, <span class="n">268.3033562754034</span>.to_u32, <span class="n">269.66901451271315</span>.to_u32, <span class="n">271.03467275002293</span>.to_u32, <span class="n">272.40033098733267</span>.to_u32, <span class="n">273.76598922464245</span>.to_u32, <span class="n">275.1316474619522</span>.to_u32, <span class="n">276.497305699262</span>.to_u32, <span class="n">277.8629639365717</span>.to_u32, <span class="n">279.2286221738815</span>.to_u32, <span class="n">280.5942804111912</span>.to_u32, <span class="n">281.959938648501</span>.to_u32, <span class="n">283.32559688581074</span>.to_u32, <span class="n">284.6912551231205</span>.to_u32, <span class="n">286.05691336043026</span>.to_u32, <span class="n">287.42257159774005</span>.to_u32, <span class="n">288.78822983504983</span>.to_u32, <span class="n">290.15388807235956</span>.to_u32, <span class="n">291.51954630966935</span>.to_u32, <span class="n">292.8852045469791</span>.to_u32, <span class="n">294.25086278428887</span>.to_u32, <span class="n">295.6165210215986</span>.to_u32, <span class="n">296.9821792589084</span>.to_u32, <span class="n">298.3478374962181</span>.to_u32, <span class="n">299.7134957335279</span>.to_u32, <span class="n">301.07915397083764</span>.to_u32, <span class="n">302.4448122081474</span>.to_u32, <span class="n">303.81047044545716</span>.to_u32, <span class="n">305.17612868276694</span>.to_u32, <span class="n">306.5417869200767</span>.to_u32, <span class="n">307.90744515738646</span>.to_u32, <span class="n">309.27310339469625</span>.to_u32, <span class="n">310.638761632006</span>.to_u32, <span class="n">312.00441986931577</span>.to_u32, <span class="n">313.3700781066255</span>.to_u32, <span class="n">314.7357363439353</span>.to_u32, <span class="n">316.101394581245</span>.to_u32, <span class="n">317.4670528185548</span>.to_u32, <span class="n">318.83271105586454</span>.to_u32, <span class="n">320.1983692931743</span>.to_u32, <span class="n">321.56402753048405</span>.to_u32, <span class="n">322.92968576779384</span>.to_u32, <span class="n">324.2953440051036</span>.to_u32, <span class="n">325.66100224241336</span>.to_u32, <span class="n">327.0266604797231</span>.to_u32, <span class="n">328.3923187170329</span>.to_u32, <span class="n">329.75797695434267</span>.to_u32, <span class="n">331.1236351916524</span>.to_u32, <span class="n">332.4892934289622</span>.to_u32, <span class="n">333.8549516662719</span>.to_u32, <span class="n">335.2206099035817</span>.to_u32, <span class="n">336.58626814089143</span>.to_u32, <span class="n">337.9519263782012</span>.to_u32, <span class="n">339.31758461551095</span>.to_u32, <span class="n">340.68324285282074</span>.to_u32, <span class="n">342.04890109013047</span>.to_u32, <span class="n">343.41455932744026</span>.to_u32, <span class="n">344.78021756475</span>.to_u32, <span class="n">346.1458758020598</span>.to_u32, <span class="n">347.5115340393695</span>.to_u32, <span class="n">348.8771922766793</span>.to_u32, <span class="n">350.242850513989</span>.to_u32, <span class="n">351.6085087512988</span>.to_u32, <span class="n">352.9741669886086</span>.to_u32, <span class="n">354.33982522591833</span>.to_u32, <span class="n">355.7054834632281</span>.to_u32, <span class="n">357.07114170053785</span>.to_u32, <span class="n">358.43679993784764</span>.to_u32, <span class="n">359.80245817515737</span>.to_u32, <span class="n">361.16811641246716</span>.to_u32, <span class="n">362.5337746497769</span>.to_u32, <span class="n">363.8994328870867</span>.to_u32, <span class="n">365.2650911243964</span>.to_u32, <span class="n">366.6307493617062</span>.to_u32, <span class="n">367.9964075990159</span>.to_u32, <span class="n">369.3620658363257</span>.to_u32, <span class="n">370.72772407363544</span>.to_u32, <span class="n">372.09338231094523</span>.to_u32, <span class="n">373.45904054825496</span>.to_u32, <span class="n">374.82469878556475</span>.to_u32, <span class="n">376.19035702287454</span>.to_u32, <span class="n">377.55601526018427</span>.to_u32, <span class="n">378.92167349749406</span>.to_u32, <span class="n">380.2873317348038</span>.to_u32, <span class="n">381.6529899721136</span>.to_u32, <span class="n">383.0186482094233</span>.to_u32, <span class="n">384.3843064467331</span>.to_u32, <span class="n">385.7499646840428</span>.to_u32, <span class="n">387.1156229213526</span>.to_u32, <span class="n">388.48128115866234</span>.to_u32, <span class="n">389.84693939597213</span>.to_u32, <span class="n">391.21259763328186</span>.to_u32, <span class="n">392.57825587059165</span>.to_u32, <span class="n">393.9439141079014</span>.to_u32, <span class="n">395.30957234521117</span>.to_u32, <span class="n">396.67523058252095</span>.to_u32, <span class="n">398.0408888198307</span>.to_u32, <span class="n">399.4065470571405</span>.to_u32, <span class="n">400.7722052944502</span>.to_u32, <span class="n">402.13786353176</span>.to_u32, <span class="n">403.5035217690697</span>.to_u32, <span class="n">404.8691800063795</span>.to_u32, <span class="n">406.23483824368924</span>.to_u32, <span class="n">407.600496480999</span>.to_u32, <span class="n">408.96615471830876</span>.to_u32, <span class="n">410.33181295561855</span>.to_u32, <span class="n">411.6974711929283</span>.to_u32, <span class="n">413.06312943023806</span>.to_u32, <span class="n">414.4287876675478</span>.to_u32, <span class="n">415.7944459048576</span>.to_u32, <span class="n">417.16010414216737</span>.to_u32, <span class="n">418.5257623794771</span>.to_u32, <span class="n">419.8914206167869</span>.to_u32, <span class="n">421.2570788540966</span>.to_u32, <span class="n">422.6227370914064</span>.to_u32, <span class="n">423.98839532871614</span>.to_u32, <span class="n">425.3540535660259</span>.to_u32, <span class="n">426.71971180333566</span>.to_u32, <span class="n">428.08537004064544</span>.to_u32, <span class="n">429.4510282779552</span>.to_u32, <span class="n">430.81668651526496</span>.to_u32, <span class="n">432.1823447525747</span>.to_u32, <span class="n">433.5480029898845</span>.to_u32, <span class="n">434.9136612271942</span>.to_u32, <span class="n">436.279319464504</span>.to_u32, <span class="n">437.64497770181373</span>.to_u32, <span class="n">439.0106359391235</span>.to_u32, <span class="n">440.3762941764333</span>.to_u32, <span class="n">441.74195241374304</span>.to_u32, <span class="n">443.1076106510528</span>.to_u32, <span class="n">444.47326888836255</span>.to_u32, <span class="n">445.83892712567234</span>.to_u32, <span class="n">447.2045853629821</span>.to_u32, <span class="n">448.57024360029186</span>.to_u32, <span class="n">449.9359018376016</span>.to_u32, <span class="n">451.3015600749114</span>.to_u32, <span class="n">452.6672183122211</span>.to_u32, <span class="n">454.0328765495309</span>.to_u32, <span class="n">455.3985347868406</span>.to_u32, <span class="n">456.7641930241504</span>.to_u32, <span class="n">458.12985126146015</span>.to_u32, <span class="n">459.49550949876993</span>.to_u32, <span class="n">460.86116773607966</span>.to_u32, <span class="n">462.22682597338945</span>.to_u32, <span class="n">463.59248421069924</span>.to_u32, <span class="n">464.95814244800897</span>.to_u32, <span class="n">466.32380068531876</span>.to_u32, <span class="n">467.6894589226285</span>.to_u32, <span class="n">469.0551171599383</span>.to_u32, <span class="n">470.420775397248</span>.to_u32, <span class="n">471.7864336345578</span>.to_u32, <span class="n">473.1520918718675</span>.to_u32, <span class="n">474.5177501091773</span>.to_u32, <span class="n">475.88340834648704</span>.to_u32, <span class="n">477.24906658379683</span>.to_u32, <span class="n">478.61472482110656</span>.to_u32, <span class="n">479.98038305841635</span>.to_u32, <span class="n">481.3460412957261</span>.to_u32, <span class="n">482.71169953303587</span>.to_u32, <span class="n">484.07735777034566</span>.to_u32, <span class="n">485.4430160076554</span>.to_u32, <span class="n">486.8086742449652</span>.to_u32, <span class="n">488.1743324822749</span>.to_u32, <span class="n">489.5399907195847</span>.to_u32, <span class="n">490.9056489568944</span>.to_u32, <span class="n">492.2713071942042</span>.to_u32, <span class="n">493.63696543151394</span>.to_u32, <span class="n">495.00262366882373</span>.to_u32, <span class="n">496.36828190613346</span>.to_u32, <span class="n">497.73394014344325</span>.to_u32, <span class="n">499.099598380753</span>.to_u32, <span class="n">500.46525661806277</span>.to_u32, <span class="n">501.8309148553725</span>.to_u32, <span class="n">503.1965730926823</span>.to_u32, <span class="n">504.5622313299921</span>.to_u32, <span class="n">505.9278895673018</span>.to_u32, <span class="n">507.2935478046116</span>.to_u32, <span class="n">508.6592060419213</span>.to_u32, <span class="n">510.0248642792311</span>.to_u32, <span class="n">511.39052251654084</span>.to_u32, <span class="n">512.7561807538507</span>.to_u32, <span class="n">514.1218389911604</span>.to_u32, <span class="n">515.4874972284701</span>.to_u32, <span class="n">516.8531554657799</span>.to_u32, <span class="n">518.2188137030896</span>.to_u32, <span class="n">519.5844719403995</span>.to_u32, <span class="n">520.9501301777092</span>.to_u32, <span class="n">522.3157884150189</span>.to_u32, <span class="n">523.6814466523286</span>.to_u32, <span class="n">525.0471048896385</span>.to_u32, <span class="n">526.4127631269482</span>.to_u32, <span class="n">527.778421364258</span>.to_u32, <span class="n">529.1440796015678</span>.to_u32, <span class="n">530.5097378388775</span>.to_u32, <span class="n">531.8753960761873</span>.to_u32, <span class="n">533.241054313497</span>.to_u32, <span class="n">534.6067125508068</span>.to_u32, <span class="n">535.9723707881166</span>.to_u32, <span class="n">537.3380290254263</span>.to_u32, <span class="n">538.703687262736</span>.to_u32, <span class="n">540.0693455000459</span>.to_u32, <span class="n">541.4350037373556</span>.to_u32, <span class="n">542.8006619746653</span>.to_u32, <span class="n">544.1663202119751</span>.to_u32, <span class="n">545.5319784492849</span>.to_u32, <span class="n">546.8976366865946</span>.to_u32, <span class="n">548.2632949239044</span>.to_u32, <span class="n">549.6289531612142</span>.to_u32, <span class="n">550.994611398524</span>.to_u32, <span class="n">552.3602696358337</span>.to_u32, <span class="n">553.7259278731434</span>.to_u32, <span class="n">555.0915861104532</span>.to_u32, <span class="n">556.457244347763</span>.to_u32, <span class="n">557.8229025850727</span>.to_u32, <span class="n">559.1885608223824</span>.to_u32, <span class="n">560.5542190596923</span>.to_u32, <span class="n">561.919877297002</span>.to_u32, <span class="n">563.2855355343117</span>.to_u32, <span class="n">564.6511937716215</span>.to_u32, <span class="n">566.0168520089313</span>.to_u32, <span class="n">567.382510246241</span>.to_u32, <span class="n">568.7481684835508</span>.to_u32, <span class="n">570.1138267208605</span>.to_u32, <span class="n">571.4794849581704</span>.to_u32, <span class="n">572.8451431954801</span>.to_u32, <span class="n">574.2108014327898</span>.to_u32, <span class="n">575.5764596700997</span>.to_u32, <span class="n">576.9421179074094</span>.to_u32, <span class="n">578.3077761447191</span>.to_u32, <span class="n">579.6734343820289</span>.to_u32, <span class="n">581.0390926193387</span>.to_u32, <span class="n">582.4047508566484</span>.to_u32, <span class="n">583.7704090939582</span>.to_u32, <span class="n">585.1360673312679</span>.to_u32, <span class="n">586.5017255685777</span>.to_u32, <span class="n">587.8673838058875</span>.to_u32, <span class="n">589.2330420431972</span>.to_u32, <span class="n">590.5987002805069</span>.to_u32, <span class="n">591.9643585178168</span>.to_u32, <span class="n">593.3300167551265</span>.to_u32, <span class="n">594.6956749924362</span>.to_u32, <span class="n">596.0613332297461</span>.to_u32, <span class="n">597.4269914670558</span>.to_u32, <span class="n">598.7926497043655</span>.to_u32, <span class="n">600.1583079416753</span>.to_u32, <span class="n">601.5239661789851</span>.to_u32, <span class="n">602.8896244162949</span>.to_u32, <span class="n">604.2552826536046</span>.to_u32, <span class="n">605.6209408909143</span>.to_u32, <span class="n">606.9865991282242</span>.to_u32, <span class="n">608.3522573655339</span>.to_u32, <span class="n">609.7179156028436</span>.to_u32, <span class="n">611.0835738401533</span>.to_u32, <span class="n">612.4492320774632</span>.to_u32, <span class="n">613.8148903147729</span>.to_u32, <span class="n">615.1805485520827</span>.to_u32, <span class="n">616.5462067893925</span>.to_u32, <span class="n">617.9118650267022</span>.to_u32, <span class="n">619.277523264012</span>.to_u32, <span class="n">620.6431815013217</span>.to_u32, <span class="n">622.0088397386315</span>.to_u32, <span class="n">623.3744979759413</span>.to_u32, <span class="n">624.740156213251</span>.to_u32, <span class="n">626.1058144505607</span>.to_u32, <span class="n">627.4714726878706</span>.to_u32, <span class="n">628.8371309251803</span>.to_u32, <span class="n">630.20278916249</span>.to_u32, <span class="n">631.5684473997998</span>.to_u32, <span class="n">632.9341056371096</span>.to_u32, <span class="n">634.2997638744193</span>.to_u32, <span class="n">635.6654221117291</span>.to_u32, <span class="n">637.0310803490389</span>.to_u32, <span class="n">638.3967385863486</span>.to_u32, <span class="n">639.7623968236584</span>.to_u32, <span class="n">641.1280550609681</span>.to_u32, <span class="n">642.493713298278</span>.to_u32, <span class="n">643.8593715355877</span>.to_u32, <span class="n">645.2250297728974</span>.to_u32, <span class="n">646.5906880102071</span>.to_u32, <span class="n">647.956346247517</span>.to_u32, <span class="n">649.3220044848267</span>.to_u32, <span class="n">650.6876627221365</span>.to_u32, <span class="n">652.0533209594462</span>.to_u32, <span class="n">653.418979196756</span>.to_u32, <span class="n">654.7846374340658</span>.to_u32, <span class="n">656.1502956713755</span>.to_u32, <span class="n">657.5159539086853</span>.to_u32, <span class="n">658.8816121459951</span>.to_u32, <span class="n">660.2472703833048</span>.to_u32, <span class="n">661.6129286206145</span>.to_u32, <span class="n">662.9785868579244</span>.to_u32, <span class="n">664.3442450952341</span>.to_u32, <span class="n">665.7099033325438</span>.to_u32, <span class="n">667.0755615698536</span>.to_u32, <span class="n">668.4412198071634</span>.to_u32, <span class="n">669.8068780444731</span>.to_u32, <span class="n">671.1725362817829</span>.to_u32, <span class="n">672.5381945190926</span>.to_u32, <span class="n">673.9038527564024</span>.to_u32, <span class="n">675.2695109937122</span>.to_u32, <span class="n">676.6351692310219</span>.to_u32, <span class="n">678.0008274683316</span>.to_u32, <span class="n">679.3664857056415</span>.to_u32, <span class="n">680.7321439429512</span>.to_u32, <span class="n">682.0978021802609</span>.to_u32, <span class="n">683.4634604175708</span>.to_u32, <span class="n">684.8291186548805</span>.to_u32, <span class="n">686.1947768921902</span>.to_u32, <span class="n">687.5604351295</span>.to_u32, <span class="n">688.9260933668098</span>.to_u32, <span class="n">690.2917516041196</span>.to_u32, <span class="n">691.6574098414293</span>.to_u32, <span class="n">693.023068078739</span>.to_u32, <span class="n">694.3887263160489</span>.to_u32, <span class="n">695.7543845533586</span>.to_u32, <span class="n">697.1200427906683</span>.to_u32, <span class="n">698.485701027978</span>.to_u32, <span class="n">699.8513592652879</span>.to_u32, <span class="n">701.2170175025976</span>.to_u32, <span class="n">702.5826757399074</span>.to_u32, <span class="n">703.9483339772172</span>.to_u32, <span class="n">705.3139922145269</span>.to_u32, <span class="n">706.6796504518367</span>.to_u32, <span class="n">708.0453086891464</span>.to_u32, <span class="n">709.4109669264562</span>.to_u32, <span class="n">710.776625163766</span>.to_u32, <span class="n">712.1422834010757</span>.to_u32, <span class="n">713.5079416383854</span>.to_u32, <span class="n">714.8735998756953</span>.to_u32, <span class="n">716.239258113005</span>.to_u32, <span class="n">717.6049163503147</span>.to_u32, <span class="n">718.9705745876245</span>.to_u32, <span class="n">720.3362328249343</span>.to_u32, <span class="n">721.701891062244</span>.to_u32, <span class="n">723.0675492995538</span>.to_u32, <span class="n">724.4332075368636</span>.to_u32, <span class="n">725.7988657741734</span>.to_u32, <span class="n">727.1645240114831</span>.to_u32, <span class="n">728.5301822487928</span>.to_u32, <span class="n">729.8958404861027</span>.to_u32, <span class="n">731.2614987234124</span>.to_u32, <span class="n">732.6271569607221</span>.to_u32, <span class="n">733.9928151980318</span>.to_u32, <span class="n">735.3584734353417</span>.to_u32, <span class="n">736.7241316726514</span>.to_u32, <span class="n">738.0897899099612</span>.to_u32, <span class="n">739.4554481472709</span>.to_u32, <span class="n">740.8211063845807</span>.to_u32, <span class="n">742.1867646218905</span>.to_u32, <span class="n">743.5524228592002</span>.to_u32, <span class="n">744.9180810965099</span>.to_u32, <span class="n">746.2837393338198</span>.to_u32, <span class="n">747.6493975711295</span>.to_u32, <span class="n">749.0150558084392</span>.to_u32, <span class="n">750.3807140457491</span>.to_u32, <span class="n">751.7463722830588</span>.to_u32, <span class="n">753.1120305203685</span>.to_u32, <span class="n">754.4776887576783</span>.to_u32, <span class="n">755.8433469949881</span>.to_u32, <span class="n">757.2090052322978</span>.to_u32, <span class="n">758.5746634696076</span>.to_u32, <span class="n">759.9403217069173</span>.to_u32, <span class="n">761.3059799442271</span>.to_u32, <span class="n">762.6716381815369</span>.to_u32, <span class="n">764.0372964188466</span>.to_u32, <span class="n">765.4029546561563</span>.to_u32, <span class="n">766.7686128934662</span>.to_u32, <span class="n">768.1342711307759</span>.to_u32, <span class="n">769.4999293680856</span>.to_u32, <span class="n">770.8655876053955</span>.to_u32, <span class="n">772.2312458427052</span>.to_u32, <span class="n">773.596904080015</span>.to_u32, <span class="n">774.9625623173247</span>.to_u32, <span class="n">776.3282205546345</span>.to_u32, <span class="n">777.6938787919443</span>.to_u32, <span class="n">779.059537029254</span>.to_u32, <span class="n">780.4251952665637</span>.to_u32, <span class="n">781.7908535038736</span>.to_u32, <span class="n">783.1565117411833</span>.to_u32, <span class="n">784.522169978493</span>.to_u32, <span class="n">785.8878282158028</span>.to_u32, <span class="n">787.2534864531126</span>.to_u32, <span class="n">788.6191446904223</span>.to_u32, <span class="n">789.9848029277321</span>.to_u32, <span class="n">791.3504611650419</span>.to_u32, <span class="n">792.7161194023516</span>.to_u32, <span class="n">794.0817776396614</span>.to_u32, <span class="n">795.4474358769711</span>.to_u32, <span class="n">796.813094114281</span>.to_u32, <span class="n">798.1787523515907</span>.to_u32, <span class="n">799.5444105889004</span>.to_u32, <span class="n">800.9100688262101</span>.to_u32, <span class="n">802.27572706352</span>.to_u32, <span class="n">803.6413853008297</span>.to_u32, <span class="n">805.0070435381394</span>.to_u32, <span class="n">806.3727017754492</span>.to_u32, <span class="n">807.738360012759</span>.to_u32, <span class="n">809.1040182500687</span>.to_u32, <span class="n">810.4696764873785</span>.to_u32, <span class="n">811.8353347246883</span>.to_u32, <span class="n">813.200992961998</span>.to_u32, <span class="n">814.5666511993078</span>.to_u32, <span class="n">815.9323094366175</span>.to_u32, <span class="n">817.2979676739274</span>.to_u32, <span class="n">818.6636259112371</span>.to_u32, <span class="n">820.0292841485468</span>.to_u32, <span class="n">821.3949423858566</span>.to_u32, <span class="n">822.7606006231664</span>.to_u32, <span class="n">824.1262588604761</span>.to_u32, <span class="n">825.4919170977859</span>.to_u32, <span class="n">826.8575753350956</span>.to_u32, <span class="n">828.2232335724054</span>.to_u32, <span class="n">829.5888918097152</span>.to_u32, <span class="n">830.9545500470249</span>.to_u32, <span class="n">832.3202082843347</span>.to_u32, <span class="n">833.6858665216445</span>.to_u32, <span class="n">835.0515247589542</span>.to_u32, <span class="n">836.4171829962639</span>.to_u32, <span class="n">837.7828412335738</span>.to_u32, <span class="n">839.1484994708835</span>.to_u32, <span class="n">840.5141577081932</span>.to_u32, <span class="n">841.879815945503</span>.to_u32, <span class="n">843.2454741828128</span>.to_u32, <span class="n">844.6111324201225</span>.to_u32, <span class="n">845.9767906574323</span>.to_u32, <span class="n">847.342448894742</span>.to_u32, <span class="n">848.7081071320519</span>.to_u32, <span class="n">850.0737653693616</span>.to_u32, <span class="n">851.4394236066713</span>.to_u32, <span class="n">852.805081843981</span>.to_u32, <span class="n">854.1707400812909</span>.to_u32, <span class="n">855.5363983186006</span>.to_u32, <span class="n">856.9020565559103</span>.to_u32, <span class="n">858.2677147932202</span>.to_u32, <span class="n">859.6333730305299</span>.to_u32, <span class="n">860.9990312678397</span>.to_u32, <span class="n">862.3646895051494</span>.to_u32, <span class="n">863.7303477424592</span>.to_u32, <span class="n">865.096005979769</span>.to_u32, <span class="n">866.4616642170787</span>.to_u32, <span class="n">867.8273224543884</span>.to_u32, <span class="n">869.1929806916983</span>.to_u32, <span class="n">870.558638929008</span>.to_u32, <span class="n">871.9242971663177</span>.to_u32, <span class="n">873.2899554036275</span>.to_u32, <span class="n">874.6556136409373</span>.to_u32, <span class="n">876.021271878247</span>.to_u32, <span class="n">877.3869301155568</span>.to_u32, <span class="n">878.7525883528666</span>.to_u32, <span class="n">880.1182465901763</span>.to_u32, <span class="n">881.4839048274861</span>.to_u32, <span class="n">882.8495630647958</span>.to_u32, <span class="n">884.2152213021056</span>.to_u32, <span class="n">885.5808795394154</span>.to_u32, <span class="n">886.9465377767251</span>.to_u32, <span class="n">888.3121960140348</span>.to_u32, <span class="n">889.6778542513447</span>.to_u32, <span class="n">891.0435124886544</span>.to_u32, <span class="n">892.4091707259641</span>.to_u32, <span class="n">893.7748289632739</span>.to_u32, <span class="n">895.1404872005837</span>.to_u32, <span class="n">896.5061454378935</span>.to_u32, <span class="n">897.8718036752032</span>.to_u32, <span class="n">899.237461912513</span>.to_u32, <span class="n">900.6031201498228</span>.to_u32, <span class="n">901.9687783871325</span>.to_u32, <span class="n">903.3344366244422</span>.to_u32, <span class="n">904.7000948617521</span>.to_u32, <span class="n">906.0657530990618</span>.to_u32, <span class="n">907.4314113363715</span>.to_u32, <span class="n">908.7970695736813</span>.to_u32, <span class="n">910.1627278109911</span>.to_u32, <span class="n">911.5283860483008</span>.to_u32, <span class="n">912.8940442856106</span>.to_u32, <span class="n">914.2597025229203</span>.to_u32, <span class="n">915.6253607602301</span>.to_u32, <span class="n">916.9910189975399</span>.to_u32, <span class="n">918.3566772348496</span>.to_u32, <span class="n">919.7223354721593</span>.to_u32, <span class="n">921.0879937094692</span>.to_u32, <span class="n">922.4536519467789</span>.to_u32, <span class="n">923.8193101840886</span>.to_u32, <span class="n">925.1849684213985</span>.to_u32, <span class="n">926.5506266587082</span>.to_u32, <span class="n">927.9162848960179</span>.to_u32, <span class="n">929.2819431333277</span>.to_u32, <span class="n">930.6476013706375</span>.to_u32, <span class="n">932.0132596079472</span>.to_u32, <span class="n">933.378917845257</span>.to_u32, <span class="n">934.7445760825667</span>.to_u32, <span class="n">936.1102343198766</span>.to_u32, <span class="n">937.4758925571863</span>.to_u32, <span class="n">938.841550794496</span>.to_u32, <span class="n">940.2072090318057</span>.to_u32, <span class="n">941.5728672691156</span>.to_u32, <span class="n">942.9385255064253</span>.to_u32, <span class="n">944.304183743735</span>.to_u32, <span class="n">945.6698419810449</span>.to_u32, <span class="n">947.0355002183546</span>.to_u32, <span class="n">948.4011584556644</span>.to_u32, <span class="n">949.7668166929741</span>.to_u32, <span class="n">951.1324749302839</span>.to_u32, <span class="n">952.4981331675937</span>.to_u32, <span class="n">953.8637914049034</span>.to_u32, <span class="n">955.2294496422131</span>.to_u32, <span class="n">956.595107879523</span>.to_u32, <span class="n">957.9607661168327</span>.to_u32, <span class="n">959.3264243541424</span>.to_u32, <span class="n">960.6920825914522</span>.to_u32, <span class="n">962.057740828762</span>.to_u32, <span class="n">963.4233990660717</span>.to_u32, <span class="n">964.7890573033815</span>.to_u32, <span class="n">966.1547155406913</span>.to_u32, <span class="n">967.520373778001</span>.to_u32, <span class="n">968.8860320153108</span>.to_u32, <span class="n">970.2516902526205</span>.to_u32, <span class="n">971.6173484899304</span>.to_u32, <span class="n">972.9830067272401</span>.to_u32, <span class="n">974.3486649645498</span>.to_u32, <span class="n">975.7143232018595</span>.to_u32, <span class="n">977.0799814391694</span>.to_u32, <span class="n">978.4456396764791</span>.to_u32, <span class="n">979.8112979137888</span>.to_u32, <span class="n">981.1769561510986</span>.to_u32, <span class="n">982.5426143884084</span>.to_u32, <span class="n">983.9082726257182</span>.to_u32, <span class="n">985.2739308630279</span>.to_u32, <span class="n">986.6395891003377</span>.to_u32, <span class="n">988.0052473376475</span>.to_u32, <span class="n">989.3709055749572</span>.to_u32, <span class="n">990.7365638122669</span>.to_u32, <span class="n">992.1022220495768</span>.to_u32, <span class="n">993.4678802868865</span>.to_u32, <span class="n">994.8335385241962</span>.to_u32, <span class="n">996.199196761506</span>.to_u32, <span class="n">997.5648549988158</span>.to_u32, <span class="n">998.9305132361255</span>.to_u32, <span class="n">1000.2961714734353</span>.to_u32, <span class="n">1001.661829710745</span>.to_u32, <span class="n">1003.0274879480548</span>.to_u32, <span class="n">1004.3931461853646</span>.to_u32, <span class="n">1005.7588044226743</span>.to_u32, <span class="n">1007.1244626599841</span>.to_u32, <span class="n">1008.4901208972939</span>.to_u32, <span class="n">1009.8557791346036</span>.to_u32, <span class="n">1011.2214373719133</span>.to_u32, <span class="n">1012.5870956092232</span>.to_u32, <span class="n">1013.9527538465329</span>.to_u32, <span class="n">1015.3184120838426</span>.to_u32, <span class="n">1016.6840703211524</span>.to_u32, <span class="n">1018.0497285584622</span>.to_u32, <span class="n">1019.415386795772</span>.to_u32, <span class="n">1020.7810450330817</span>.to_u32, <span class="n">1022.1467032703914</span>.to_u32, <span class="n">1023.5123615077013</span>.to_u32, <span class="n">1024.878019745011</span>.to_u32, <span class="n">1026.2436779823208</span>.to_u32, <span class="n">1027.6093362196304</span>.to_u32, <span class="n">1028.9749944569403</span>.to_u32, <span class="n">1030.3406526942501</span>.to_u32, <span class="n">1031.7063109315598</span>.to_u32, <span class="n">1033.0719691688696</span>.to_u32, <span class="n">1034.4376274061792</span>.to_u32, <span class="n">1035.803285643489</span>.to_u32, <span class="n">1037.168943880799</span>.to_u32, <span class="n">1038.5346021181085</span>.to_u32, <span class="n">1039.9002603554184</span>.to_u32, <span class="n">1041.2659185927282</span>.to_u32, <span class="n">1042.6315768300378</span>.to_u32, <span class="n">1043.9972350673477</span>.to_u32, <span class="n">1045.3628933046573</span>.to_u32, <span class="n">1046.7285515419671</span>.to_u32, <span class="n">1048.094209779277</span>.to_u32, <span class="n">1049.4598680165866</span>.to_u32, <span class="n">1050.8255262538964</span>.to_u32, <span class="n">1052.1911844912063</span>.to_u32, <span class="n">1053.556842728516</span>.to_u32, <span class="n">1054.9225009658257</span>.to_u32, <span class="n">1056.2881592031356</span>.to_u32, <span class="n">1057.6538174404452</span>.to_u32, <span class="n">1059.019475677755</span>.to_u32, <span class="n">1060.3851339150647</span>.to_u32, <span class="n">1061.7507921523745</span>.to_u32, <span class="n">1063.1164503896844</span>.to_u32, <span class="n">1064.482108626994</span>.to_u32, <span class="n">1065.8477668643038</span>.to_u32, <span class="n">1067.2134251016137</span>.to_u32, <span class="n">1068.5790833389233</span>.to_u32, <span class="n">1069.9447415762331</span>.to_u32, <span class="n">1071.3103998135427</span>.to_u32, <span class="n">1072.6760580508526</span>.to_u32, <span class="n">1074.0417162881624</span>.to_u32, <span class="n">1075.407374525472</span>.to_u32, <span class="n">1076.773032762782</span>.to_u32, <span class="n">1078.1386910000917</span>.to_u32, <span class="n">1079.5043492374014</span>.to_u32, <span class="n">1080.8700074747112</span>.to_u32, <span class="n">1082.235665712021</span>.to_u32, <span class="n">1083.6013239493307</span>.to_u32, <span class="n">1084.9669821866405</span>.to_u32, <span class="n">1086.3326404239501</span>.to_u32, <span class="n">1087.69829866126</span>.to_u32, <span class="n">1089.0639568985698</span>.to_u32, <span class="n">1090.4296151358794</span>.to_u32, <span class="n">1091.7952733731893</span>.to_u32, <span class="n">1093.1609316104991</span>.to_u32, <span class="n">1094.5265898478087</span>.to_u32, <span class="n">1095.8922480851186</span>.to_u32, <span class="n">1097.2579063224284</span>.to_u32, <span class="n">1098.623564559738</span>.to_u32, <span class="n">1099.989222797048</span>.to_u32, <span class="n">1101.3548810343575</span>.to_u32, <span class="n">1102.7205392716673</span>.to_u32, <span class="n">1104.0861975089772</span>.to_u32, <span class="n">1105.4518557462868</span>.to_u32, <span class="n">1106.8175139835967</span>.to_u32, <span class="n">1108.1831722209065</span>.to_u32, <span class="n">1109.5488304582161</span>.to_u32, <span class="n">1110.914488695526</span>.to_u32, <span class="n">1112.2801469328356</span>.to_u32, <span class="n">1113.6458051701454</span>.to_u32, <span class="n">1115.0114634074553</span>.to_u32, <span class="n">1116.3771216447649</span>.to_u32, <span class="n">1117.7427798820747</span>.to_u32, <span class="n">1119.1084381193846</span>.to_u32, <span class="n">1120.4740963566942</span>.to_u32, <span class="n">1121.839754594004</span>.to_u32, <span class="n">1123.2054128313139</span>.to_u32, <span class="n">1124.5710710686235</span>.to_u32, <span class="n">1125.9367293059333</span>.to_u32, <span class="n">1127.302387543243</span>.to_u32, <span class="n">1128.6680457805528</span>.to_u32, <span class="n">1130.0337040178626</span>.to_u32, <span class="n">1131.3993622551723</span>.to_u32, <span class="n">1132.765020492482</span>.to_u32, <span class="n">1134.130678729792</span>.to_u32, <span class="n">1135.4963369671016</span>.to_u32, <span class="n">1136.8619952044114</span>.to_u32, <span class="n">1138.227653441721</span>.to_u32, <span class="n">1139.5933116790309</span>.to_u32, <span class="n">1140.9589699163407</span>.to_u32, <span class="n">1142.3246281536503</span>.to_u32, <span class="n">1143.6902863909602</span>.to_u32, <span class="n">1145.05594462827</span>.to_u32, <span class="n">1146.4216028655796</span>.to_u32, <span class="n">1147.7872611028895</span>.to_u32, <span class="n">1149.1529193401993</span>.to_u32, <span class="n">1150.518577577509</span>.to_u32, <span class="n">1151.8842358148188</span>.to_u32, <span class="n">1153.2498940521284</span>.to_u32, <span class="n">1154.6155522894383</span>.to_u32, <span class="n">1155.981210526748</span>.to_u32, <span class="n">1157.3468687640577</span>.to_u32, <span class="n">1158.7125270013676</span>.to_u32, <span class="n">1160.0781852386774</span>.to_u32, <span class="n">1161.443843475987</span>.to_u32, <span class="n">1162.8095017132969</span>.to_u32, <span class="n">1164.1751599506067</span>.to_u32, <span class="n">1165.5408181879163</span>.to_u32, <span class="n">1166.9064764252262</span>.to_u32, <span class="n">1168.2721346625358</span>.to_u32, <span class="n">1169.6377928998456</span>.to_u32, <span class="n">1171.0034511371555</span>.to_u32, <span class="n">1172.369109374465</span>.to_u32, <span class="n">1173.734767611775</span>.to_u32, <span class="n">1175.1004258490848</span>.to_u32, <span class="n">1176.4660840863944</span>.to_u32, <span class="n">1177.8317423237042</span>.to_u32, <span class="n">1179.1974005610139</span>.to_u32, <span class="n">1180.5630587983237</span>.to_u32, <span class="n">1181.9287170356336</span>.to_u32, <span class="n">1183.2943752729432</span>.to_u32, <span class="n">1184.660033510253</span>.to_u32, <span class="n">1186.0256917475629</span>.to_u32, <span class="n">1187.3913499848725</span>.to_u32, <span class="n">1188.7570082221823</span>.to_u32, <span class="n">1190.1226664594922</span>.to_u32, <span class="n">1191.4883246968018</span>.to_u32, <span class="n">1192.8539829341116</span>.to_u32, <span class="n">1194.2196411714212</span>.to_u32, <span class="n">1195.585299408731</span>.to_u32, <span class="n">1196.950957646041</span>.to_u32, <span class="n">1198.3166158833506</span>.to_u32, <span class="n">1199.6822741206604</span>.to_u32, <span class="n">1201.0479323579702</span>.to_u32, <span class="n">1202.4135905952799</span>.to_u32, <span class="n">1203.7792488325897</span>.to_u32, <span class="n">1205.1449070698995</span>.to_u32, <span class="n">1206.5105653072092</span>.to_u32, <span class="n">1207.876223544519</span>.to_u32, <span class="n">1209.2418817818286</span>.to_u32, <span class="n">1210.6075400191385</span>.to_u32, <span class="n">1211.9731982564483</span>.to_u32, <span class="n">1213.338856493758</span>.to_u32, <span class="n">1214.7045147310678</span>.to_u32, <span class="n">1216.0701729683776</span>.to_u32, <span class="n">1217.4358312056872</span>.to_u32, <span class="n">1218.801489442997</span>.to_u32, <span class="n">1220.1671476803067</span>.to_u32, <span class="n">1221.5328059176165</span>.to_u32, <span class="n">1222.8984641549264</span>.to_u32, <span class="n">1224.264122392236</span>.to_u32, <span class="n">1225.6297806295458</span>.to_u32, <span class="n">1226.9954388668557</span>.to_u32, <span class="n">1228.3610971041653</span>.to_u32, <span class="n">1229.7267553414752</span>.to_u32, <span class="n">1231.092413578785</span>.to_u32, <span class="n">1232.4580718160946</span>.to_u32, <span class="n">1233.8237300534045</span>.to_u32, <span class="n">1235.189388290714</span>.to_u32, <span class="n">1236.555046528024</span>.to_u32, <span class="n">1237.9207047653338</span>.to_u32, <span class="n">1239.2863630026434</span>.to_u32, <span class="n">1240.6520212399532</span>.to_u32, <span class="n">1242.017679477263</span>.to_u32, <span class="n">1243.3833377145727</span>.to_u32, <span class="n">1244.7489959518825</span>.to_u32, <span class="n">1246.1146541891922</span>.to_u32, <span class="n">1247.480312426502</span>.to_u32, <span class="n">1248.8459706638118</span>.to_u32, <span class="n">1250.2116289011215</span>.to_u32, <span class="n">1251.5772871384313</span>.to_u32, <span class="n">1252.9429453757411</span>.to_u32, <span class="n">1254.3086036130508</span>.to_u32, <span class="n">1255.6742618503606</span>.to_u32, <span class="n">1257.0399200876705</span>.to_u32, <span class="n">1258.40557832498</span>.to_u32, <span class="n">1259.77123656229</span>.to_u32, <span class="n">1261.1368947995995</span>.to_u32, <span class="n">1262.5025530369094</span>.to_u32, <span class="n">1263.8682112742192</span>.to_u32, <span class="n">1265.2338695115288</span>.to_u32, <span class="n">1266.5995277488387</span>.to_u32, <span class="n">1267.9651859861485</span>.to_u32, <span class="n">1269.3308442234581</span>.to_u32, <span class="n">1270.696502460768</span>.to_u32, <span class="n">1272.0621606980778</span>.to_u32, <span class="n">1273.4278189353874</span>.to_u32, <span class="n">1274.7934771726973</span>.to_u32, <span class="n">1276.159135410007</span>.to_u32, <span class="n">1277.5247936473168</span>.to_u32, <span class="n">1278.8904518846266</span>.to_u32, <span class="n">1280.2561101219362</span>.to_u32, <span class="n">1281.621768359246</span>.to_u32, <span class="n">1282.987426596556</span>.to_u32, <span class="n">1284.3530848338655</span>.to_u32, <span class="n">1285.7187430711754</span>.to_u32, <span class="n">1287.084401308485</span>.to_u32, <span class="n">1288.4500595457948</span>.to_u32, <span class="n">1289.8157177831047</span>.to_u32, <span class="n">1291.1813760204143</span>.to_u32, <span class="n">1292.5470342577241</span>.to_u32, <span class="n">1293.912692495034</span>.to_u32, <span class="n">1295.2783507323436</span>.to_u32, <span class="n">1296.6440089696534</span>.to_u32, <span class="n">1298.0096672069633</span>.to_u32, <span class="n">1299.375325444273</span>.to_u32, <span class="n">1300.7409836815827</span>.to_u32, <span class="n">1302.1066419188924</span>.to_u32, <span class="n">1303.4723001562022</span>.to_u32, <span class="n">1304.837958393512</span>.to_u32, <span class="n">1306.2036166308217</span>.to_u32, <span class="n">1307.5692748681315</span>.to_u32, <span class="n">1308.9349331054414</span>.to_u32, <span class="n">1310.300591342751</span>.to_u32, <span class="n">1311.6662495800608</span>.to_u32, <span class="n">1313.0319078173707</span>.to_u32, <span class="n">1314.3975660546803</span>.to_u32, <span class="n">1315.7632242919901</span>.to_u32, <span class="n">1317.1288825292997</span>.to_u32, <span class="n">1318.4945407666096</span>.to_u32, <span class="n">1319.8601990039194</span>.to_u32, <span class="n">1321.225857241229</span>.to_u32, <span class="n">1322.591515478539</span>.to_u32, <span class="n">1323.9571737158487</span>.to_u32, <span class="n">1325.3228319531584</span>.to_u32, <span class="n">1326.6884901904682</span>.to_u32, <span class="n">1328.0541484277778</span>.to_u32, <span class="n">1329.4198066650877</span>.to_u32, <span class="n">1330.7854649023975</span>.to_u32, <span class="n">1332.1511231397071</span>.to_u32, <span class="n">1333.516781377017</span>.to_u32, <span class="n">1334.8824396143268</span>.to_u32, <span class="n">1336.2480978516364</span>.to_u32, <span class="n">1337.6137560889463</span>.to_u32, <span class="n">1338.9794143262561</span>.to_u32, <span class="n">1340.3450725635657</span>.to_u32, <span class="n">1341.7107308008756</span>.to_u32, <span class="n">1343.0763890381852</span>.to_u32, <span class="n">1344.442047275495</span>.to_u32, <span class="n">1345.807705512805</span>.to_u32, <span class="n">1347.1733637501145</span>.to_u32, <span class="n">1348.5390219874243</span>.to_u32, <span class="n">1349.9046802247342</span>.to_u32, <span class="n">1351.2703384620438</span>.to_u32, <span class="n">1352.6359966993537</span>.to_u32, <span class="n">1354.0016549366633</span>.to_u32, <span class="n">1355.3673131739731</span>.to_u32, <span class="n">1356.732971411283</span>.to_u32, <span class="n">1358.0986296485926</span>.to_u32, <span class="n">1359.4642878859024</span>.to_u32, <span class="n">1360.8299461232123</span>.to_u32, <span class="n">1362.1956043605219</span>.to_u32, <span class="n">1363.5612625978317</span>.to_u32, <span class="n">1364.9269208351416</span>.to_u32, <span class="n">1366.2925790724512</span>.to_u32, <span class="n">1367.658237309761</span>.to_u32, <span class="n">1369.0238955470707</span>.to_u32, <span class="n">1370.3895537843805</span>.to_u32, <span class="n">1371.7552120216903</span>.to_u32, <span class="n">1373.120870259</span>.to_u32, <span class="n">1374.4865284963098</span>.to_u32, <span class="n">1375.8521867336196</span>.to_u32, <span class="n">1377.2178449709293</span>.to_u32, <span class="n">1378.583503208239</span>.to_u32, <span class="n">1379.949161445549</span>.to_u32, <span class="n">1381.3148196828586</span>.to_u32, <span class="n">1382.6804779201684</span>.to_u32, <span class="n">1384.046136157478</span>.to_u32, <span class="n">1385.4117943947879</span>.to_u32, <span class="n">1386.7774526320977</span>.to_u32, <span class="n">1388.1431108694073</span>.to_u32, <span class="n">1389.5087691067172</span>.to_u32, <span class="n">1390.874427344027</span>.to_u32, <span class="n">1392.2400855813366</span>.to_u32, <span class="n">1393.6057438186465</span>.to_u32, <span class="n">1394.971402055956</span>.to_u32, <span class="n">1396.337060293266</span>.to_u32, <span class="n">1397.7027185305758</span>.to_u32, <span class="n">1399.0683767678854</span>.to_u32, <span class="n">1400.4340350051953</span>.to_u32)
+<span class="k">end</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3AString%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : String, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2CN%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method" class="signature"><strong>.decode</strong>(value : Slice(UInt8) | StaticArray(UInt8, N), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2CN%29%2Cinto%3AString%2Cmutate%3ABool%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Slice(UInt8) | StaticArray(UInt8, N), into : String, mutate : Bool, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3AArray%28UInt8%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Array(UInt8), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Array(Char), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3AStringBuffer%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : StringBuffer, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AInt.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Int</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3APointer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Pointer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStaticArray%28UInt8%2CN%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : StaticArray(UInt8, N) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : Array(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : StringBuffer, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet%3A%3AMonero.class%29-class-method" class="signature"><strong>.decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span><span class="t">::</span><span class="t">Monero</span>.<span class="k">class</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode_to_array%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode_to_array</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : StringBuffer, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AInt%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : StringBuffer, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AStringBuffer%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : StringBuffer, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AArray%28UInt8%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Array(UInt8), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Array(Char), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Cmutate%3ABool%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : String, mutate : Bool, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StringBuffer, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_array%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_array</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_array</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.unsafe_decode</strong>(value : Pointer(UInt8), size : Int32, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_encode%28value%3AInt%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.unsafe_encode</strong>(value : Int, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_encode%28value%3AString%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.unsafe_encode</strong>(value : String, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#unsafe_encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.unsafe_encode</strong>(value : Slice(UInt8) | StaticArray(UInt, _), into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="decode(value:String,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : <a href="String.html">String</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3AString%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Slice(UInt8)|StaticArray(UInt8,N),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)forallN-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, N), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N
+
+        <a class="method-permalink" href="#decode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2CN%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Slice(UInt8)|StaticArray(UInt8,N),into:String,mutate:Bool,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, N), into : <a href="String.html">String</a>, mutate : Bool, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2CN%29%2Cinto%3AString%2Cmutate%3ABool%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Array(UInt8),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Array(UInt8), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3AArray%28UInt8%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Array(Char),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Array(<a href="Char.html">Char</a>), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:StringBuffer,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : <a href="StringBuffer.html">StringBuffer</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3AStringBuffer%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:StaticArray(T,N).class,alphabet:Alphabet.class=Alphabet::Bitcoin)forallT,N-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Int.class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Int</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AInt.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Slice(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Pointer.class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Pointer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3APointer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Array(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Array(Char).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:StringBuffer.class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:StaticArray(UInt8,N)|Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)forallN-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <a href="StaticArray.html">StaticArray</a>(UInt8, N) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStaticArray%28UInt8%2CN%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Array(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : Array(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:Array(Char),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : Array(<a href="Char.html">Char</a>), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,into:StringBuffer,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <a href="StringBuffer.html">StringBuffer</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode_into_pointer(value:Pointer(UInt8),pointer:Pointer(UInt8),size:Int,alphabet:Alphabet::Monero.class)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span><span class="t">::</span><span class="t">Monero</span>.<span class="k">class</span>)
+
+        <a class="method-permalink" href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet%3A%3AMonero.class%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode_into_pointer(value:Pointer(UInt8),pointer:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode_to_array(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode_to_array</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode_to_array%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:StaticArray(T,N).class,alphabet:Alphabet.class=Alphabet::Bitcoin)forallT,N-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Pointer.class|Pointer(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Slice(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Array(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Array(Char).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:StringBuffer,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <a href="StringBuffer.html">StringBuffer</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Array(UInt8)|Array(Char),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : Array(UInt8) | Array(<a href="Char.html">Char</a>), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Int,into:StaticArray(UInt8,_)|Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Int, into : <a href="StaticArray.html">StaticArray</a>(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:StaticArray(T,N).class,alphabet:Alphabet.class=Alphabet::Bitcoin)forallT,N-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">StaticArray</span>(<span class="t">T</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall T, N
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AStaticArray%28T%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallT%2CN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Pointer.class|Pointer(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Slice(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Array(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Array(Char).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:StringBuffer,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <a href="StringBuffer.html">StringBuffer</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Array(UInt8)|Array(Char),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : Array(UInt8) | Array(<a href="Char.html">Char</a>), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,into:StaticArray(UInt8,_)|Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <a href="StaticArray.html">StaticArray</a>(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:StringBuffer,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="StringBuffer.html">StringBuffer</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AStringBuffer%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Array(UInt8),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Array(UInt8), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AArray%28UInt8%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Array(Char),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Array(<a href="Char.html">Char</a>), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StringBuffer.class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Pointer.class|Pointer(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Slice(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin):Slice(UInt8)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">Slice</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3ASlice%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StaticArray(UInt8,N).class,alphabet:Alphabet.class=Alphabet::Bitcoin)forallN-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Array(UInt8).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">Array</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Array(Char).class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">Array</span>(<span class="t">Char</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28Char%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:String,mutate:Bool,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <a href="String.html">String</a>, mutate : Bool, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Cmutate%3ABool%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StringBuffer,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <a href="StringBuffer.html">StringBuffer</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Array(UInt8)|Array(Char),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : Array(UInt8) | Array(<a href="Char.html">Char</a>), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StaticArray(UInt8,_)|Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <a href="StaticArray.html">StaticArray</a>(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_array(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_array</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_array%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_array(value:Slice(UInt8)|StaticArray(UInt8,_),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_array</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_pointer(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_string(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_decode(value:Pointer(UInt8),size:Int32,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unsafe_decode</strong>(value : Pointer(UInt8), size : Int32, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#unsafe_decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_encode(value:Int,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unsafe_encode</strong>(value : Int, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#unsafe_encode%28value%3AInt%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_encode(value:String,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unsafe_encode</strong>(value : <a href="String.html">String</a>, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#unsafe_encode%28value%3AString%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="unsafe_encode(value:Slice(UInt8)|StaticArray(UInt,_),into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>unsafe_encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt, _), into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#unsafe_encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

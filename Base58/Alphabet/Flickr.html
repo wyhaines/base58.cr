@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.6.2">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="base58">
+
+
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../../js/doc.js"></script>
+
+  <meta name="repository-name" content="base58">
+  <title>Base58::Alphabet::Flickr - base58 0.1.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../../index.html">
+          base58
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="base58/Base58" data-name="base58">
+      <a href="../../Base58.html">Base58</a>
+      
+        <ul>
+  
+  <li class="parent open current" data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+      <a href="../../Base58/Alphabet.html">Alphabet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
+      <a href="../../Base58/Alphabet/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" current" data-id="base58/Base58/Alphabet/Flickr" data-name="base58::alphabet::flickr">
+      <a href="../../Base58/Alphabet/Flickr.html">Flickr</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Monero" data-name="base58::alphabet::monero">
+      <a href="../../Base58/Alphabet/Monero.html">Monero</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
+      <a href="../../Base58/Alphabet/Ripple.html">Ripple</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Decoder" data-name="base58::decoder">
+      <a href="../../Base58/Decoder.html">Decoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
+      <a href="../../Base58/Decoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Encoder" data-name="base58::encoder">
+      <a href="../../Base58/Encoder.html">Encoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Encoder/Into" data-name="base58::encoder::into">
+      <a href="../../Base58/Encoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
+      <a href="../../Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Benchmark" data-name="benchmark">
+      <a href="../../Benchmark.html">Benchmark</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
+      <a href="../../Benchmark/IPS.html">IPS</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Entry" data-name="benchmark::ips::entry">
+      <a href="../../Benchmark/IPS/Entry.html">Entry</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Job" data-name="benchmark::ips::job">
+      <a href="../../Benchmark/IPS/Job.html">Job</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Char" data-name="char">
+      <a href="../../Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
+      <a href="../../StaticArray.html">StaticArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/String" data-name="string">
+      <a href="../../String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StringBuffer" data-name="stringbuffer">
+      <a href="../../StringBuffer.html">StringBuffer</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Base58::Alphabet::Flickr
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Base58/Alphabet/Flickr.html">Base58::Alphabet::Flickr</a></li><li class="superclass"><a href="../../Base58/Alphabet.html">Base58::Alphabet</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      base58/alphabet/flickr.cr
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="BaseToUInt">
+        <strong>BaseToUInt</strong> = <code><span class="t">UInt8</span>.static_array(<span class="n">49</span>, <span class="n">50</span>, <span class="n">51</span>, <span class="n">52</span>, <span class="n">53</span>, <span class="n">54</span>, <span class="n">55</span>, <span class="n">56</span>, <span class="n">57</span>, <span class="n">97</span>, <span class="n">98</span>, <span class="n">99</span>, <span class="n">100</span>, <span class="n">101</span>, <span class="n">102</span>, <span class="n">103</span>, <span class="n">104</span>, <span class="n">105</span>, <span class="n">106</span>, <span class="n">107</span>, <span class="n">109</span>, <span class="n">110</span>, <span class="n">111</span>, <span class="n">112</span>, <span class="n">113</span>, <span class="n">114</span>, <span class="n">115</span>, <span class="n">116</span>, <span class="n">117</span>, <span class="n">118</span>, <span class="n">119</span>, <span class="n">120</span>, <span class="n">121</span>, <span class="n">122</span>, <span class="n">65</span>, <span class="n">66</span>, <span class="n">67</span>, <span class="n">68</span>, <span class="n">69</span>, <span class="n">70</span>, <span class="n">71</span>, <span class="n">72</span>, <span class="n">74</span>, <span class="n">75</span>, <span class="n">76</span>, <span class="n">77</span>, <span class="n">78</span>, <span class="n">80</span>, <span class="n">81</span>, <span class="n">82</span>, <span class="n">83</span>, <span class="n">84</span>, <span class="n">85</span>, <span class="n">86</span>, <span class="n">87</span>, <span class="n">88</span>, <span class="n">89</span>, <span class="n">90</span>)</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="UIntToBase">
+        <strong>UIntToBase</strong> = <code><span class="t">UInt8</span>.static_array(<span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">5</span>, <span class="n">6</span>, <span class="n">7</span>, <span class="n">8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">34</span>, <span class="n">35</span>, <span class="n">36</span>, <span class="n">37</span>, <span class="n">38</span>, <span class="n">39</span>, <span class="n">40</span>, <span class="n">41</span>, <span class="n">0_u8</span>, <span class="n">42</span>, <span class="n">43</span>, <span class="n">44</span>, <span class="n">45</span>, <span class="n">46</span>, <span class="n">0_u8</span>, <span class="n">47</span>, <span class="n">48</span>, <span class="n">49</span>, <span class="n">50</span>, <span class="n">51</span>, <span class="n">52</span>, <span class="n">53</span>, <span class="n">54</span>, <span class="n">55</span>, <span class="n">56</span>, <span class="n">57</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">9</span>, <span class="n">10</span>, <span class="n">11</span>, <span class="n">12</span>, <span class="n">13</span>, <span class="n">14</span>, <span class="n">15</span>, <span class="n">16</span>, <span class="n">17</span>, <span class="n">18</span>, <span class="n">19</span>, <span class="n">0_u8</span>, <span class="n">20</span>, <span class="n">21</span>, <span class="n">22</span>, <span class="n">23</span>, <span class="n">24</span>, <span class="n">25</span>, <span class="n">26</span>, <span class="n">27</span>, <span class="n">28</span>, <span class="n">29</span>, <span class="n">30</span>, <span class="n">31</span>, <span class="n">32</span>, <span class="n">33</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>, <span class="n">0_u8</span>)</code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%28val%29-class-method" class="signature"><strong>.[]</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28val%29-class-method" class="signature"><strong>.[]?</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse%28val%29-class-method" class="signature"><strong>.inverse</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse%3F%28val%29-class-method" class="signature"><strong>.inverse?</strong>(val)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="[](val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]</strong>(val)
+
+        <a class="method-permalink" href="#%5B%5D%28val%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]?</strong>(val)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28val%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>inverse</strong>(val)
+
+        <a class="method-permalink" href="#inverse%28val%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse?(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>inverse?</strong>(val)
+
+        <a class="method-permalink" href="#inverse%3F%28val%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

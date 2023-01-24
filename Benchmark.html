@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 1.6.2">
+<meta name="crystal_docs.project_version" content="0.1.0">
+<meta name="crystal_docs.project_name" content="base58">
+
+
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+  <meta name="repository-name" content="base58">
+  <title>Benchmark - base58 0.1.0</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="index.html">
+          base58
+        </a>
+      </h1>
+
+      <span class="project-version">
+        0.1.0
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent " data-id="base58/Base58" data-name="base58">
+      <a href="Base58.html">Base58</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+      <a href="Base58/Alphabet.html">Alphabet</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
+      <a href="Base58/Alphabet/Bitcoin.html">Bitcoin</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Flickr" data-name="base58::alphabet::flickr">
+      <a href="Base58/Alphabet/Flickr.html">Flickr</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Monero" data-name="base58::alphabet::monero">
+      <a href="Base58/Alphabet/Monero.html">Monero</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
+      <a href="Base58/Alphabet/Ripple.html">Ripple</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Decoder" data-name="base58::decoder">
+      <a href="Base58/Decoder.html">Decoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
+      <a href="Base58/Decoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="base58/Base58/Encoder" data-name="base58::encoder">
+      <a href="Base58/Encoder.html">Encoder</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Base58/Encoder/Into" data-name="base58::encoder::into">
+      <a href="Base58/Encoder/Into.html">Into</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
+      <a href="Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="base58/Benchmark" data-name="benchmark">
+      <a href="Benchmark.html">Benchmark</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
+      <a href="Benchmark/IPS.html">IPS</a>
+      
+        <ul>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Entry" data-name="benchmark::ips::entry">
+      <a href="Benchmark/IPS/Entry.html">Entry</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Benchmark/IPS/Job" data-name="benchmark::ips::job">
+      <a href="Benchmark/IPS/Job.html">Job</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="base58/Char" data-name="char">
+      <a href="Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
+      <a href="StaticArray.html">StaticArray</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/String" data-name="string">
+      <a href="String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/StringBuffer" data-name="stringbuffer">
+      <a href="StringBuffer.html">StringBuffer</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Benchmark
+
+</h1>
+
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>The Benchmark module provides methods for benchmarking Crystal code, giving
+detailed reports on the time and memory taken for each task.</p>
+<h3><a id="measure-the-number-of-iterations-per-second-of-each-task" class="anchor" href="#measure-the-number-of-iterations-per-second-of-each-task">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Measure the number of iterations per second of each task</h3>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;benchmark&quot;</span>
+
+<span class="t">Benchmark</span>.ips <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
+  x.report(<span class="s">&quot;short sleep&quot;</span>) { sleep <span class="n">0.01</span> }
+  x.report(<span class="s">&quot;shorter sleep&quot;</span>) { sleep <span class="n">0.001</span> }
+<span class="k">end</span></code></pre>
+<p>This generates the following output showing the mean iterations per second,
+the mean times per iteration, the standard deviation relative to the mean, and a comparison:</p>
+<pre><code class="language-text">  short sleep   88.7  ( 11.27ms) (± 3.33%)  8.90× slower
+shorter sleep  789.7  (  1.27ms) (± 3.02%)       fastest</code></pre>
+<p><code><a href="Benchmark/IPS.html">Benchmark::IPS</a></code> defaults to 2 seconds of warmup time and 5 seconds of
+calculation time. This can be configured:</p>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;benchmark&quot;</span>
+
+<span class="t">Benchmark</span>.ips(warmup: <span class="n">4</span>, calculation: <span class="n">10</span>) <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
+  x.report(<span class="s">&quot;sleep&quot;</span>) { sleep <span class="n">0.01</span> }
+<span class="k">end</span></code></pre>
+<h3><a id="measure-the-time-to-construct-the-string-given-by-the-expression-a1-000-000-000" class="anchor" href="#measure-the-time-to-construct-the-string-given-by-the-expression-a1-000-000-000">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Measure the time to construct the string given by the expression: <code>&quot;a&quot;*1_000_000_000</code></h3>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;benchmark&quot;</span>
+
+puts <span class="t">Benchmark</span>.measure { <span class="s">&quot;a&quot;</span><span class="o">*</span><span class="n">1_000_000_000</span> }</code></pre>
+<p>This generates the following output:</p>
+<pre><code class="language-text"> 0.190000   0.220000   0.410000 (  0.420185)</code></pre>
+<p>This report shows the user CPU time, system CPU time, the sum of
+the user and system CPU times, and the elapsed real time. The unit
+of time is seconds.</p>
+<h3><a id="do-some-experiments-sequentially-using-the-bm-method" class="anchor" href="#do-some-experiments-sequentially-using-the-bm-method">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Do some experiments sequentially using the <code>#bm</code> method:</h3>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;benchmark&quot;</span>
+
+n <span class="o">=</span> <span class="n">5000000</span>
+<span class="t">Benchmark</span>.bm <span class="k">do</span> <span class="o">|</span>x<span class="o">|</span>
+  x.report(<span class="s">&quot;times:&quot;</span>) <span class="k">do</span>
+    n.times <span class="k">do</span>
+      a <span class="o">=</span> <span class="s">&quot;1&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+  x.report(<span class="s">&quot;upto:&quot;</span>) <span class="k">do</span>
+    <span class="n">1</span>.upto(n) <span class="k">do</span>
+      a <span class="o">=</span> <span class="s">&quot;1&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<p>The result:</p>
+<pre><code class="language-text">           user     system      total        real
+times:   0.010000   0.000000   0.010000 (  0.008976)
+upto:    0.010000   0.000000   0.010000 (  0.010466)</code></pre>
+<p><span class="flag purple">NOTE</span>  Make sure to always benchmark code by compiling with the <code>--release</code> flag.</p>
+
+
+
+
+
+
+
+  <h2>
+    <a id="extended-modules" class="anchor" href="#extended-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Extended Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="Benchmark.html">Benchmark</a></li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      base58/extensions/benchmark.cr
+    
+    <br/>
+  
+
+
+
+
+
+
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#ips%28calculation%3D5%2Cwarmup%3D2%2Cinteractive%3DSTDOUT.tty%3F%2C%26%29-class-method" class="signature"><strong>.ips</strong>(calculation = <span class="n">5</span>, warmup = <span class="n">2</span>, interactive = <span class="t">STDOUT</span>.tty?, &)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="ips(calculation=5,warmup=2,interactive=STDOUT.tty?,&amp;)-class-method">
+      <div class="signature">
+        
+        def self.<strong>ips</strong>(calculation = <span class="n">5</span>, warmup = <span class="n">2</span>, interactive = <span class="t">STDOUT</span>.tty?, &)
+
+        <a class="method-permalink" href="#ips%28calculation%3D5%2Cwarmup%3D2%2Cinteractive%3DSTDOUT.tty%3F%2C%26%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
