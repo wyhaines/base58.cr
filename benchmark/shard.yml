@@ -1,0 +1,21 @@
+name: benchmark
+version: 0.1.0
+
+authors:
+  - Kirk Haines <wyhaines@gmail.com>
+
+targets:
+  benchmark:
+    main: src/benchmark.cr
+
+crystal: ">1.6.0"
+
+license: MIT
+
+dependencies:
+  base_x:
+    github: wout/base_x
+  base58:
+    github: russ/base58
+  base62:
+    github: Sija/base62.cr
