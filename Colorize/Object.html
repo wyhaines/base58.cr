@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>Base58::PointerCollection - base58 0.1.0</title>
+  <title>Colorize::Object(T) - base58 0.1.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -51,7 +51,7 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent open current" data-id="base58/Base58" data-name="base58">
+  <li class="parent " data-id="base58/Base58" data-name="base58">
       <a href="../Base58.html">Base58</a>
       
         <ul>
@@ -116,7 +116,7 @@
       
     </li>
   
-  <li class=" current" data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
+  <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
       <a href="../Base58/PointerCollection.html">PointerCollection</a>
       
     </li>
@@ -161,12 +161,12 @@
       
     </li>
   
-  <li class="parent " data-id="base58/Colorize" data-name="colorize">
+  <li class="parent open current" data-id="base58/Colorize" data-name="colorize">
       <a href="../Colorize.html">Colorize</a>
       
         <ul>
   
-  <li class=" " data-id="base58/Colorize/Object" data-name="colorize::object(t)">
+  <li class=" current" data-id="base58/Colorize/Object" data-name="colorize::object(t)">
       <a href="../Colorize/Object.html">Object</a>
       
     </li>
@@ -200,12 +200,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Base58::PointerCollection
+  <span class="kind">struct</span> Colorize::Object(T)
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Base58/PointerCollection.html">Base58::PointerCollection</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Colorize/Object.html">Colorize::Object(T)</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -219,31 +219,11 @@
     Overview
   </h2>
 
-  <p>This is essentially a lightweight Slice. It exists only to provide an Enumerable
-interface to a Pointer. The jury is still out on whether there is any point to this
-versus just using Slice. I did some quick benchmarks to justify this, but there needs
-to be more due diligence.</p>
-<p>To use this, you need to pass in a pointer, the size of the pointer, and optionally
-the starting position within the pointer. It is up to you to ensure that the size
-of the pointer is accurate. No other bounds checking will be done.</p>
+  <p>A colorized object. Colors and text decorations can be modified.</p>
 
 
 
 
-
-  <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Included Modules
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type">Enumerable(UInt8)</li>
-    
-  </ul>
 
 
 
@@ -264,7 +244,7 @@ of the pointer is accurate. No other bounds checking will be done.</p>
   </h2>
   
     
-      base58/pointer_collection.cr
+      base58/extensions/colorize.cr
     
     <br/>
   
@@ -272,23 +252,6 @@ of the pointer is accurate. No other bounds checking will be done.</p>
 
 
 
-
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new%28pointer%3APointer%28UInt8%29%2Csize%3AInt32%2Cposition%3AInt32%3D0%29-class-method" class="signature"><strong>.new</strong>(pointer : Pointer(UInt8), size : Int32, position : Int32 = <span class="n">0</span>)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -305,32 +268,30 @@ of the pointer is accurate. No other bounds checking will be done.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#each%28%26%29-instance-method" class="signature"><strong>#each</strong>(&)</a>
-        
-          <div class="summary"><p>Must yield this collection's elements to the block.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#pointer%3APointer%28UInt8%29-instance-method" class="signature"><strong>#pointer</strong> : Pointer(UInt8)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#position%3AInt32-instance-method" class="signature"><strong>#position</strong> : Int32</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#size%3AInt32-instance-method" class="signature"><strong>#size</strong> : Int32</a>
-        
-          <div class="summary"><p>Returns the number of elements in the collection.</p></div>
+        <a href="#mode%28mode%3ASymbol%29%3Aself-instance-method" class="signature"><strong>#mode</strong>(mode : Symbol) : <span class="k">self</span></a>
         
       </li>
     
   </ul>
 
 
+
+  <h2>
+    <a id="macro-summary" class="anchor" href="#macro-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#method_missing%28call%29-macro" class="signature"><strong>method_missing</strong>(call)</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -366,42 +327,8 @@ of the pointer is accurate. No other bounds checking will be done.</p>
 
 
   
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
-
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new(pointer:Pointer(UInt8),size:Int32,position:Int32=0)-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>(pointer : Pointer(UInt8), size : Int32, position : Int32 = <span class="n">0</span>)
-
-        <a class="method-permalink" href="#new%28pointer%3APointer%28UInt8%29%2Csize%3AInt32%2Cposition%3AInt32%3D0%29-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
@@ -416,74 +343,13 @@ of the pointer is accurate. No other bounds checking will be done.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="each(&amp;)-instance-method">
+    <div class="entry-detail" id="mode(mode:Symbol):self-instance-method">
       <div class="signature">
         
-        def <strong>each</strong>(&)
+        def <strong>mode</strong>(mode : Symbol) : <span class="k">self</span>
 
-        <a class="method-permalink" href="#each%28%26%29-instance-method">#</a>
+        <a class="method-permalink" href="#mode%28mode%3ASymbol%29%3Aself-instance-method">#</a>
       </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from module Enumerable(UInt8)
-            </div>
-          
-          <p>Must yield this collection's elements to the block.</p>
-        </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="pointer:Pointer(UInt8)-instance-method">
-      <div class="signature">
-        
-        def <strong>pointer</strong> : Pointer(UInt8)
-
-        <a class="method-permalink" href="#pointer%3APointer%28UInt8%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="position:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>position</strong> : Int32
-
-        <a class="method-permalink" href="#position%3AInt32-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="size:Int32-instance-method">
-      <div class="signature">
-        
-        def <strong>size</strong> : Int32
-
-        <a class="method-permalink" href="#size%3AInt32-instance-method">#</a>
-      </div>
-      
-        <div class="doc">
-          
-            <div class="doc-inherited">
-              Description copied from module Enumerable(UInt8)
-            </div>
-          
-          <p>Returns the number of elements in the collection.</p>
-<pre><code class="language-crystal">[<span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>].size <span class="c"># =&gt; 4</span></code></pre>
-        </div>
       
       <br/>
       <div>
@@ -493,6 +359,30 @@ of the pointer is accurate. No other bounds checking will be done.</p>
   
 
 
+
+  <h2>
+    <a id="macro-detail" class="anchor" href="#macro-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Macro Detail
+  </h2>
+  
+    <div class="entry-detail" id="method_missing(call)-macro">
+      <div class="signature">
+        
+        macro <strong>method_missing</strong>(call)
+
+        <a class="method-permalink" href="#method_missing%28call%29-macro">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 </div>
