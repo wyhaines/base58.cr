@@ -1,4 +1,5 @@
 require "colorize"
+require "./colorize"
 require "benchmark"
 
 module Benchmark
@@ -78,7 +79,8 @@ module Benchmark
       end
 
       def report : Nil
-        print "\e[u\e[0J\e[u"
+        print "\e[2J\e[H" if @interactive
+        #print "\e[2J\e[u\e[0J\e[u"
         max_label = ran_items.max_of &.label.size
         max_compare = ran_items.max_of &.human_compare.size
         max_bytes_per_op = ran_items.max_of &.bytes_per_op.humanize(base: 1024).size
@@ -101,8 +103,9 @@ module Benchmark
       end
 
       private def run_warmup
+        print "\e[2J\e[H" if @interactive
         @items.each_with_index do |item, index|
-          print "\rWarming up [\e[48;5;231m#{" " * index}\e[0m\e[48;5;240m#{" " * (@items.size - index - 1)}\e[0m]"
+          print "\rWarming up [\e[48;5;231m#{" " * index}\e[0m\e[48;5;240m#{" " * (@items.size - index - 1)}\e[0m]" if @interactive
           next if item.separator?
 
           GC.collect
@@ -119,7 +122,7 @@ module Benchmark
 
           item.set_cycles(elapsed, count)
         end
-        print "\e[2K\e[u"
+        print "\e[2K"
       end
 
       private def run_calculation

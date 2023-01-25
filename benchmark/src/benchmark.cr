@@ -6,12 +6,6 @@ require "../../src/base58/extensions/benchmark"
 
 require "colorize"
 
-module Coloraize
-  struct Colorize::Object(T)
-    forward_missing_to @object
-  end
-end
-
 module MyBenchmark
   class Base58
     VERSION = "0.1.0"
