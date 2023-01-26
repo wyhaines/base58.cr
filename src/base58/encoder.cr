@@ -2,17 +2,30 @@ require "./extensions/char"
 require "./extensions/string"
 require "./extensions/slice"
 require "./alphabet"
+require "digest/sha256"
 
 module Base58
   # So, if you are reading this, and want to help, I think that these internals could probably be streamlined
   # more. This is very much just a first draft.
 
+  private CheckBuffer = Bytes.new(32)
+
+  private SHAEngine1 = Digest::SHA256.new
+  private SHAEngine2 = Digest::SHA256.new
+
+  # This is a lookup table for the maximum size of an encoded string, given the number of bytes to encode.
+  # It encodes lengths up to 1024 characters, though it would be silly to encode a 1024 byte chunk. It would be
+  # vastly faster to break long strings into small chunks and to encode each of the small chunks separately, padding them
+  # as necessary to ensure a consistent output size, before concatenating the results. Doind 256 4-byte encodings
+  # will be much faster than a single 1024 byte chunk. But...you do you. The library will encode anything that you throw
+  # at it.
   {% begin %}
   SizeLookup = begin
     Int32.static_array(0,{% for i in (1..1024) %}{{ (1.365658237309761 * i + 2) }}.to_u32,{% end %})
   end
   {% end %}
 
+  # When encoding integers, do a direct mathematical calculation of the size of the output.
   @[AlwaysInline]
   private def self.calculate_size_for_int(value : Int)
     return 1 if value.zero?
@@ -20,6 +33,8 @@ module Base58
     Math.log(value, 58).to_i + 1
   end
 
+  # Encode an integer into a string, taking an optional alphabet, and an option check encoding flag. This is the default behavior
+  # if passed an integer with no other parameters.
   @[AlwaysInline]
   def self.encode(value : Int, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_to_string(value, alphabet)
@@ -97,6 +112,10 @@ module Base58
     encode(value.to_slice, String, alphabet)
   end
 
+  def self.encode(value : String, check : Base58::Check, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    encode(value.to_slice, check, String, alphabet)
+  end
+
   @[AlwaysInline]
   def self.encode(value : String, into : Pointer.class | Pointer(UInt8).class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode(value.to_slice, Pointer, alphabet)
@@ -166,8 +185,26 @@ module Base58
   end
 
   @[AlwaysInline]
+  def self.encode(value : Array(UInt8), check : Base58::Check, into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    ptr = GC.malloc_atomic(SizeLookup[value.size + check.prefix.bytesize + 4]? || value.size + check.prefix.bytesize + 4).as(UInt8*)
+    value.each_with_index do |byte, i|
+      ptr[i] = byte
+    end
+    encode(Slice.new(ptr, value.size), into, alphabet)
+  end
+
+  @[AlwaysInline]
   def self.encode(value : Array(Char), into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     ptr = GC.malloc_atomic(SizeLookup[value.size]? || value.size).as(UInt8*)
+    value.each_with_index do |byte, i|
+      ptr[i] = byte.ord.to_u8
+    end
+    encode(Slice.new(ptr, value.size), into, alphabet)
+  end
+
+  @[AlwaysInline]
+  def self.encode(value : Array(Char), check : Base58::Check, into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    ptr = GC.malloc_atomic(SizeLookup[value.size + check.prefix.bytesize + 4]? || value.size + check.prefix.bytesize + 4).as(UInt8*)
     value.each_with_index do |byte, i|
       ptr[i] = byte.ord.to_u8
     end
@@ -180,8 +217,20 @@ module Base58
   end
 
   @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    encode_to_string(value.to_unsafe, value.size, check, alphabet)
+  end
+
+  @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : StringBuffer.class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     buffer = StringBuffer.new(SizeLookup[value.size]? || value.size * 2)
+    encode_into_string(value.to_unsafe, buffer.buffer, value.bytesize, alphabet)
+    buffer
+  end
+
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : StringBuffer.class, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    buffer = StringBuffer.new(SizeLookup[value.size + check.prefix.bytesize + 4]? || (value.size + check.prefix.bytesize + 4) * 2)
     encode_into_string(value.to_unsafe, buffer.buffer, value.bytesize, alphabet)
     buffer
   end
@@ -219,6 +268,18 @@ module Base58
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     original_size = into.bytesize
     buffer_size = SizeLookup[value.size]? || value.size * 2
+    size = original_size + buffer_size
+    String.new(size) do |ptr|
+      ptr.copy_from(into.to_slice.to_unsafe, original_size)
+      _, final_size = encode_into_pointer(value.to_unsafe, ptr + original_size, value.size, alphabet)
+      {original_size + final_size, original_size + final_size}
+    end
+  end
+
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    original_size = into.bytesize
+    buffer_size = SizeLookup[value.size + check.prefix.bytesize + 4]? || (value.size + check.prefix.bytesize + 4) * 2
     size = original_size + buffer_size
     String.new(size) do |ptr|
       ptr.copy_from(into.to_slice.to_unsafe, original_size)
@@ -296,6 +357,14 @@ module Base58
   end
 
   @[AlwaysInline]
+  def self.encode_to_pointer(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    index = 0
+    buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
+    ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
+    encode_into_pointer(value, ptr, size, alphabet)
+  end
+
+  @[AlwaysInline]
   def self.encode_to_string(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     size = calculate_size_for_int(value)
     String.new(size) do |ptr|
@@ -306,9 +375,18 @@ module Base58
 
   @[AlwaysInline]
   def self.encode_to_string(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
-    buffer_size = SizeLookup[size]? || size * 2
+    buffer_size = SizeLookup[size]? || (size) * 2
     String.new(buffer_size) do |ptr|
       _, final_size = encode_into_pointer(value, ptr, size, alphabet)
+      {final_size, final_size}
+    end
+  end
+
+  @[AlwaysInline]
+  def self.encode_to_string(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
+    String.new(buffer_size) do |ptr|
+      _, final_size = encode_into_pointer(value, ptr, size, check, alphabet)
       {final_size, final_size}
     end
   end
@@ -333,42 +411,35 @@ module Base58
   end
 
   private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    index = primary_encoding(value, pointer, size, 0)
+    index = zero_padding(value, pointer, size, index)
+    reverse_encoding(pointer, index, alphabet)
+
+    pointer[index] = 0
+    {pointer, index}
+  end
+
+  private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    case check.type
+    when Base58::Checksum::Base58Check
+      calculate_base58check_checksum(check.prefix, value, size)
+    else
+      calculate_cb58_checksum(check.prefix, value, size)
+    end
+
     index = 0
-    byte_pos = 0
-    while byte_pos < size
-      carry = value[byte_pos].to_u16
-      inner_idx = 0
-      while inner_idx < index
-        byte = pointer[inner_idx]
-        carry += byte.to_u16 << 8
-        pointer[inner_idx] = (carry % 58).to_u8
-        carry //= 58
-        inner_idx += 1
-      end
+    prefix_slice = check.prefix.to_slice
 
-      while carry > 0
-        pointer[index] = (carry % 58).to_u8
-        index += 1
-        carry //= 58
-      end
-      byte_pos += 1
+    { {prefix_slice.to_unsafe, check.prefix.bytesize}, {value, size}, {CheckBuffer.to_unsafe, 4} }.each do |vptr, vsize|
+      index = primary_encoding(vptr, pointer, vsize, index)
     end
 
-    byte_pos = 0
-    while byte_pos < size
-      break if value[byte_pos] != 0
-      pointer[index] = 0
-      byte_pos += 1
-      index += 1
+    not_finished_zero_padding = true
+    { {prefix_slice.to_unsafe, check.prefix.bytesize}, {value, size}, {CheckBuffer.to_unsafe, 4} }.each do |vptr, vsize|
+      index = zero_padding(vptr, pointer, vsize, index)
     end
 
-    front_pos = 0
-    back_pos = index - 1
-    while front_pos <= back_pos
-      pointer[front_pos], pointer[back_pos] = alphabet[pointer[back_pos]], alphabet[pointer[front_pos]]
-      front_pos += 1
-      back_pos -= 1
-    end
+    reverse_encoding(pointer, index, alphabet)
 
     pointer[index] = 0
     {pointer, index}
@@ -496,6 +567,74 @@ module Base58
     header = string.as({Int32, Int32, Int32}*)
     header.value = {String::TYPE_ID, final_size, final_size}
     string
+  end
+
+  # Helper method so that the logic involved in primary encoding doesn't have to be repeated multiple times.
+  @[AlwaysInline]
+  private def self.primary_encoding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int = 0)
+    byte_pos = 0
+    while byte_pos < size
+      carry = value[byte_pos].to_u16
+      inner_idx = 0
+      while inner_idx < index
+        byte = pointer[inner_idx]
+        carry += byte.to_u16 << 8
+        pointer[inner_idx] = (carry % 58).to_u8
+        carry //= 58
+        inner_idx += 1
+      end
+
+      while carry > 0
+        pointer[index] = (carry % 58).to_u8
+        index += 1
+        carry //= 58
+      end
+      byte_pos += 1
+    end
+
+    index
+  end
+
+  # Helper method so that the logic involved in zero padding is not repeated multiple times.
+  @[AlwaysInline]
+  private def self.zero_padding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int = 0)
+    byte_pos = 0
+    while byte_pos < size
+      break if value[byte_pos] != 0
+      pointer[index] = 0
+      byte_pos += 1
+      index += 1
+    end
+
+    index
+  end
+
+  # Helper method so that the logic involved in reversing the encoding is not repeated multiple times.
+  @[AlwaysInline]
+  private def self.reverse_encoding(pointer, index, alphabet)
+    front_pos = 0
+    back_pos = index - 1
+    while front_pos <= back_pos
+      pointer[front_pos], pointer[back_pos] = alphabet[pointer[back_pos]], alphabet[pointer[front_pos]]
+      front_pos += 1
+      back_pos -= 1
+    end
+  end
+
+  private def self.calculate_base58check_checksum(prefix, value, size)
+    SHAEngine1 << prefix
+    SHAEngine1 << Slice.new(value, size)
+    SHAEngine2 << SHAEngine1.final
+    SHAEngine2.final(CheckBuffer)
+    SHAEngine1.reset
+    SHAEngine2.reset
+  end
+
+  private def self.calculate_cb58_checksum(prefix, value, size)
+    SHAEngine1 << prefix
+    SHAEngine1 << Slice.new(value, size)
+    SHAEngine1.final(CheckBuffer)
+    SHAEngine1.reset
   end
 
   struct Encoder

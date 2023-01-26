@@ -80,7 +80,7 @@ module Benchmark
 
       def report : Nil
         print "\e[2J\e[H" if @interactive
-        #print "\e[2J\e[u\e[0J\e[u"
+        # print "\e[2J\e[u\e[0J\e[u"
         max_label = ran_items.max_of &.label.size
         max_compare = ran_items.max_of &.human_compare.size
         max_bytes_per_op = ran_items.max_of &.bytes_per_op.humanize(base: 1024).size

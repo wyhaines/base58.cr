@@ -11,6 +11,11 @@ module Base58
   end
 
   @[AlwaysInline]
+  def self.decode(value : String, check : Check, into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    decode(value.to_slice.to_unsafe, value.bytesize, check, into, alphabet)
+  end
+
+  @[AlwaysInline]
   def self.decode(value : Slice(UInt8) | StaticArray(UInt8, N), into = String, alphabet : Alphabet.class = Alphabet::Bitcoin) forall N
     decode(value.to_unsafe, value.size, into, alphabet)
   end
@@ -62,6 +67,13 @@ module Base58
   def self.decode(value : Pointer(UInt8), size : Int32, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     String.new(size) do |ptr|
       _, final_size = decode_into_pointer(value, ptr, size, alphabet)
+      {final_size, final_size}
+    end
+  end
+
+  def self.decode(value : Pointer(UInt8), size : Int32, check : Check, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    String.new(size) do |ptr|
+      _, final_size = decode_into_pointer(value, ptr, size, check, alphabet)
       {final_size, final_size}
     end
   end
@@ -193,9 +205,8 @@ module Base58
     array
   end
 
-  def self.decode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
-    # Can this implementation be optimized further?
-    index = 0
+  @[AlwaysInline]
+  def self.primary_decoding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int, pointer_index : Int, alphabet : Alphabet.class)
     pointer_index = 0
     while index < size
       val = alphabet.inverse(value[index]).to_u16
@@ -216,7 +227,11 @@ module Base58
       index += 1
     end
 
-    zer0 = alphabet[0]
+    {index, pointer_index}
+  end
+
+  @[AlwaysInline]
+  def self.zero_padding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, pointer_index : Int, zer0 : UInt8)
     index = 0
     while index < size
       break if value[index] != zer0
@@ -225,6 +240,11 @@ module Base58
       index += 1
     end
 
+    pointer_index
+  end
+
+  @[AlwaysInline]
+  def self.reverse_decoding(pointer, pointer_index)
     front_pos = 0
     back_pos = pointer_index - 1
     while front_pos <= back_pos
@@ -232,8 +252,58 @@ module Base58
       front_pos += 1
       back_pos -= 1
     end
+  end
+
+  @[AlwaysInline]
+  def self.validate_checksum?(pointer, pointer_index, check)
+    slice = Slice.new(pointer, pointer_index)
+    payload = slice[..-4]
+    checksum = slice[-4..]
+
+    case check.type
+    when Checksum::Base58Check
+      calculate_base58check_checksum("", pointer, pointer_index-4)
+    else
+      calculate_cb58_checksum("", pointer, pointer_index-4)
+    end
+
+    if checksum == CheckBuffer[0..3]
+      true
+    else
+      nil
+    end
+  end
+
+  @[AlwaysInline]
+  def self.validate_checksum(pointer, pointer_index, check)
+    if validate_checksum?(pointer, pointer_index, check)
+      true
+    else
+      raise ChecksumMismatch.new("Checksum Mismatch; expected #{Slice.new(pointer, pointer_index)[-4..].hexstring}, but found #{CheckBuffer[0..3].hexstring}")
+    end
+  end
+
+  def self.decode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    index = 0
+    pointer_index = 0
+
+    index, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
+    pointer_index = zero_padding(value, pointer, size, pointer_index, alphabet[0])
+    reverse_decoding(pointer, pointer_index)
 
     {pointer, pointer_index}
+  end
+
+  def self.decode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, check : Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    index = 0
+    pointer_index = 0
+
+    index, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
+    pointer_index = zero_padding(value, pointer, size, pointer_index, alphabet[0])
+    reverse_decoding(pointer, pointer_index)
+    validate_checksum(pointer, pointer_index, check)
+
+    {pointer, pointer_index-4}
   end
 
   def self.decode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet::Monero.class)

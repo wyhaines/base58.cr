@@ -1,4 +1,4 @@
-"../alphabet"
+require "../alphabet"
 
 module Base58
   class Alphabet
