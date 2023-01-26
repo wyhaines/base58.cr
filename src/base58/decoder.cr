@@ -262,9 +262,9 @@ module Base58
 
     case check.type
     when Checksum::Base58Check
-      calculate_base58check_checksum("", pointer, pointer_index-4)
+      calculate_base58check_checksum("", pointer, pointer_index - 4)
     else
-      calculate_cb58_checksum("", pointer, pointer_index-4)
+      calculate_cb58_checksum("", pointer, pointer_index - 4)
     end
 
     if checksum == CheckBuffer[0..3]
@@ -303,7 +303,7 @@ module Base58
     reverse_decoding(pointer, pointer_index)
     validate_checksum(pointer, pointer_index, check)
 
-    {pointer, pointer_index-4}
+    {pointer, pointer_index - 4}
   end
 
   def self.decode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet::Monero.class)

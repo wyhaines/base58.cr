@@ -12,7 +12,7 @@ module Base58
   # the front of the data payload, the first 4 characters of the SHA256 hash of the SHA256 has of the
   # checksum + data combination before Base58 encoding.
   #
-  # * [CB58](https://support.avax.network/en/articles/4587395-what-is-cb58) 
+  # * [CB58](https://support.avax.network/en/articles/4587395-what-is-cb58)
   #
   enum Checksum
     Base58Check
@@ -21,7 +21,7 @@ module Base58
 
   # Use this structure to specify that some form of checksumming should be used with the encoding or the decoding.
   #
-  # ```crystal
+  # ```
   # Base58.encode("some data", check: Base58::Check.new(:Base58Check, "\x31"))
   # ```
   #
@@ -29,7 +29,6 @@ module Base58
     prefix : String = "\x31",
     type : Checksum = :Base58Check
 
-    
   class ChecksumMismatch < Exception
   end
 end
