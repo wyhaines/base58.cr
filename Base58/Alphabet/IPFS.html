@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../../js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>Base58::Decoder::Into - base58 0.1.0</title>
+  <title>Base58::Alphabet::IPFS - base58 0.1.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../";
   </script>
@@ -56,7 +56,7 @@
       
         <ul>
   
-  <li class="parent " data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+  <li class="parent open current" data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
       <a href="../../Base58/Alphabet.html">Alphabet</a>
       
         <ul>
@@ -71,7 +71,7 @@
       
     </li>
   
-  <li class=" " data-id="base58/Base58/Alphabet/IPFS" data-name="base58::alphabet::ipfs">
+  <li class=" current" data-id="base58/Base58/Alphabet/IPFS" data-name="base58::alphabet::ipfs">
       <a href="../../Base58/Alphabet/IPFS.html">IPFS</a>
       
     </li>
@@ -106,12 +106,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="base58/Base58/Decoder" data-name="base58::decoder">
+  <li class="parent " data-id="base58/Base58/Decoder" data-name="base58::decoder">
       <a href="../../Base58/Decoder.html">Decoder</a>
       
         <ul>
   
-  <li class=" current" data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
+  <li class=" " data-id="base58/Base58/Decoder/Into" data-name="base58::decoder::into">
       <a href="../../Base58/Decoder/Into.html">Into</a>
       
     </li>
@@ -220,15 +220,27 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Base58::Decoder::Into
+  <span class="kind">class</span> Base58::Alphabet::IPFS
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Base58/Decoder/Into.html">Base58::Decoder::Into</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Base58/Alphabet/IPFS.html">Base58::Alphabet::IPFS</a></li><li class="superclass"><a href="../../Base58/Alphabet/Bitcoin.html">Base58::Alphabet::Bitcoin</a></li><li class="superclass"><a href="../../Base58/Alphabet.html">Base58::Alphabet</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58. Some sources refer to its
+implementation as distinct, but it is actually just the Bitcoin implementation.</p>
 
 
 
@@ -253,7 +265,7 @@
   </h2>
   
     
-      base58/decoder.cr
+      base58/alphabet/ipfs.cr
     
     <br/>
   
@@ -262,54 +274,89 @@
 
 
 
+
+
   <h2>
-    <a id="constructors" class="anchor" href="#constructors">
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Constructors
+    Class Method Summary
   </h2>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28into%29-class-method" class="signature"><strong>.new</strong>(into)</a>
+        <a href="#%5B%5D%28val%29-class-method" class="signature"><strong>.[]</strong>(val)</a>
+        
+          <div class="summary"><p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#%5B%5D%3F%28val%29-class-method" class="signature"><strong>.[]?</strong>(val)</a>
+        
+          <div class="summary"><p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse%28val%29-class-method" class="signature"><strong>.inverse</strong>(val)</a>
+        
+          <div class="summary"><p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#inverse%3F%28val%29-class-method" class="signature"><strong>.inverse?</strong>(val)</a>
+        
+          <div class="summary"><p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58.</p></div>
         
       </li>
     
   </ul>
 
 
-
-
-
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#%5B%5D%28value%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-instance-method" class="signature"><strong>#[]</strong>(value, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#decode%28value%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-instance-method" class="signature"><strong>#decode</strong>(value, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
-        
-      </li>
-    
-  </ul>
 
 
 
 
 
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+  <h3>Class methods inherited from class <code><a href="../../Base58/Alphabet/Bitcoin.html">Base58::Alphabet::Bitcoin</a></code></h3>
+  
+  
+    <a href="../../Base58/Alphabet/Bitcoin.html#%5B%5D%28val%29-class-method" class="tooltip">
+      <span>[](val)</span>
+    []</a>, 
+    
+  
+    <a href="../../Base58/Alphabet/Bitcoin.html#%5B%5D%3F%28val%29-class-method" class="tooltip">
+      <span>[]?(val)</span>
+    []?</a>, 
+    
+  
+    <a href="../../Base58/Alphabet/Bitcoin.html#inverse%28val%29-class-method" class="tooltip">
+      <span>inverse(val)</span>
+    inverse</a>, 
+    
+  
+    <a href="../../Base58/Alphabet/Bitcoin.html#inverse%3F%28val%29-class-method" class="tooltip">
+      <span>inverse?(val)</span>
+    inverse?</a>
+    
+  
+
+
   
     
 
@@ -344,22 +391,90 @@
 </div>
 
 
+
+
   <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-    Constructor Detail
+    Class Method Detail
   </h2>
   
-    <div class="entry-detail" id="new(into)-class-method">
+    <div class="entry-detail" id="[](val)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(into)
+        def self.<strong>[]</strong>(val)
 
-        <a class="method-permalink" href="#new%28into%29-class-method">#</a>
+        <a class="method-permalink" href="#%5B%5D%28val%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58. Some sources refer to its
+implementation as distinct, but it is actually just the Bitcoin implementation.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="[]?(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>[]?</strong>(val)
+
+        <a class="method-permalink" href="#%5B%5D%3F%28val%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58. Some sources refer to its
+implementation as distinct, but it is actually just the Bitcoin implementation.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>inverse</strong>(val)
+
+        <a class="method-permalink" href="#inverse%28val%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58. Some sources refer to its
+implementation as distinct, but it is actually just the Bitcoin implementation.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="inverse?(val)-class-method">
+      <div class="signature">
+        
+        def self.<strong>inverse?</strong>(val)
+
+        <a class="method-permalink" href="#inverse%3F%28val%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><a href="https://github.com/richardschneider/net-ipfs-core#base58">IPFS</a> uses Base58. Some sources refer to its
+implementation as distinct, but it is actually just the Bitcoin implementation.</p>
+        </div>
       
       <br/>
       <div>
@@ -369,46 +484,6 @@
   
 
 
-
-
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="[](value,alphabet:Alphabet.class=Alphabet::Bitcoin)-instance-method">
-      <div class="signature">
-        
-        def <strong>[]</strong>(value, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
-
-        <a class="method-permalink" href="#%5B%5D%28value%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="decode(value,alphabet:Alphabet.class=Alphabet::Bitcoin)-instance-method">
-      <div class="signature">
-        
-        def <strong>decode</strong>(value, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
-
-        <a class="method-permalink" href="#decode%28value%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 

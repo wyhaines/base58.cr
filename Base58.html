@@ -71,6 +71,11 @@
       
     </li>
   
+  <li class=" " data-id="base58/Base58/Alphabet/IPFS" data-name="base58::alphabet::ipfs">
+      <a href="Base58/Alphabet/IPFS.html">IPFS</a>
+      
+    </li>
+  
   <li class=" " data-id="base58/Base58/Alphabet/Monero" data-name="base58::alphabet::monero">
       <a href="Base58/Alphabet/Monero.html">Monero</a>
       
@@ -83,6 +88,21 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Check" data-name="base58::check">
+      <a href="Base58/Check.html">Check</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Checksum" data-name="base58::checksum">
+      <a href="Base58/Checksum.html">Checksum</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/ChecksumMismatch" data-name="base58::checksummismatch">
+      <a href="Base58/ChecksumMismatch.html">ChecksumMismatch</a>
       
     </li>
   
@@ -242,6 +262,11 @@
   </h2>
   
     
+      base58.cr
+    
+    <br/>
+  
+    
       base58/alphabet.cr
     
     <br/>
@@ -253,6 +278,11 @@
   
     
       base58/alphabet/flickr.cr
+    
+    <br/>
+  
+    
+      base58/alphabet/ipfs.cr
     
     <br/>
   
@@ -335,6 +365,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#decode%28value%3AString%2Ccheck%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : String, check : Check, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#decode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2CN%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29forallN-class-method" class="signature"><strong>.decode</strong>(value : Slice(UInt8) | StaticArray(UInt8, N), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) forall N</a>
         
       </li>
@@ -371,6 +406,11 @@
     
       <li class="entry-summary">
         <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Ccheck%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode</strong>(value : Pointer(UInt8), size : Int32, check : Check, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
     
@@ -440,6 +480,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, check : Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#decode_to_array%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.decode_to_array</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
@@ -451,6 +496,8 @@
     
       <li class="entry-summary">
         <a href="#encode%28value%3AInt%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Int, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+          <div class="summary"><p>Encode an integer into a string, taking an optional alphabet, and an option check encoding flag.</p></div>
         
       </li>
     
@@ -510,6 +557,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#encode%28value%3AString%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, check : Base58::Check, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode%28value%3AString%2Cinto%3APointer.class%7CPointer%28UInt8%29.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : String, into : <span class="t">Pointer</span>.<span class="k">class</span> | <span class="t">Pointer</span>(<span class="t">UInt8</span>).<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
@@ -565,7 +617,17 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#encode%28value%3AArray%28UInt8%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Array(UInt8), check : Base58::Check, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Array(Char), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3AArray%28Char%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Array(Char), check : Base58::Check, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
     
@@ -575,7 +637,17 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
     
@@ -606,6 +678,11 @@
     
       <li class="entry-summary">
         <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
     
@@ -645,6 +722,11 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
@@ -655,12 +737,27 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#primary_decoding%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Cindex%3AInt%2Cpointer_index%3AInt%2Calphabet%3AAlphabet.class%29-class-method" class="signature"><strong>.primary_decoding</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int, pointer_index : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#reverse_decoding%28pointer%2Cpointer_index%29-class-method" class="signature"><strong>.reverse_decoding</strong>(pointer, pointer_index)</a>
         
       </li>
     
@@ -681,6 +778,21 @@
     
       <li class="entry-summary">
         <a href="#unsafe_encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.unsafe_encode</strong>(value : Slice(UInt8) | StaticArray(UInt, _), into : String, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#validate_checksum%28pointer%2Cpointer_index%2Ccheck%29-class-method" class="signature"><strong>.validate_checksum</strong>(pointer, pointer_index, check)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#validate_checksum%3F%28pointer%2Cpointer_index%2Ccheck%29-class-method" class="signature"><strong>.validate_checksum?</strong>(pointer, pointer_index, check)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#zero_padding%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Cpointer_index%3AInt%2Czer0%3AUInt8%29-class-method" class="signature"><strong>.zero_padding</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, pointer_index : Int, zer0 : UInt8)</a>
         
       </li>
     
@@ -714,6 +826,20 @@
         def self.<strong>decode</strong>(value : <a href="String.html">String</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#decode%28value%3AString%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:String,check:Check,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : <a href="String.html">String</a>, check : <a href="Base58/Check.html">Check</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3AString%2Ccheck%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -826,6 +952,20 @@
         def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(value:Pointer(UInt8),size:Int32,check:Check,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(value : Pointer(UInt8), size : Int32, check : <a href="Base58/Check.html">Check</a>, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode%28value%3APointer%28UInt8%29%2Csize%3AInt32%2Ccheck%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1016,6 +1156,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="decode_into_pointer(value:Pointer(UInt8),pointer:Pointer(UInt8),size:Int,check:Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode_into_pointer</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#decode_into_pointer%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="decode_to_array(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
@@ -1051,6 +1205,12 @@
 
         <a class="method-permalink" href="#encode%28value%3AInt%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encode an integer into a string, taking an optional alphabet, and an option check encoding flag. This is the default behavior
+if passed an integer with no other parameters.</p>
+        </div>
       
       <br/>
       <div>
@@ -1204,6 +1364,20 @@
         def self.<strong>encode</strong>(value : <a href="String.html">String</a>, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#encode%28value%3AString%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:String,check:Base58::Check,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : <a href="String.html">String</a>, check : <a href="Base58/Check.html">Base58::Check</a>, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AString%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1366,12 +1540,40 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="encode(value:Array(UInt8),check:Base58::Check,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Array(UInt8), check : <a href="Base58/Check.html">Base58::Check</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AArray%28UInt8%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="encode(value:Array(Char),into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
         def self.<strong>encode</strong>(value : Array(<a href="Char.html">Char</a>), into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#encode%28value%3AArray%28Char%29%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Array(Char),check:Base58::Check,into=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Array(<a href="Char.html">Char</a>), check : <a href="Base58/Check.html">Base58::Check</a>, into = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3AArray%28Char%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1394,12 +1596,40 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:String.class=String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : <span class="t">String</span>.<span class="k">class</span> = <span class="t">String</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString.class%3DString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StringBuffer.class,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
         def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StringBuffer.class,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <span class="t">StringBuffer</span>.<span class="k">class</span>, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStringBuffer.class%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1484,6 +1714,20 @@
         def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:String,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1590,6 +1834,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="encode_to_pointer(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
@@ -1618,6 +1876,20 @@
       </div>
     </div>
   
+    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="encode_to_string(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
@@ -1638,6 +1910,34 @@
         def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="primary_decoding(value:Pointer(UInt8),pointer:Pointer(UInt8),size:Int,index:Int,pointer_index:Int,alphabet:Alphabet.class)-class-method">
+      <div class="signature">
+        
+        def self.<strong>primary_decoding</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int, pointer_index : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span>)
+
+        <a class="method-permalink" href="#primary_decoding%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Cindex%3AInt%2Cpointer_index%3AInt%2Calphabet%3AAlphabet.class%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="reverse_decoding(pointer,pointer_index)-class-method">
+      <div class="signature">
+        
+        def self.<strong>reverse_decoding</strong>(pointer, pointer_index)
+
+        <a class="method-permalink" href="#reverse_decoding%28pointer%2Cpointer_index%29-class-method">#</a>
       </div>
       
       <br/>
@@ -1694,6 +1994,48 @@
         def self.<strong>unsafe_encode</strong>(value : Slice(UInt8) | <a href="StaticArray.html">StaticArray</a>(UInt, _), into : <a href="String.html">String</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
         <a class="method-permalink" href="#unsafe_encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt%2C_%29%2Cinto%3AString%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate_checksum(pointer,pointer_index,check)-class-method">
+      <div class="signature">
+        
+        def self.<strong>validate_checksum</strong>(pointer, pointer_index, check)
+
+        <a class="method-permalink" href="#validate_checksum%28pointer%2Cpointer_index%2Ccheck%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="validate_checksum?(pointer,pointer_index,check)-class-method">
+      <div class="signature">
+        
+        def self.<strong>validate_checksum?</strong>(pointer, pointer_index, check)
+
+        <a class="method-permalink" href="#validate_checksum%3F%28pointer%2Cpointer_index%2Ccheck%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="zero_padding(value:Pointer(UInt8),pointer:Pointer(UInt8),size:Int,pointer_index:Int,zer0:UInt8)-class-method">
+      <div class="signature">
+        
+        def self.<strong>zero_padding</strong>(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, pointer_index : Int, zer0 : UInt8)
+
+        <a class="method-permalink" href="#zero_padding%28value%3APointer%28UInt8%29%2Cpointer%3APointer%28UInt8%29%2Csize%3AInt%2Cpointer_index%3AInt%2Czer0%3AUInt8%29-class-method">#</a>
       </div>
       
       <br/>

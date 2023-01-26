@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>Benchmark::IPS - base58 0.1.0</title>
+  <title>Base58::ChecksumMismatch - base58 0.1.0</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -51,7 +51,7 @@
   <div class="types-list">
     <ul>
   
-  <li class="parent " data-id="base58/Base58" data-name="base58">
+  <li class="parent open current" data-id="base58/Base58" data-name="base58">
       <a href="../Base58.html">Base58</a>
       
         <ul>
@@ -101,7 +101,7 @@
       
     </li>
   
-  <li class=" " data-id="base58/Base58/ChecksumMismatch" data-name="base58::checksummismatch">
+  <li class=" current" data-id="base58/Base58/ChecksumMismatch" data-name="base58::checksummismatch">
       <a href="../Base58/ChecksumMismatch.html">ChecksumMismatch</a>
       
     </li>
@@ -146,12 +146,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="base58/Benchmark" data-name="benchmark">
+  <li class="parent " data-id="base58/Benchmark" data-name="benchmark">
       <a href="../Benchmark.html">Benchmark</a>
       
         <ul>
   
-  <li class="parent open current" data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
+  <li class="parent " data-id="base58/Benchmark/IPS" data-name="benchmark::ips">
       <a href="../Benchmark/IPS.html">IPS</a>
       
         <ul>
@@ -220,33 +220,15 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">module</span> Benchmark::IPS
+  <span class="kind">class</span> Base58::ChecksumMismatch
 
 </h1>
 
 
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Base58/ChecksumMismatch.html">Base58::ChecksumMismatch</a></li><li class="superclass">Exception</li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
 
 
 
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>Benchmark IPS calculates the number of iterations per second for a given
-block of code. The strategy is to use two stages: a warmup stage and a
-calculation stage.</p>
-<p>The warmup phase defaults to 2 seconds. During this stage we figure out how
-many cycles are needed to run the block for roughly 100ms, and record it.</p>
-<p>The calculation defaults to 5 seconds. During this stage we run the block
-in sets of the size calculated in the warmup stage. The measurements for
-those sets are then used to calculate the mean and standard deviation,
-which are then reported. Additionally we compare the means to that of the
-fastest.</p>
 
 
 
@@ -271,7 +253,7 @@ fastest.</p>
   </h2>
   
     
-      base58/extensions/benchmark.cr
+      base58.cr
     
     <br/>
   
@@ -289,6 +271,36 @@ fastest.</p>
 
 
 <div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
   
 </div>
 
