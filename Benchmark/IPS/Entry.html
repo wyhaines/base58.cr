@@ -273,7 +273,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28label%3AString%7CColorize%3A%3AObject%28String%29%2Caction%3A-%3E%29-class-method" class="signature"><strong>.new</strong>(label : String | Colorize::Object(String), action :  -> )</a>
+        <a href="#new%28label%3AString%2Caction%3AProc%28Nil%29%29-class-method" class="signature"><strong>.new</strong>(label : String, action : Proc(Nil))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new%28label%3AString%7CColorize%3A%3AObject%28String%29%2Caction%3AInt32-%3E_%7C-%3E_%29-class-method" class="signature"><strong>.new</strong>(label : String | Colorize::Object(String), action : Int32 -> _ |  -> _)</a>
         
       </li>
     
@@ -294,7 +299,29 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#action%3AProc%28Int32%2CNil%29%7CProc%28Nil%29-instance-method" class="signature"><strong>#action</strong> : Proc(Int32, Nil) | Proc(Nil)</a>
+        
+          <div class="summary"><p>Code to be benchmarked</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#action%3D%28action%3AProc%28Int32%2CNil%29%7CProc%28Nil%29%29-instance-method" class="signature"><strong>#action=</strong>(action : Proc(Int32, Nil) | Proc(Nil))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#calculate_stats%28samples%29%3ANil-instance-method" class="signature"><strong>#calculate_stats</strong>(samples) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#call%3ANil-instance-method" class="signature"><strong>#call</strong> : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#call_for_100ms%3ANil-instance-method" class="signature"><strong>#call_for_100ms</strong> : Nil</a>
         
       </li>
     
@@ -365,12 +392,26 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(label:String|Colorize::Object(String),action:-&gt;)-class-method">
+    <div class="entry-detail" id="new(label:String,action:Proc(Nil))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(label : <a href="../../String.html">String</a> | <a href="../../Colorize/Object.html">Colorize::Object</a>(<a href="../../String.html">String</a>), action :  -> )
+        def self.<strong>new</strong>(label : <a href="../../String.html">String</a>, action : Proc(Nil))
 
-        <a class="method-permalink" href="#new%28label%3AString%7CColorize%3A%3AObject%28String%29%2Caction%3A-%3E%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28label%3AString%2Caction%3AProc%28Nil%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(label:String|Colorize::Object(String),action:Int32-&gt;_|-&gt;_)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(label : <a href="../../String.html">String</a> | <a href="../../Colorize/Object.html">Colorize::Object</a>(<a href="../../String.html">String</a>), action : Int32 -> _ |  -> _)
+
+        <a class="method-permalink" href="#new%28label%3AString%7CColorize%3A%3AObject%28String%29%2Caction%3AInt32-%3E_%7C-%3E_%29-class-method">#</a>
       </div>
       
       <br/>
@@ -393,12 +434,73 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="action:Proc(Int32,Nil)|Proc(Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>action</strong> : Proc(Int32, Nil) | Proc(Nil)
+
+        <a class="method-permalink" href="#action%3AProc%28Int32%2CNil%29%7CProc%28Nil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Code to be benchmarked</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="action=(action:Proc(Int32,Nil)|Proc(Nil))-instance-method">
+      <div class="signature">
+        
+        def <strong>action=</strong>(action : Proc(Int32, Nil) | Proc(Nil))
+
+        <a class="method-permalink" href="#action%3D%28action%3AProc%28Int32%2CNil%29%7CProc%28Nil%29%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="calculate_stats(samples):Nil-instance-method">
       <div class="signature">
         
         def <strong>calculate_stats</strong>(samples) : Nil
 
         <a class="method-permalink" href="#calculate_stats%28samples%29%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="call:Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>call</strong> : Nil
+
+        <a class="method-permalink" href="#call%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="call_for_100ms:Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>call_for_100ms</strong> : Nil
+
+        <a class="method-permalink" href="#call_for_100ms%3ANil-instance-method">#</a>
       </div>
       
       <br/>

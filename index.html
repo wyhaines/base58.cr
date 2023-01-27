@@ -226,8 +226,17 @@
     <use href="#octicon-link"/>
   </svg>
 </a>base58</h1>
-<p>This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well
-as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet.</p>
+<p>This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet/encoding-variation. It also supports both Base58Check and CB58 checksum algorithms.</p>
+<h2><a id="benchmarks" class="anchor" href="#benchmarks">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Benchmarks</h2>
+<p>A benchmark is provided in the <a href="https://github.com/wyhaines/base58.cr/tree/main/benchmark">benchmark/</a> directory. To build it and then run it:</p>
+<pre><code class="language-bash">cd benchmark
+shards build --release
+bin/benchmark</code></pre>
+<p>It will run</p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
