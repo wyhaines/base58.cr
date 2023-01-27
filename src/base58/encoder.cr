@@ -505,7 +505,7 @@ module Base58
     end
   end
 
-  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing String, with checksumming. This method actually creates a new String that contains a copy of 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing String, with checksumming. This method actually creates a new String that contains a copy of
   # the contents of the original string, and then concatenates the encoded data to it, and returns the new String.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
@@ -553,7 +553,7 @@ module Base58
   def self.unsafe_encode(value : Slice(UInt8) | StaticArray(UInt, _), check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_string(value.to_unsafe, check, into, value.bytesize, alphabet)
   end
-  
+
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : Array(UInt8) | Array(Char), alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_array(value.to_unsafe, into, value.size, alphabet)
