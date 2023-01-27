@@ -342,7 +342,7 @@ module Base58
   # Encodes a StringBuffer into any target that a String can be encoded into, with checksumming. If no
   # target is specified, it will default to a String.
   @[AlwaysInline]
-  def self.encode(value : StringBuffer, into = String, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode(value : StringBuffer, check : Base58::Check, into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode(value.buffer, check, into, alphabet)
   end
 
