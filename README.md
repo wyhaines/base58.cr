@@ -5,8 +5,19 @@
 
 # base58
 
-This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well
-as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet.
+This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet/encoding-variation. It also supports both Base58Check and CB58 checksum algorithms.
+
+## Benchmarks
+
+A benchmark is provided in the [benchmark/](https://github.com/wyhaines/base58.cr/tree/main/benchmark) directory. To build it and then run it:
+
+```bash
+cd benchmark
+shards build --release
+bin/benchmark
+```
+
+It will run 
 
 ## Installation
 

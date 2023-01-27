@@ -8,8 +8,11 @@ module Base58
   # So, if you are reading this, and want to help, I think that these internals could probably be streamlined
   # more. This is very much just a first draft.
 
+  # This is a preallocated buffer for calculating Base58Check / CB58 checksums. This implementation,
+  # without any sort of mutex/locking, is NOT threadsafe. TODO would be to make it so.
   private CheckBuffer = Bytes.new(32)
 
+  # SHAEngine1 and SHAEngine2 are preallocated classes for handling checksumming.
   private SHAEngine1 = Digest::SHA256.new
   private SHAEngine2 = Digest::SHA256.new
 
@@ -33,23 +36,26 @@ module Base58
     Math.log(value, 58).to_i + 1
   end
 
-  # Encode an integer into a string, taking an optional alphabet, and an option check encoding flag. This is the default behavior
-  # if passed an integer with no other parameters.
+  # Encode an integer into a string, taking an optional alphabet.
   @[AlwaysInline]
   def self.encode(value : Int, into : String.class = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_to_string(value, alphabet)
   end
 
+  # Encode an integer into a new raw allocation of memory, returning a pointer to the memory buffer,
+  # and the size of the buffer.
   @[AlwaysInline]
   def self.encode(value : Int, into : Pointer.class | Pointer(UInt8).class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_to_pointer(value, alphabet)
   end
 
+  # Encode an integer into a new Slice.
   @[AlwaysInline]
   def self.encode(value : Int, into : Slice(UInt8).class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     Slice.new(*encode_to_pointer(value, alphabet))
   end
 
+  # Encode an integer into a new StaticArray.
   @[AlwaysInline]
   def self.encode(value : Int, into : StaticArray(T, N).class, alphabet : Alphabet.class = Alphabet::Bitcoin) forall T, N
     size = calculate_size_for_int(value)
@@ -59,16 +65,22 @@ module Base58
     ary
   end
 
+  # Encode an integer into a new Array(UInt8).
   @[AlwaysInline]
   def self.encode(value : Int, into : Array(UInt8).class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_to_array(value, alphabet)
   end
 
+  # Encode an integer into a new Array(Char).
   @[AlwaysInline]
   def self.encode(value : Int, into : Array(Char).class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_to_array(value, alphabet).map(&.chr)
   end
 
+  # Encode an integer into an existing String, safely. What this does is to allocate a _new_ String
+  # of sufficient length to contain both the original string and the encoded value. It copies the
+  # original string into the new string, and the encodes the value directly into the string buffer
+  # following the original string before returning the new String.
   def self.encode(value : Int, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     new_size = calculate_size_for_int(value)
     original_size = into.bytesize
@@ -80,22 +92,38 @@ module Base58
     end
   end
 
+  # Encode an integer into an existing String the unsafe way. Crystal strings are immutable, but
+  # one can work around that. A String's maximum capacity can not be increased, and the burden
+  # here in on the programmer to _ensure_ that the string that is being encoded into has enough
+  # capacity for the encoded value.
+  #
+  # The encoded value will replace the previous value in the string.
+  #
+  # ```
+  # string = (0123456789) * 7
+  # encoded = Base58.encode("encode me, please", string)
+  # puts encoded # => ""xHSYK7uPSx96i9tu3tVH5Ak"
+  # ```
+  #
+  @[AlwaysInline]
+  def self.unsafe_encode(value : Int, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    encode_into_string(value, into, calculate_size_for_int(value), alphabet)  
+  end
+
+  # Encode an integer into an existing StringBuffer, safely. What this does is to allocate a _new_ Stri
   @[AlwaysInline]
   def self.encode(value : Int, into : StringBuffer, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_string(value, into.buffer, calculate_size_for_int(value), alphabet)
     into.buffer
   end
 
-  @[AlwaysInline]
-  def self.unsafe_encode(value : Int, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
-    encode_into_string(value, into, calculate_size_for_int(value), alphabet)
-  end
-
+  # Encode an Integer into an existing array of UInt8. 
   @[AlwaysInline]
   def self.encode(value : Int, into : Array(UInt8) | Array(Char), alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_array(value, into, calculate_size_for_int(value), alphabet)
   end
 
+  # Encode an integer into an existing pointer. Most of the encoding methods end up here.
   @[AlwaysInline]
   def self.encode(value : Int, into : Pointer(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_pointer(value, into, calculate_size_for_int(value), alphabet)
@@ -574,20 +602,20 @@ module Base58
   private def self.primary_encoding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int = 0)
     byte_pos = 0
     while byte_pos < size
-      carry = value[byte_pos].to_u16
+      digit = value[byte_pos].to_u16
       inner_idx = 0
       while inner_idx < index
         byte = pointer[inner_idx]
-        carry += byte.to_u16 << 8
-        pointer[inner_idx] = (carry % 58).to_u8
-        carry //= 58
+        digit += byte.to_u16 << 8
+        pointer[inner_idx] = (digit % 58).to_u8
+        digit //= 58
         inner_idx += 1
       end
 
-      while carry > 0
-        pointer[index] = (carry % 58).to_u8
+      while digit > 0
+        pointer[index] = (digit % 58).to_u8
         index += 1
-        carry //= 58
+        digit //= 58
       end
       byte_pos += 1
     end

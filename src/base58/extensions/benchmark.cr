@@ -1,5 +1,4 @@
 require "colorize"
-require "./colorize"
 require "benchmark"
 
 module Benchmark
@@ -20,10 +19,20 @@ module Benchmark
       property label : String | Colorize::Object(String)
       property? separator : Bool = false
       setter ran : Bool = false
+      property action : Proc(Int32, Nil) | Proc(Nil)
 
-      def initialize(label : String | Colorize::Object(String), action : ->)
-        @label = label
-        @action = action
+      def initialize(@label : String | Colorize::Object(String), @action)
+      end
+
+      def initialize(@label : String, @action : Proc(Nil))
+      end
+
+      def call : Nil
+        @action.as(Proc(Nil)).call
+      end
+
+      def call_for_100ms : Nil
+        cycles.times { call }
       end
 
       def calculate_stats(samples) : Nil
@@ -57,14 +66,14 @@ module Benchmark
       end
 
       def separator(label) : Benchmark::IPS::Entry
-        item = Entry.new(label, ->{})
+        item = Entry.new(label, ->(x : Int32) {})
         item.separator = true
         @items << item
 
         item
       end
 
-      def separator(label, &action) : Benchmark::IPS::Entry
+      def separator(label, &action : Proc(Int32, Nil)) : Benchmark::IPS::Entry
         item = Entry.new(label, action)
         item.separator = true
         @items << item
@@ -80,19 +89,18 @@ module Benchmark
 
       def report : Nil
         print "\e[2J\e[H" if @interactive
-        # print "\e[2J\e[u\e[0J\e[u"
-        max_label = ran_items.max_of &.label.size
+        max_label = ran_items.max_of {|item| count_non_control_characters(item.label)}
         max_compare = ran_items.max_of &.human_compare.size
         max_bytes_per_op = ran_items.max_of &.bytes_per_op.humanize(base: 1024).size
 
         ran_items.each do |item|
           if item.separator?
             printf "%s\n", "".rjust(max_label - count_non_control_characters(item.label)) + item.label.to_s
-            item.action.call
+            item.action.as(Proc(Int32, Nil)).call(max_label)
           else
             fastest = item.human_compare == "fastest"
-            printf "#{fastest ? "\e[4m" : ""}%s %s (%s) (±%5.2f%%)  %sB/op  %s#{fastest ? "\e[0m" : ""}\n",
-              item.label.rjust(max_label),
+            printf "%s %s (%s) (±%5.2f%%)  %sB/op  %s\n",
+              "".rjust(max_label - count_non_control_characters(item.label)) + item.label.to_s,
               item.human_mean,
               item.human_iteration_time,
               item.relative_stddev,
@@ -171,7 +179,7 @@ module Benchmark
       end
 
       private def count_non_control_characters(string)
-        string.each_char.count { |char| !char.ascii_control? }
+        string.to_s.gsub(/(\x9B|\x1B\[)[0-?]*[ -\/]*[@-~]/,"").each_char.count { |char| !char.ascii_control? }
       end
     end
   end
