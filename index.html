@@ -236,7 +236,8 @@
 <pre><code class="language-bash">cd benchmark
 shards build --release
 bin/benchmark</code></pre>
-<p>It will run</p>
+<p>It will run a variety of encode/decode tests against both this package as well as against the other Crystal Base 58 packages. In addition if Rust is available on the system, it will run a small benchmark of Rust's fastest Base58 package, bs58, against some of the same data sets. A full run will look something like this:</p>
+<p><img src="img/benchmark.jpg" alt="Benchmark" /></p>
 <h2><a id="installation" class="anchor" href="#installation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
