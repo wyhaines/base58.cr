@@ -120,8 +120,8 @@ describe Base58::Encoder do
         bytes = testcase["hex"].as(String).hexbytes
         len = testcase["string"].as(String).size
         buffer = StaticArray(UInt8, 256).new(0)
-        should_be_the_same_buffer = Base58.encode(bytes, into: buffer) # But it really isn't, since StaticArrays are passed by Copy.
-        Slice.new(should_be_the_same_buffer.to_unsafe, len).should eq testcase["string"].as(String).to_slice
+        should_be_the_same_buffer, newlen = Base58.encode(bytes, into: buffer) # But it really isn't, since StaticArrays are passed by Copy.
+        Slice.new(should_be_the_same_buffer.to_unsafe, newlen).should eq testcase["string"].as(String).to_slice
       end
     end
 

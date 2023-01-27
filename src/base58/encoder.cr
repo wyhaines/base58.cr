@@ -1,4 +1,4 @@
-#require "./extensions/char"
+# require "./extensions/char"
 require "./extensions/string"
 require "./alphabet"
 require "digest/sha256"
@@ -553,24 +553,70 @@ module Base58
     encode_into_string(value.to_unsafe, check, into, value.bytesize, alphabet)
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char). The encoded data is appended to the end of the array,
+  # one byte per array element.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : Array(UInt8) | Array(Char), alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_array(value.to_unsafe, into, value.size, alphabet)
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char), with checksumming. The encoded data is appended to the end of the array,
+  # one byte per array element.
   @[AlwaysInline]
-  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Array(UInt8) | Array(Char), alphabet : Alphabet.class = Alphabet::Bitcoin)
+    encode_into_array(value.to_unsafe, check, into, value.size, alphabet)
+  end
+
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8). The pointer is assumed to reference a section of memory large enough
+  # to hold the encoded data. The method returns a tuple containing the pointer and the size of the encoded data.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
     encode_into_pointer(value.to_unsafe, into, value.size, alphabet)
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8), with checksumming. The pointer is assumed to reference a section of memory large enough
+  # to hold the encoded data. The method returns a tuple containing the pointer and the size of the encoded data.
   @[AlwaysInline]
-  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Pointer(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
+    encode_into_pointer(value.to_unsafe, check, into, value.size, alphabet)
+  end
+
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8). The Slice is assumed to have sufficient space
+  # to hold the encoded data.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : Slice(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : Slice(UInt8)
     encode_into_pointer(value.to_unsafe, into.to_unsafe, value.size, alphabet)
     into
   end
 
-  # -----
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8), with checksumming. The Slice is assumed to have sufficient space
+  # to hold the encoded data.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Slice(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : Slice(UInt8)
+    encode_into_pointer(value.to_unsafe, check, into.to_unsafe, value.size, alphabet)
+    into
+  end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _). The StaticArray is assumed to have sufficient space
+  # to hold the encoded data.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _), alphabet : Alphabet.class = Alphabet::Bitcoin)
+    _, final_size = encode_into_pointer(value.to_unsafe, into.to_unsafe, value.size, alphabet)
+    {into, final_size}
+  end
+
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _), with checksumming. The StaticArray is assumed to have sufficient space
+  # to hold the encoded data.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StaticArray(UInt8, _), alphabet : Alphabet.class = Alphabet::Bitcoin)
+    _, final_size = encode_into_pointer(value.to_unsafe, check, into.to_unsafe, value.size, alphabet)
+    {into, final_size}
+  end
+
+  # ----- The following methods are more specific, providing common functionality that is leveraged by the more general methods above.   -----
+  # ----- While they are not marked as private, it is a better practice to use `#encode` unless you have a specific reason to not do so. -----
+
+  # Encodes an Integer to a new Array(UInt8).
   @[AlwaysInline]
   def self.encode_to_array(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     size = calculate_size_for_int(value)
@@ -580,6 +626,8 @@ module Base58
     end
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8).
+  @[AlwaysInline]
   def self.encode_to_array(value : Slice(UInt8) | StaticArray(UInt8, _), alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, final_size = encode_to_pointer(value.to_unsafe, value.size, alphabet)
     Array(UInt8).new(final_size) do |i|
@@ -587,31 +635,44 @@ module Base58
     end
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8), with checksumming.
   @[AlwaysInline]
-  def self.encode_to_pointer(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_array(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    pointer, final_size = encode_to_pointer(value.to_unsafe, value.size, check, alphabet)
+    Array(UInt8).new(final_size) do |i|
+      pointer[i]
+    end
+  end
+
+  # Encodes an Integer into a newly allocated memory buffer.
+  @[AlwaysInline]
+  def self.encode_to_pointer(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
     size = calculate_size_for_int(value)
     ptr = GC.malloc_atomic(size).as(UInt8*)
     encode_into_pointer(value, ptr, size, alphabet)
   end
 
+  # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer.
   @[AlwaysInline]
-  def self.encode_to_pointer(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_pointer(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
     index = 0
     buffer_size = SizeLookup[size]? || size * 2
     ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
     encode_into_pointer(value, ptr, size, alphabet)
   end
 
+  # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer, with checksumming.
   @[AlwaysInline]
-  def self.encode_to_pointer(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_pointer(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
     index = 0
     buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
     ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
     encode_into_pointer(value, ptr, size, alphabet)
   end
 
+  # Encodes an Integer into a newly allocated String.
   @[AlwaysInline]
-  def self.encode_to_string(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_string(value : Int, alphabet : Alphabet.class = Alphabet::Bitcoin) : String
     size = calculate_size_for_int(value)
     String.new(size) do |ptr|
       encode_into_pointer(value, ptr, size, alphabet)
@@ -619,8 +680,9 @@ module Base58
     end
   end
 
+  # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String.
   @[AlwaysInline]
-  def self.encode_to_string(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_string(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin) : String
     buffer_size = SizeLookup[size]? || (size) * 2
     String.new(buffer_size) do |ptr|
       _, final_size = encode_into_pointer(value, ptr, size, alphabet)
@@ -628,8 +690,9 @@ module Base58
     end
   end
 
+  # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String, with checksumming.
   @[AlwaysInline]
-  def self.encode_to_string(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.encode_to_string(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin) : String
     buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
     String.new(buffer_size) do |ptr|
       _, final_size = encode_into_pointer(value, ptr, size, check, alphabet)
@@ -639,6 +702,7 @@ module Base58
 
   # ===== These are dangerous and are thus restricted to internal use =====
 
+  # This encodes an integer into an existing memory buffer. All Integer encoding eventually ends up at this method.
   @[AlwaysInline]
   private def self.encode_into_pointer(value : Int, pointer : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     i = size - 1
@@ -656,6 +720,8 @@ module Base58
     {pointer, size}
   end
 
+  # This encodes the contents of a memory buffer referenced by a Pointer(UInt8) into another existing memory buffer. All non-checksum, non-Monero, non-Integer
+  # encoding eventually ends up with this method.
   private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     index = primary_encoding(value, pointer, size, 0)
     index = zero_padding(value, pointer, size, index)
@@ -665,6 +731,8 @@ module Base58
     {pointer, index}
   end
 
+  # This encodes the contents of a memory buffer referenced by a Pointer(UInt8) into another existing memory buffer, with checksumming. All non-Monero, non-Integer
+  # checksummed encoding eventually ends up with this method.
   private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
     case check.type
     when Base58::Checksum::Base58Check
@@ -691,6 +759,8 @@ module Base58
     {pointer, index}
   end
 
+  # This encodes the contents of a memory buffer referenced by a Pointer(UInt8) into another existing memory buffer, for Monero. All Monero encoding eventually
+  # ends up with this method.
   private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet::Monero.class)
     zer0 = alphabet[0]
     aggregate_index = 0
@@ -751,6 +821,7 @@ module Base58
     {pointer, aggregate_index}
   end
 
+  # This method takes an Int, and encodes it into an existing Array(UInt8).
   @[AlwaysInline]
   private def self.encode_into_array(value : Int, array : Array(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, _ = encode_to_pointer(value, alphabet)
@@ -763,6 +834,7 @@ module Base58
     array
   end
 
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing Array(UInt8).
   @[AlwaysInline]
   private def self.encode_into_array(value : Pointer(UInt8), array : Array(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, final_size = encode_to_pointer(value, size, alphabet)
@@ -775,6 +847,7 @@ module Base58
     array
   end
 
+  # This method takes an Int, and encodes it into an existing Array(Char).
   @[AlwaysInline]
   private def self.encode_into_array(value : Int, array : Array(Char), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, _ = encode_to_pointer(value, alphabet)
@@ -787,6 +860,7 @@ module Base58
     array
   end
 
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing Array(Char).
   @[AlwaysInline]
   private def self.encode_into_array(value : Pointer(UInt8), array : Array(Char), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, final_size = encode_to_pointer(value, size, alphabet)
@@ -799,6 +873,8 @@ module Base58
     array
   end
 
+  # This method takes an Int, and encodes it into an existing String. This is, by definition, unsafe, as it is mutating the String's internal buffer,
+  # and Crystal strings are generally treated as immutable.
   @[AlwaysInline]
   private def self.encode_into_string(value : Int, string : String, size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_pointer(value, (string.as(UInt8*) + String::HEADER_SIZE), size, alphabet)
@@ -807,6 +883,55 @@ module Base58
     string
   end
 
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing String. It may be useful to understand how
+  # this works, however, so pull up a chair and a drink, dear reader, and we'll have a short chat.
+  #
+  # A String, in Crystal, is represented by four in-memory pieces of data. These are a Type ID, a byte size, a character size, and the bytes of
+  # data that comprise the actual string.
+  #
+  # `| Type ID | Byte Size | Character Size | Bytes |`
+  #
+  # The first three of those, taken together, represent the String header. The String class holds an
+  # [undocumented constant](https://github.com/crystal-lang/crystal/blob/29f9ac503/src/string.cr#L142), `String::HEADER_SIZE`,
+  # which is the size of the header, in bytes.
+  #
+  # When a String is initially created, a memory buffer of `HEADER_SIZE + capacity` is allocated, where `capacity` is the maximum number
+  # of bytes that the String can hold.
+  #
+  # The `HEADER_SIZE` is used as an offset into this buffer to point to the part of the buffer which will hold the bytes of string data,
+  # and that data is inserted into memory starting with that offset.
+  #
+  # To finalize the String's memory buffer, a header is written into the first `HEADER_SIZE` bytes of the buffer, which contains the
+  # Type ID, the byte size, and the character size of the string.
+  #
+  # Because this is just data in memory, it is possible to access it directly, and manipulate it. Also, a String still works just fine if
+  # the allocated memory for it is larger than what is actually used to store the header plus the string data. This provides an opportunity
+  # to directly mutate a String.
+  #
+  # If the data after the `HEADER_SIZE` offset is changed, the string is changed. However, if the amount of data changes, the header must
+  # also be updated to reflect the new size of the string. That header is just bytes, though, so it can be rewritten.
+  #
+  # ```
+  # header = string.as({Int32, Int32, Int32}*)                          # Effectively extracts the header from the String as a Pointer({Int32, Int32, Int32}).
+  # header.value = {String::TYPE_ID, new_byte_size, new_character_size} # Rewrites the header. MUST NOT exceed original byte_size.
+  # ```
+  #
+  # As mentioned in the comments above, the new data that is inserted into the buffer must not exceed it's original size. If it does,
+  # at best, something else might come along later and stomp on that data, but more likely, the program will crash:
+  #
+  # ```
+  # Invalid memory access (signal 11) at address 0x168b0ae
+  # ```
+  #
+  # This limitation is because the `GC.realloc` call, which can be used to resize an allocation to a smaller or a larger size, does not
+  # guarantee that, in the case of a larger allocation, the allocation will remain in the same location. If the memory does not have enough
+  # free space to increase the size of the allocation, `realloc` will copy the contents of the old buffer to the new location, and then
+  # free the old location. If this happens, however, your program's other code won't realize that the string is now in a different location,
+  # and when an effort to access it happens, it will access the old location, which will no longer be valid, likely resulting in your program
+  # crashing.
+  #
+  # So... don't do that. Within the limitation regarding not exceeding the original size of the String, however, it appears to work flawlessly.
+  #
   @[AlwaysInline]
   private def self.encode_into_string(value : Pointer(UInt8), string : String, size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     _, final_size = encode_into_pointer(value, (string.as(UInt8*) + String::HEADER_SIZE), size, alphabet)

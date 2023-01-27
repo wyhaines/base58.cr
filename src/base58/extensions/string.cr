@@ -12,7 +12,7 @@ end
 
 # This provides a very efficient reusable StringBuffer.
 class StringBuffer
-  getter capacity : Int32? = nil
+  getter capacity : Int32
   @buffer : String = ""
 
   def initialize(string : String)
@@ -34,10 +34,11 @@ class StringBuffer
   end
 
   def mutate(val)
-    limit = val.size < @capacity ? val.size : @capacity
-    (@buffer.as(UInt8*) + String::HEADER_SIZE).copy_from(val.to_s.to_slice.to_unsafe, limit)
+    byte_limit = val.bytesize < @capacity ? val.bytesize : @capacity
+    char_limit = val.single_byte_optimizable? ? byte_limit : val.byte_slice(0, byte_limit).size
+    (@buffer.as(UInt8*) + String::HEADER_SIZE).copy_from(val.to_s.to_slice.to_unsafe, byte_limit)
     header = @buffer.as({Int32, Int32, Int32}*)
-    header.value = {String::TYPE_ID, limit, limit}
+    header.value = {String::TYPE_ID, byte_limit, char_limit}
 
     @buffer
   end

@@ -1,4 +1,4 @@
-#require "./extensions/char"
+# require "./extensions/char"
 require "./extensions/string"
 require "./alphabet"
 require "./pointer_collection"
