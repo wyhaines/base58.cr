@@ -17,7 +17,9 @@ shards build --release
 bin/benchmark
 ```
 
-It will run 
+It will run a variety of encode/decode tests against both this package as well as against the other Crystal Base 58 packages. In addition if Rust is available on the system, it will run a small benchmark of Rust's fastest Base58 package, bs58, against some of the same data sets. A full run will look something like this:
+
+![Benchmark](img/benchmark.jpg)
 
 ## Installation
 

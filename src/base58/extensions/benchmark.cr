@@ -95,11 +95,11 @@ module Benchmark
 
         ran_items.each do |item|
           if item.separator?
-            printf "%s\n", "".rjust(max_label - count_non_control_characters(item.label)) + item.label.to_s
+            printf " %s\n", "".rjust(max_label - count_non_control_characters(item.label)) + item.label.to_s
             item.action.as(Proc(Int32, Nil)).call(max_label)
           else
             fastest = item.human_compare == "fastest"
-            printf "%s %s (%s) (±%5.2f%%)  %sB/op  %s\n",
+            printf " %s %s (%s) (±%5.2f%%)  %sB/op  %s\n",
               "".rjust(max_label - count_non_control_characters(item.label)) + item.label.to_s,
               item.human_mean,
               item.human_iteration_time,
