@@ -176,16 +176,6 @@
       
     </li>
   
-  <li class=" " data-id="base58/Char" data-name="char">
-      <a href="Char.html">Char</a>
-      
-    </li>
-  
-  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
-      <a href="StaticArray.html">StaticArray</a>
-      
-    </li>
-  
   <li class=" " data-id="base58/String" data-name="string">
       <a href="String.html">String</a>
       
@@ -280,7 +270,7 @@ bin/benchmark</code></pre>
 <pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: <span class="t">Slice</span>(<span class="t">UInt8</span>), alphabet: <span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Monero</span>)</code></pre>
 <p>Alphabets support both forward and inverse lookup. Thus, the following will return the original character:</p>
 <pre><code class="language-crystal"><span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>.inverse(<span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>[<span class="s">&#39;a&#39;</span>.ord]).chr</code></pre>
-<p>The alphabets encode the ASCII codes for the characters, since Base58 alphabets all utilize single byte ASCII characters. Thus, to lookup a <code><a href="Char.html">Char</a></code>, it has to be cast to a <code>UInt8</code> first.</p>
+<p>The alphabets encode the ASCII codes for the characters, since Base58 alphabets all utilize single byte ASCII characters. Thus, to lookup a <code>Char</code>, it has to be cast to a <code>UInt8</code> first.</p>
 <p>Nil-returning variants of both forward and backward lookups are also supported:</p>
 <pre><code class="language-crystal"><span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>.inverse?(<span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>[some_UTF8_character]?)</code></pre>
 <p>If the character is not found in the alphabet, the forward lookup, via <code>#[]</code>, will return an exception, but if called via <code>#[]?</code>, <code>nil</code> will be returned if it is not found. The inverse lookup returns a <code>0</code> for any ASCII character code that is not found in the alphabet when called with <code>#inverse</code>, and an exception for any non-ASCII character code. When called with <code>inverse?</code>, it returns nil for any code that is not found in the alphabet, ASCII or not.</p>
@@ -307,7 +297,7 @@ as_slice = Base58::Encoder.into(Slice(UInt8)).encode(&quot;some text).as(Slice(U
     <use href="#octicon-link"/>
   </svg>
 </a>Char.static_array</h3>
-<p>The number types, such as UInt8, have a macro defined on them to facilitate the creation of a prepopulated StaticArray, <a href="https://crystal-lang.org/api/1.7.1/Number.html#static_array(*nums)-macro">static_array</a>. This extension adds the same macro to <code><a href="Char.html">Char</a></code>.</p>
+<p>The number types, such as UInt8, have a macro defined on them to facilitate the creation of a prepopulated StaticArray, <a href="https://crystal-lang.org/api/1.7.1/Number.html#static_array(*nums)-macro">static_array</a>. This extension adds the same macro to <code>Char</code>.</p>
 <h3><a id="sliceto-unsafe" class="anchor" href="#sliceto-unsafe">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
