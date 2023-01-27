@@ -887,55 +887,119 @@
       <li class="entry-summary">
         <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char), with checksumming.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8), with checksumming.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3ASlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3ASlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8), with checksumming.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _).</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _), with checksumming.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#encode_to_array%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_array</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
+          <div class="summary"><p>Encodes an Integer to a new Array(UInt8).</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_array</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
         
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8).</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_array</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        
+          <div class="summary"><p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8), with checksumming.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+          <div class="summary"><p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer, with checksumming.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+          <div class="summary"><p>Encodes an Integer into a newly allocated memory buffer.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method" class="signature"><strong>.encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)</a>
+        
+          <div class="summary"><p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)</a>
+        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : String</a>
+        
+          <div class="summary"><p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String, with checksumming.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method" class="signature"><strong>.encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : String</a>
+        
+          <div class="summary"><p>Encodes an Integer into a newly allocated String.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method" class="signature"><strong>.encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : String</a>
+        
+          <div class="summary"><p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String.</p></div>
         
       </li>
     
@@ -2584,19 +2648,11 @@ the encoded data is concatenated to the original string, and a new String is ret
         <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
-      <div class="signature">
-        
-        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
-
-        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
-      </div>
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char). The encoded data is appended to the end of the array,
+one byte per array element.</p>
+        </div>
       
       <br/>
       <div>
@@ -2604,13 +2660,139 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StaticArray(UInt8,_)|Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:Array(UInt8)|Array(Char),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
-        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _) | Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : Array(UInt8) | Array(Char), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
-        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%7CSlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AArray%28UInt8%29%7CArray%28Char%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char), with checksumming. The encoded data is appended to the end of the array,
+one byte per array element.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8). The pointer is assumed to reference a section of memory large enough
+to hold the encoded data. The method returns a tuple containing the pointer and the size of the encoded data.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:Pointer(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : Pointer(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3APointer%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8), with checksumming. The pointer is assumed to reference a section of memory large enough
+to hold the encoded data. The method returns a tuple containing the pointer and the size of the encoded data.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin):Slice(UInt8)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3ASlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8). The Slice is assumed to have sufficient space
+to hold the encoded data.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:Slice(UInt8),alphabet:Alphabet.class=Alphabet::Bitcoin):Slice(UInt8)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : Slice(UInt8), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Slice(UInt8)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3ASlice%28UInt8%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ASlice%28UInt8%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8), with checksumming. The Slice is assumed to have sufficient space
+to hold the encoded data.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),into:StaticArray(UInt8,_),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), into : StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Cinto%3AStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _). The StaticArray is assumed to have sufficient space
+to hold the encoded data.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,into:StaticArray(UInt8,_),alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, into : StaticArray(UInt8, _), alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+
+        <a class="method-permalink" href="#encode%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Cinto%3AStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StaticArray(UInt8, _), with checksumming. The StaticArray is assumed to have sufficient space
+to hold the encoded data.</p>
+        </div>
       
       <br/>
       <div>
@@ -2626,6 +2808,11 @@ the encoded data is concatenated to the original string, and a new String is ret
         <a class="method-permalink" href="#encode_to_array%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Encodes an Integer to a new Array(UInt8).</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -2640,19 +2827,10 @@ the encoded data is concatenated to the original string, and a new String is ret
         <a class="method-permalink" href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
       
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
-      <div class="signature">
-        
-        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
-
-        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
-      </div>
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8).</p>
+        </div>
       
       <br/>
       <div>
@@ -2660,13 +2838,18 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_to_pointer(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode_to_array(value:Slice(UInt8)|StaticArray(UInt8,_),check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
       <div class="signature">
         
-        def self.<strong>encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode_to_array</strong>(value : Slice(UInt8) | StaticArray(UInt8, _), check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
 
-        <a class="method-permalink" href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_to_array%28value%3ASlice%28UInt8%29%7CStaticArray%28UInt8%2C_%29%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes a Slice(UInt8) or a StaticArray(UInt8, _) to a new Array(UInt8), with checksumming.</p>
+        </div>
       
       <br/>
       <div>
@@ -2674,13 +2857,18 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
 
-        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer, with checksumming.</p>
+        </div>
       
       <br/>
       <div>
@@ -2688,13 +2876,18 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode_to_pointer(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode_to_pointer</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
 
-        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_to_pointer%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes an Integer into a newly allocated memory buffer.</p>
+        </div>
       
       <br/>
       <div>
@@ -2702,13 +2895,18 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_to_string(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode_to_pointer(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin):Tuple(Pointer(UInt8),Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode_to_pointer</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : Tuple(Pointer(UInt8), Int32)
 
-        <a class="method-permalink" href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_to_pointer%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3ATuple%28Pointer%28UInt8%29%2CInt32%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer.</p>
+        </div>
       
       <br/>
       <div>
@@ -2716,13 +2914,56 @@ the encoded data is concatenated to the original string, and a new String is ret
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin)-class-method">
+    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,check:Base58::Check,alphabet:Alphabet.class=Alphabet::Bitcoin):String-class-method">
       <div class="signature">
         
-        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>)
+        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, check : <a href="Base58/Check.html">Base58::Check</a>, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : <a href="String.html">String</a>
 
-        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Ccheck%3ABase58%3A%3ACheck%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String, with checksumming.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_string(value:Int,alphabet:Alphabet.class=Alphabet::Bitcoin):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_string</strong>(value : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : <a href="String.html">String</a>
+
+        <a class="method-permalink" href="#encode_to_string%28value%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes an Integer into a newly allocated String.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode_to_string(value:Pointer(UInt8),size:Int,alphabet:Alphabet.class=Alphabet::Bitcoin):String-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode_to_string</strong>(value : Pointer(UInt8), size : Int, alphabet : <span class="t">Alphabet</span>.<span class="k">class</span> = <span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>) : <a href="String.html">String</a>
+
+        <a class="method-permalink" href="#encode_to_string%28value%3APointer%28UInt8%29%2Csize%3AInt%2Calphabet%3AAlphabet.class%3DAlphabet%3A%3ABitcoin%29%3AString-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated String.</p>
+        </div>
       
       <br/>
       <div>

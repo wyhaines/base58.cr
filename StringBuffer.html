@@ -300,12 +300,14 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#capacity%3AInt32%7CNil-instance-method" class="signature"><strong>#capacity</strong> : Int32 | Nil</a>
+        <a href="#capacity%3AInt32-instance-method" class="signature"><strong>#capacity</strong> : Int32</a>
         
       </li>
     
       <li class="entry-summary">
         <a href="#mutate%28val%29-instance-method" class="signature"><strong>#mutate</strong>(val)</a>
+        
+          <div class="summary"><p>This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing String.</p></div>
         
       </li>
     
@@ -457,12 +459,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="capacity:Int32|Nil-instance-method">
+    <div class="entry-detail" id="capacity:Int32-instance-method">
       <div class="signature">
         
-        def <strong>capacity</strong> : Int32 | Nil
+        def <strong>capacity</strong> : Int32
 
-        <a class="method-permalink" href="#capacity%3AInt32%7CNil-instance-method">#</a>
+        <a class="method-permalink" href="#capacity%3AInt32-instance-method">#</a>
       </div>
       
       <br/>
@@ -478,6 +480,41 @@
 
         <a class="method-permalink" href="#mutate%28val%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing String. It may be useful to understand how
+this works, however, so pull up a chair and a drink, dear reader, and we'll have a short chat.</p>
+<p>A String, in Crystal, is represented by four in-memory pieces of data. These are a Type ID, a byte size, a character size, and the bytes of
+data that comprise the actual string.</p>
+<p><code>| Type ID | Byte Size | Character Size | Bytes |</code></p>
+<p>The first three of those, taken together, represent the String header. The String class holds an
+<a href="https://github.com/crystal-lang/crystal/blob/29f9ac503/src/string.cr#L142">undocumented constant</a>, <code>String::HEADER_SIZE</code>,
+which is the size of the header, in bytes.</p>
+<p>When a String is initially created, a memory buffer of <code>HEADER_SIZE + capacity</code> is allocated, where <code><a href="StringBuffer.html#capacity%3AInt32-instance-method">#capacity</a></code> is the maximum number
+of bytes that the String can hold.</p>
+<p>The <code>HEADER_SIZE</code> is used as an offset into this buffer to point to the part of the buffer which will hold the bytes of string data,
+and that data is inserted into memory starting with that offset.</p>
+<p>To finalize the String's memory buffer, a header is written into the first <code>HEADER_SIZE</code> bytes of the buffer, which contains the
+Type ID, the byte size, and the character size of the string.</p>
+<p>Because this is just data in memory, it is possible to access it directly, and manipulate it. Also, a String still works just fine if
+the allocated memory for it is larger than what is actually used to store the header plus the string data. This provides an opportunity
+to directly mutate a String.</p>
+<p>If the data after the <code>HEADER_SIZE</code> offset is changed, the string is changed. However, if the amount of data changes, the header must
+also be updated to reflect the new size of the string. That header is just bytes, though, so it can be rewritten.</p>
+<pre><code class="language-crystal">header <span class="o">=</span> string.<span class="k">as</span>({<span class="t">Int32</span>, <span class="t">Int32</span>, <span class="t">Int32</span>}<span class="o">*</span>)                          <span class="c"># Effectively extracts the header from the String as a Pointer({Int32, Int32, Int32}).</span>
+header.value <span class="o">=</span> {<span class="t">String</span><span class="t">::</span><span class="t">TYPE_ID</span>, new_byte_size, new_character_size} <span class="c"># Rewrites the header. MUST NOT exceed original byte_size.</span></code></pre>
+<p>As mentioned in the comments above, the new data that is inserted into the buffer must not exceed it's original size. If it does,
+at best, something else might come along later and stomp on that data, but more likely, the program will crash:</p>
+<pre><code class="language-crystal"><span class="t">Invalid</span> memory access (signal <span class="n">11</span>) at address <span class="n">0x168b0ae</span></code></pre>
+<p>This limitation is because the <code>GC.realloc</code> call, which can be used to resize an allocation to a smaller or a larger size, does not
+guarantee that, in the case of a larger allocation, the allocation will remain in the same location. If the memory does not have enough
+free space to increase the size of the allocation, <code>realloc</code> will copy the contents of the old buffer to the new location, and then
+free the old location. If this happens, however, your program's other code won't realize that the string is now in a different location,
+and when an effort to access it happens, it will access the old location, which will no longer be valid, likely resulting in your program
+crashing.</p>
+<p>So... don't do that. Within the limitation regarding not exceeding the original size of the String, however, it appears to work flawlessly.</p>
+        </div>
       
       <br/>
       <div>
