@@ -1,6 +1,5 @@
-require "./extensions/char"
+#require "./extensions/char"
 require "./extensions/string"
-require "./extensions/slice"
 require "./alphabet"
 require "digest/sha256"
 

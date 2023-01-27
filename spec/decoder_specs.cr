@@ -95,7 +95,7 @@ describe Base58::Decoder do
         static_array = StaticArray(UInt8, 32).new(0_u8)
         buffer = Base58.encode(testcase["hex"].as(String).hexbytes, into: Slice(UInt8))
         should_be_the_same, len = Base58.decode(buffer, into: static_array)
-        should_be_the_same.to_slice(len)[..(len - 1)].hexstring.should eq testcase["hex"]
+        should_be_the_same.to_slice[..(len - 1)].hexstring.should eq testcase["hex"]
       end
     end
 

@@ -1,12 +1,4 @@
 class String
-  macro static_array(*nums)
-    %array = uninitialized StaticArray({{@type}}, {{nums.size}})
-    {% for num, i in nums %}
-      %array.to_unsafe[{{i}}] = {{num}}
-    {% end %}
-    %array
-  end
-
   def self.new(string : String)
     new(string.to_slice)
   end
@@ -36,7 +28,6 @@ class StringBuffer
   def initialize(@capacity : Int = 256)
     if capacity = @capacity
       @buffer = String.new(capacity) do |ptr|
-        # capacity.times { |i| ptr[i] = 0_u8 }
         {capacity, capacity}
       end
     end
