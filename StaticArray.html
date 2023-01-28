@@ -13,9 +13,9 @@
 <script type="text/javascript" src="js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>base58 0.1.0</title>
+  <title>StaticArray(T, N) - base58 0.1.0</title>
   <script type="text/javascript">
-  CrystalDocs.base_path = "";
+    CrystalDocs.base_path = "";
   </script>
 </head>
 <body>
@@ -176,7 +176,7 @@
       
     </li>
   
-  <li class=" " data-id="base58/StaticArray" data-name="staticarray(t, n)">
+  <li class=" current" data-id="base58/StaticArray" data-name="staticarray(t, n)">
       <a href="StaticArray.html">StaticArray</a>
       
     </li>
@@ -199,18 +199,227 @@
 
 <div class="main-content">
 <h1 class="type-name">
-  404 Not Found
+
+  <span class="kind">struct</span> StaticArray(T, N)
+
 </h1>
 
-<p>
-  This page is unavailable in this version of the API docs.
-</p>
 
-<p>
-  You can use the sidebar to search for your page, or try a different
-  Crystal version.
-</p>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="StaticArray.html">StaticArray(T, N)</a></li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>A fixed-size, stack allocated array.</p>
+<p><code><a href="StaticArray.html">StaticArray</a></code> is a generic type with type argument <code>T</code> specifying the type of
+its elements and <code>N</code> the fixed size. For example <code><a href="StaticArray.html">StaticArray</a>(Int32, 3)</code>
+is a static array of <code>Int32</code> with three elements.</p>
+<p>Instantiations of this static array type:</p>
+<pre><code class="language-crystal"><span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).new(<span class="n">42</span>)           <span class="c"># =&gt; StaticArray[42, 42, 42]</span>
+<span class="t">StaticArray</span>(<span class="t">Int32</span>, <span class="n">3</span>).new { <span class="o">|</span>i<span class="o">|</span> i <span class="o">*</span> <span class="n">2</span> } <span class="c"># =&gt; StaticArray[0, 2, 4]</span>
+<span class="t">StaticArray</span>[<span class="n">0</span>, <span class="n">8</span>, <span class="n">15</span>]                   <span class="c"># =&gt; StaticArray[0, 8, 15]</span></code></pre>
+<p>This type can also be expressed as <code>Int32[3]</code> (only in type grammar). A typical use
+case is in combination with <code>uninitialized</code>:</p>
+<pre><code class="language-crystal">ints <span class="o">=</span> <span class="k">uninitialized</span> <span class="t">Int32</span>[<span class="n">3</span>]
+ints[<span class="n">0</span>] <span class="o">=</span> <span class="n">0</span>
+ints[<span class="n">1</span>] <span class="o">=</span> <span class="n">8</span>
+ints[<span class="n">2</span>] <span class="o">=</span> <span class="n">15</span></code></pre>
+<p>For number types there is also <code>Number.static_array</code> which can be used to initialize
+a static array:</p>
+<pre><code class="language-crystal"><span class="t">Int32</span>.static_array(<span class="n">0</span>, <span class="n">8</span>, <span class="n">15</span>) <span class="c"># =&gt; StaticArray[0, 8, 15]</span></code></pre>
+<p>The generic argument type <code>N</code> is a special case in the type grammar as it
+doesn't specify a type but a size. Its value can be an <code>Int32</code> literal or
+constant.</p>
+
+
+
+
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type">Comparable(<a href="StaticArray.html">StaticArray(T, N)</a>)</li>
+    
+      <li class="other-type">Indexable::Mutable(T)</li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      base58.cr
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#strip-instance-method" class="signature"><strong>#strip</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="strip-instance-method">
+      <div class="signature">
+        
+        def <strong>strip</strong>
+
+        <a class="method-permalink" href="#strip-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
 
 </div>
+
 </body>
 </html>
