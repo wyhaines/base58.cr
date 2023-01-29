@@ -219,13 +219,22 @@ describe Base58::Encoder do
       end
     end
 
+    it "can encode strings into existing strings with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        str = "::"
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: str, check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq "::#{testcase["string"]}"
+      end
+    end
+
     it "can encode slices to strings with Base58Check" do
       TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
         Base58.encode(testcase["hex"].as(String).hexbytes, check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"]
       end
     end
 
-    # This spec is a cheating liar, and this needs to be documented in the API docs.
+    # This spec is a cheating liar, and this needs to be documented in the API docs because
+    # though it makes sense, I think it might surprise some people.
+    #
     # A StaticArray is a fixed size. If it is larger than the data that is to be encoded,
     # and the remaining space is filled with zeroes, everything is fine if one is not
     # creating a checksum. However, if one is creating a checksum, there is no way for the
@@ -244,6 +253,118 @@ describe Base58::Encoder do
         bytes = testcase["hex"].as(String).hexbytes
         stat_ary.to_unsafe.copy_from(bytes.to_unsafe, bytes.size)
         Base58.encode(stat_ary.strip, check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"]
+      end
+    end
+
+    it "can encode StringBuffers to strings with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(StringBuffer.new(testcase["hex"].as(String).hexbytes), check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"]
+      end
+    end
+
+    it "can encode Array(UInt8) to strings with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(testcase["hex"].as(String).hexbytes.to_a, check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"]
+      end
+    end
+
+    it "can encode Array(Char) to strings with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(testcase["hex"].as(String).hexbytes.to_a.map(&.chr), check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"]
+      end
+    end
+
+    it "can encode strings to slices with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: Slice(UInt8), check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"].as(String).to_slice
+      end
+    end
+
+    it "can encode strings to static arrays with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        static_array, length = Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: StaticArray(UInt8, 20), check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        static_array.to_slice[0..length - 1].should eq testcase["string"].as(String).to_slice
+      end
+    end
+
+    it "can encode strings to a raw memory buffer pointed to by a Pointer(UInt8) with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        ptr, length = Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: Pointer, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(ptr, length).should eq testcase["string"]
+      end
+    end
+
+    it "can encode strings to Array(UInt8) with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: Array(UInt8), check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"].as(String).to_slice.to_a
+      end
+    end
+
+    it "can encode strings to Array(Char) with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: Array(Char), check: Base58::Check.new(testcase["check_prefix"].as(String))).should eq testcase["string"].as(String).to_slice.to_a.map(&.chr)
+      end
+    end
+
+    it "can encode strings to StringBuffers with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: StringBuffer, check: Base58::Check.new(testcase["check_prefix"].as(String))).buffer.should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing string, mutating it, with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        str = String.new(32)
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: str, mutate: true, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        str.should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing slice, with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        slice = Slice(UInt8).new(32)
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: slice, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(slice[0, testcase["string"].as(String).size]).should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing static array, with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        static_array = StaticArray(UInt8, 32).new(0_u8)
+        static_array, final_size = Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: static_array, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(static_array.to_slice[0, final_size]).should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing raw memory buffer pointed to by a Pointer(UInt8), with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        ptr = GC.malloc_atomic(32).as(UInt8*)
+        ptr, final_size = Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: ptr, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(ptr, final_size).should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing Array(UInt8), with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        array = Array(UInt8).new
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: array, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(array.to_slice[0, testcase["string"].as(String).size]).should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing Array(Char), with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        array = Array(Char).new
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: array, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        String.new(array.map(&.ord.to_u8).to_slice[0, testcase["string"].as(String).size]).should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode strings into an existing StringBuffer, with Base58Check" do
+      TestData::Strings.select { |tc| tc["check_prefix"] }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
+        buffer = StringBuffer.new
+        Base58.encode(String.new(testcase["hex"].as(String).hexbytes), into: buffer, check: Base58::Check.new(testcase["check_prefix"].as(String)))
+        buffer.buffer.should eq testcase["string"].as(String)
       end
     end
   end

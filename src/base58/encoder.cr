@@ -1,4 +1,4 @@
-# require "./extensions/char"
+require "./extensions/array"
 require "./extensions/string"
 require "./alphabet"
 require "digest/sha256"
@@ -107,6 +107,15 @@ module Base58
   @[AlwaysInline]
   def self.unsafe_encode(value : Int, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     encode_into_string(value, into, calculate_size_for_int(value), alphabet)
+  end
+
+  @[AlwaysInline]
+  def self.encode(value : Int, into : String, mutate : Bool = false, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    if mutate
+      unsafe_encode(value, into, alphabet)
+    else
+      encode(value, into, alphabet)
+    end
   end
 
   # Encode an integer into an existing StringBuffer, safely. What this does is to allocate a _new_ Stri
@@ -259,6 +268,24 @@ module Base58
     encode(value.to_slice, check, into, alphabet)
   end
 
+  @[AlwaysInline]
+  def self.encode(value : String, into : String, mutate : Bool = false, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    if mutate
+      encode(value.to_slice, into, mutate, alphabet)
+    else
+      encode(value.to_slice, into, alphabet)
+    end
+  end
+
+  @[AlwaysInline]
+  def self.encode(value : String, check : Base58::Check, into : String, mutate : Bool = false, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    if mutate
+      encode(value.to_slice, check, into, mutate, alphabet)
+    else
+      encode(value.to_slice, check, into, alphabet)
+    end
+  end
+
   # Encode a string into an existing String by mutating the original string. The original string much have
   # sufficient capacity to hold the encoded data. This is very fast, but the method is labeled unsafe for
   # a reason. It generally works just fine, so long as the string capacity is adequate, but I can't rule
@@ -273,7 +300,7 @@ module Base58
   # labeled unsafe for a reason. It generally works just fine, so long as the string capacity is adequate,
   # but I can't rule out any possibility of surprises.
   @[AlwaysInline]
-  def self.encode(value : String, check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
+  def self.unsafe_encode(value : String, check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     unsafe_encode(value.to_slice, check, into, alphabet)
   end
 
@@ -414,7 +441,7 @@ module Base58
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StringBuffer.class, alphabet : Alphabet.class = Alphabet::Bitcoin)
     buffer = StringBuffer.new(SizeLookup[value.size + check.prefix.bytesize + 4]? || (value.size + check.prefix.bytesize + 4) * 2)
-    encode_into_string(value.to_unsafe, check, buffer.buffer, value.bytesize, check, alphabet)
+    encode_into_string(value.to_unsafe, buffer.buffer, value.bytesize, check, alphabet)
     buffer
   end
 
@@ -461,7 +488,7 @@ module Base58
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StaticArray(UInt8, N).class, alphabet : Alphabet.class = Alphabet::Bitcoin) forall N
     ary = StaticArray(UInt8, N).new(0)
-    _, final_size = encode_into_pointer(value.to_unsafe, check, ary.to_unsafe, value.size, check, alphabet)
+    _, final_size = encode_into_pointer(value.to_unsafe, ary.to_unsafe, value.size, check, alphabet)
 
     {ary, final_size}
   end
@@ -513,7 +540,7 @@ module Base58
     size = original_size + buffer_size
     String.new(size) do |ptr|
       ptr.copy_from(into.to_slice.to_unsafe, original_size)
-      _, final_size = encode_into_pointer(value.to_unsafe, ptr + original_size, value.size, alphabet)
+      _, final_size = encode_into_pointer(value.to_unsafe, ptr + original_size, value.size, check, alphabet)
       {original_size + final_size, original_size + final_size}
     end
   end
@@ -529,6 +556,17 @@ module Base58
     end
   end
 
+  # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing String. This method defaults to the safe, non-mutating behavior, where
+  # the encoded data is concatenated to the original string, and a new String is returned. If you want to mutate the original string, set `mutate: true`.
+  @[AlwaysInline]
+  def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : String, mutate : Bool = false, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    if mutate
+      unsafe_encode(value, check, into, alphabet)
+    else
+      encode(value, check, into, alphabet)
+    end
+  end
+
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StringBuffer.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), into : StringBuffer, alphabet : Alphabet.class = Alphabet::Bitcoin)
@@ -538,7 +576,7 @@ module Base58
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing StringBuffer, with checksumming.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StringBuffer, alphabet : Alphabet.class = Alphabet::Bitcoin)
-    encode_into_string(value.to_unsafe, check, into.buffer, value.bytesize, alphabet)
+    encode_into_string(value.to_unsafe, into.buffer, value.bytesize, check, alphabet)
   end
 
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing String. This method is unsafe, and will mutate the original string.
@@ -550,7 +588,7 @@ module Base58
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing String, with checksumming. This method is unsafe, and will mutate the original string.
   @[AlwaysInline]
   def self.unsafe_encode(value : Slice(UInt8) | StaticArray(UInt, _), check : Base58::Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
-    encode_into_string(value.to_unsafe, check, into, value.bytesize, alphabet)
+    encode_into_string(value.to_unsafe, into, value.bytesize, check, alphabet)
   end
 
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Array(UInt8) or Array(Char). The encoded data is appended to the end of the array,
@@ -564,7 +602,7 @@ module Base58
   # one byte per array element.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Array(UInt8) | Array(Char), alphabet : Alphabet.class = Alphabet::Bitcoin)
-    encode_into_array(value.to_unsafe, check, into, value.size, alphabet)
+    encode_into_array(value.to_unsafe, into, value.size, check, alphabet)
   end
 
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Pointer(UInt8). The pointer is assumed to reference a section of memory large enough
@@ -578,7 +616,7 @@ module Base58
   # to hold the encoded data. The method returns a tuple containing the pointer and the size of the encoded data.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Pointer(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
-    encode_into_pointer(value.to_unsafe, check, into, value.size, alphabet)
+    encode_into_pointer(value.to_unsafe, into, value.size, check, alphabet)
   end
 
   # Encodes a Slice(UInt8) or a StaticArray(UInt8, _) into an already existing Slice(UInt8). The Slice is assumed to have sufficient space
@@ -593,7 +631,7 @@ module Base58
   # to hold the encoded data.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : Slice(UInt8), alphabet : Alphabet.class = Alphabet::Bitcoin) : Slice(UInt8)
-    encode_into_pointer(value.to_unsafe, check, into.to_unsafe, value.size, alphabet)
+    encode_into_pointer(value.to_unsafe, into.to_unsafe, value.size, check, alphabet)
     into
   end
 
@@ -609,7 +647,7 @@ module Base58
   # to hold the encoded data.
   @[AlwaysInline]
   def self.encode(value : Slice(UInt8) | StaticArray(UInt8, _), check : Base58::Check, into : StaticArray(UInt8, _), alphabet : Alphabet.class = Alphabet::Bitcoin)
-    _, final_size = encode_into_pointer(value.to_unsafe, check, into.to_unsafe, value.size, alphabet)
+    _, final_size = encode_into_pointer(value.to_unsafe, into.to_unsafe, value.size, check, alphabet)
     {into, final_size}
   end
 
@@ -667,7 +705,7 @@ module Base58
     index = 0
     buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
     ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
-    encode_into_pointer(value, ptr, size, alphabet)
+    encode_into_pointer(value, ptr, size, check, alphabet)
   end
 
   # Encodes an Integer into a newly allocated String.
@@ -847,6 +885,19 @@ module Base58
     array
   end
 
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing Array(UInt8), with Base58Check.
+  @[AlwaysInline]
+  private def self.encode_into_array(value : Pointer(UInt8), array : Array(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    pointer, final_size = encode_to_pointer(value, size, check, alphabet)
+    index = 0
+    while index < final_size
+      array << pointer[index]
+      index += 1
+    end
+
+    array
+  end
+
   # This method takes an Int, and encodes it into an existing Array(Char).
   @[AlwaysInline]
   private def self.encode_into_array(value : Int, array : Array(Char), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
@@ -864,6 +915,19 @@ module Base58
   @[AlwaysInline]
   private def self.encode_into_array(value : Pointer(UInt8), array : Array(Char), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer, final_size = encode_to_pointer(value, size, alphabet)
+    index = 0
+    while index < final_size
+      array << pointer[index].chr
+      index += 1
+    end
+
+    array
+  end
+
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing Array(Char), with Base58Check.
+  @[AlwaysInline]
+  private def self.encode_into_array(value : Pointer(UInt8), array : Array(Char), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    pointer, final_size = encode_to_pointer(value, size, check, alphabet)
     index = 0
     while index < final_size
       array << pointer[index].chr
@@ -935,6 +999,15 @@ module Base58
   @[AlwaysInline]
   private def self.encode_into_string(value : Pointer(UInt8), string : String, size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin)
     _, final_size = encode_into_pointer(value, (string.as(UInt8*) + String::HEADER_SIZE), size, alphabet)
+    header = string.as({Int32, Int32, Int32}*)
+    header.value = {String::TYPE_ID, final_size, final_size}
+    string
+  end
+
+  # This method takes a memory buffer referenced by a Pointer(UInt8), and encodes it into an existing String, with checksumming.
+  @[AlwaysInline]
+  private def self.encode_into_string(value : Pointer(UInt8), string : String, size : Int, check, alphabet : Alphabet.class = Alphabet::Bitcoin)
+    _, final_size = encode_into_pointer(value, (string.as(UInt8*) + String::HEADER_SIZE), size, check, alphabet)
     header = string.as({Int32, Int32, Int32}*)
     header.value = {String::TYPE_ID, final_size, final_size}
     string

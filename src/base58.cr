@@ -1,5 +1,5 @@
 require "./base58/version"
-# require "./base58/extensions/char"
+require "./base58/extensions/array"
 require "./base58/extensions/string"
 require "./base58/encoder"
 require "./base58/decoder"
