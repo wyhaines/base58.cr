@@ -57,15 +57,22 @@ module Benchmark
     end
 
     class Job
+      property fullscreen_report : Bool = false
+      property scrollback : Int32 = 0
+
       def initialize(calculation = 5, warmup = 2, interactive = STDOUT.tty?)
         @interactive = !!interactive
         @warmup_time = warmup.seconds
         @calculation_time = calculation.seconds
         @items = [] of Entry
-        print "\e[s" if @interactive
+        at_exit do
+          cleanup_on_exit
+        end
       end
 
       def separator(label) : Benchmark::IPS::Entry
+        self.fullscreen_report = true
+
         item = Entry.new(label, ->(x : Int32) {})
         item.separator = true
         @items << item
@@ -74,6 +81,8 @@ module Benchmark
       end
 
       def separator(label, &action : Proc(Int32, Nil)) : Benchmark::IPS::Entry
+        self.fullscreen_report = true
+
         item = Entry.new(label, action)
         item.separator = true
         @items << item
@@ -88,8 +97,9 @@ module Benchmark
       end
 
       def report : Nil
-        print "\e[2J\e[H" if @interactive
         max_label = ran_items.max_of { |item| count_non_control_characters(item.label) }
+        print "\e[H\e[0J\e[?7l" if @interactive && fullscreen_report
+        puts "#{"".rjust(max_label - @items.size)}Benchmark Report |#{"=" * ran_items.size}#{ran_items.size < @items.size ? "#" : ""}#{"-" * (@items.size - ran_items.size)}|"
         max_compare = ran_items.max_of &.human_compare.size
         max_bytes_per_op = ran_items.max_of &.bytes_per_op.humanize(base: 1024).size
 
@@ -110,8 +120,17 @@ module Benchmark
         end
       end
 
+      private def cleanup_on_exit
+        print "\e[?7h"
+      end
+
+      private def calculate_scrollback
+        self.scrollback = ran_items.size
+        ran_items.select { |item| self.scrollback += item.label.to_s.scan(/\n/).size }
+      end
+
       private def run_warmup
-        print "\e[2J\e[H" if @interactive
+        print "\e[?7l\e[H\e[0J" if fullscreen_report
         @items.each_with_index do |item, index|
           print "\rWarming up [\e[48;5;231m#{" " * index}\e[0m\e[48;5;240m#{" " * (@items.size - index - 1)}\e[0m]" if @interactive
           next if item.separator?
@@ -130,7 +149,7 @@ module Benchmark
 
           item.set_cycles(elapsed, count)
         end
-        print "\e[2K"
+        print "\e[2K\e[H"
       end
 
       private def run_calculation
@@ -165,6 +184,8 @@ module Benchmark
           item.bytes_per_op = (bytes.to_f / cycles.to_f).round.to_u64
 
           if @interactive
+            calculate_scrollback
+            print "\e[#{scrollback + 1}A\e[0J" if !fullscreen_report
             run_comparison
             report
           end
