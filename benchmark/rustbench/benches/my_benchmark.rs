@@ -32,7 +32,9 @@ fn criterion_benchmark(c: &mut Criterion) {
 
         c.bench_function("monero string", |b| {
             b.iter(|| {
-                do_encode(monero_addr).to_string();
+                bs58::encode(monero_addr)
+                    .with_alphabet(bs58::Alphabet::MONERO)
+                    .into_string();
             });
         });
     }

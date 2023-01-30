@@ -50,8 +50,8 @@ module MyBenchmark
       ips.report("#{"Base58::Encoder".colorize.bold} => Int to existing StringBuffer - #{"16777215".colorize.dim}") { ::Base58.encode(16777215, into: Buffer) }
 
       ips.separator "Encode a Monero address".colorize.light_yellow.dim
-      ips.report("#{"Base58::Encoder".colorize.bold} => String to String - #{MoneroAddress.hexstring[0..8].colorize.dim}..#{MoneroAddress.hexstring[-8..-1].colorize.dim}") { ::Base58.encode(MoneroAddress) }
-      ips.report("#{"Base58::Encoder".colorize.bold} => String to StringBuffer - #{MoneroAddress.hexstring[0..8].colorize.dim}..#{MoneroAddress.hexstring[-8..-1].colorize.dim}") { ::Base58.encode(MoneroAddress, into: Buffer) }
+      ips.report("#{"Base58::Encoder".colorize.bold} => String to String - #{MoneroAddress.hexstring[0..8].colorize.dim}..#{MoneroAddress.hexstring[-8..-1].colorize.dim}") { ::Base58.encode(MoneroAddress, alphabet: ::Base58::Alphabet::Monero) }
+      ips.report("#{"Base58::Encoder".colorize.bold} => String to StringBuffer - #{MoneroAddress.hexstring[0..8].colorize.dim}..#{MoneroAddress.hexstring[-8..-1].colorize.dim}") { ::Base58.encode(MoneroAddress, into: Buffer, alphabet: ::Base58::Alphabet::Monero) }
     end
 
     def self.run_russ_encoder_benchmarks(ips)
