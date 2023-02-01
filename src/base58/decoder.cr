@@ -1,5 +1,7 @@
+require "./checksum"
 require "./extensions/array"
 require "./extensions/string"
+require "./extensions/static_array"
 require "./alphabet"
 require "./pointer_collection"
 
