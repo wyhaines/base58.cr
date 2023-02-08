@@ -66,6 +66,11 @@
       
         <ul>
   
+  <li class=" " data-id="base58/Base58/Alphabet/Avalanche" data-name="base58::alphabet::avalanche">
+      <a href="../Base58/Alphabet/Avalanche.html">Avalanche</a>
+      
+    </li>
+  
   <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
       <a href="../Base58/Alphabet/Bitcoin.html">Bitcoin</a>
       
@@ -86,6 +91,11 @@
       
     </li>
   
+  <li class=" " data-id="base58/Base58/Alphabet/Polkadot" data-name="base58::alphabet::polkadot">
+      <a href="../Base58/Alphabet/Polkadot.html">Polkadot</a>
+      
+    </li>
+  
   <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
       <a href="../Base58/Alphabet/Ripple.html">Ripple</a>
       
@@ -93,6 +103,16 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Base58Check" data-name="base58::base58check">
+      <a href="../Base58/Base58Check.html">Base58Check</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/CB58" data-name="base58::cb58">
+      <a href="../Base58/CB58.html">CB58</a>
       
     </li>
   
@@ -143,6 +163,11 @@
   
   <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
       <a href="../Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/SS58" data-name="base58::ss58">
+      <a href="../Base58/SS58.html">SS58</a>
       
     </li>
   
@@ -250,7 +275,7 @@
   </h2>
   
     
-      base58.cr
+      base58/check.cr
     
     <br/>
   
@@ -270,7 +295,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28prefix%3AString%3D%221%22%2Ctype%3AChecksum%3D%3ABase58Check%29-class-method" class="signature"><strong>.new</strong>(prefix : String = <span class="s">&quot;1&quot;</span>, type : Checksum = <span class="n">:Base58Check</span>)</a>
+        <a href="#new%28prefix%3AString%3D%221%22%2Cchecksum_prefix%3AString%3D%22%22%2Ctype%3AChecksum%3D%3ABase58Check%2Cchecksum_length%3AInt32%3D4%29-class-method" class="signature"><strong>.new</strong>(prefix : String = <span class="s">&quot;1&quot;</span>, checksum_prefix : String = <span class="s">&quot;&quot;</span>, type : Checksum = <span class="n">:Base58Check</span>, checksum_length : Int32 = <span class="n">4</span>)</a>
         
       </li>
     
@@ -291,12 +316,22 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#checksum_length%3AInt32-instance-method" class="signature"><strong>#checksum_length</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#checksum_prefix%3AString-instance-method" class="signature"><strong>#checksum_prefix</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#clone-instance-method" class="signature"><strong>#clone</strong></a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#copy_with%28prefix_prefix%3D%40prefix%2Ctype_type%3D%40type%29-instance-method" class="signature"><strong>#copy_with</strong>(prefix _prefix = @prefix, type _type = @type)</a>
+        <a href="#copy_with%28prefix_prefix%3D%40prefix%2Cchecksum_prefix_checksum_prefix%3D%40checksum_prefix%2Ctype_type%3D%40type%2Cchecksum_length_checksum_length%3D%40checksum_length%29-instance-method" class="signature"><strong>#copy_with</strong>(prefix _prefix = @prefix, checksum_prefix _checksum_prefix = @checksum_prefix, type _type = @type, checksum_length _checksum_length = @checksum_length)</a>
         
       </li>
     
@@ -360,12 +395,12 @@
     Constructor Detail
   </h2>
   
-    <div class="entry-detail" id="new(prefix:String=&quot;1&quot;,type:Checksum=:Base58Check)-class-method">
+    <div class="entry-detail" id="new(prefix:String=&quot;1&quot;,checksum_prefix:String=&quot;&quot;,type:Checksum=:Base58Check,checksum_length:Int32=4)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(prefix : <a href="../String.html">String</a> = <span class="s">&quot;1&quot;</span>, type : <a href="../Base58/Checksum.html">Checksum</a> = <span class="n">:Base58Check</span>)
+        def self.<strong>new</strong>(prefix : <a href="../String.html">String</a> = <span class="s">&quot;1&quot;</span>, checksum_prefix : <a href="../String.html">String</a> = <span class="s">&quot;&quot;</span>, type : <a href="../Base58/Checksum.html">Checksum</a> = <span class="n">:Base58Check</span>, checksum_length : Int32 = <span class="n">4</span>)
 
-        <a class="method-permalink" href="#new%28prefix%3AString%3D%221%22%2Ctype%3AChecksum%3D%3ABase58Check%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28prefix%3AString%3D%221%22%2Cchecksum_prefix%3AString%3D%22%22%2Ctype%3AChecksum%3D%3ABase58Check%2Cchecksum_length%3AInt32%3D4%29-class-method">#</a>
       </div>
       
       <br/>
@@ -388,6 +423,34 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="checksum_length:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>checksum_length</strong> : Int32
+
+        <a class="method-permalink" href="#checksum_length%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="checksum_prefix:String-instance-method">
+      <div class="signature">
+        
+        def <strong>checksum_prefix</strong> : <a href="../String.html">String</a>
+
+        <a class="method-permalink" href="#checksum_prefix%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="clone-instance-method">
       <div class="signature">
         
@@ -402,12 +465,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="copy_with(prefix_prefix=@prefix,type_type=@type)-instance-method">
+    <div class="entry-detail" id="copy_with(prefix_prefix=@prefix,checksum_prefix_checksum_prefix=@checksum_prefix,type_type=@type,checksum_length_checksum_length=@checksum_length)-instance-method">
       <div class="signature">
         
-        def <strong>copy_with</strong>(prefix _prefix = @prefix, type _type = @type)
+        def <strong>copy_with</strong>(prefix _prefix = @prefix, checksum_prefix _checksum_prefix = @checksum_prefix, type _type = @type, checksum_length _checksum_length = @checksum_length)
 
-        <a class="method-permalink" href="#copy_with%28prefix_prefix%3D%40prefix%2Ctype_type%3D%40type%29-instance-method">#</a>
+        <a class="method-permalink" href="#copy_with%28prefix_prefix%3D%40prefix%2Cchecksum_prefix_checksum_prefix%3D%40checksum_prefix%2Ctype_type%3D%40type%2Cchecksum_length_checksum_length%3D%40checksum_length%29-instance-method">#</a>
       </div>
       
       <br/>

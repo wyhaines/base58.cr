@@ -66,6 +66,11 @@
       
         <ul>
   
+  <li class=" " data-id="base58/Base58/Alphabet/Avalanche" data-name="base58::alphabet::avalanche">
+      <a href="../Base58/Alphabet/Avalanche.html">Avalanche</a>
+      
+    </li>
+  
   <li class=" " data-id="base58/Base58/Alphabet/Bitcoin" data-name="base58::alphabet::bitcoin">
       <a href="../Base58/Alphabet/Bitcoin.html">Bitcoin</a>
       
@@ -86,6 +91,11 @@
       
     </li>
   
+  <li class=" " data-id="base58/Base58/Alphabet/Polkadot" data-name="base58::alphabet::polkadot">
+      <a href="../Base58/Alphabet/Polkadot.html">Polkadot</a>
+      
+    </li>
+  
   <li class=" " data-id="base58/Base58/Alphabet/Ripple" data-name="base58::alphabet::ripple">
       <a href="../Base58/Alphabet/Ripple.html">Ripple</a>
       
@@ -93,6 +103,16 @@
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/Base58Check" data-name="base58::base58check">
+      <a href="../Base58/Base58Check.html">Base58Check</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/CB58" data-name="base58::cb58">
+      <a href="../Base58/CB58.html">CB58</a>
       
     </li>
   
@@ -143,6 +163,11 @@
   
   <li class=" " data-id="base58/Base58/PointerCollection" data-name="base58::pointercollection">
       <a href="../Base58/PointerCollection.html">PointerCollection</a>
+      
+    </li>
+  
+  <li class=" " data-id="base58/Base58/SS58" data-name="base58::ss58">
+      <a href="../Base58/SS58.html">SS58</a>
       
     </li>
   
@@ -261,7 +286,7 @@ the second SHA256 hash.</p>
   </h2>
   
     
-      base58.cr
+      base58/checksum.cr
     
     <br/>
   
@@ -290,11 +315,38 @@ the second SHA256 hash.</p>
       </dt>
       
     
+      <dt class="entry-const" id="SS58">
+        <strong>SS58</strong> = <code><span class="n">2</span></code>
+      </dt>
+      
+    
   </dl>
 
 
 
 
+
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#calculate%28check%3ACheck%2Cvalue%2Csize%29-class-method" class="signature"><strong>.calculate</strong>(check : Check, value, size)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#register%28type%3AChecksum%2C%26block%3ABase58%3A%3ACheck%2CPointer%28UInt8%29%2CInt32-%3ETuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29%29-class-method" class="signature"><strong>.register</strong>(type : Checksum, &block : Base58::Check, Pointer(UInt8), Int32 -> Tuple(Pointer(UInt8), Slice(UInt8)))</a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -315,6 +367,11 @@ the second SHA256 hash.</p>
     
       <li class="entry-summary">
         <a href="#cb58%3F-instance-method" class="signature"><strong>#cb58?</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#ss58%3F-instance-method" class="signature"><strong>#ss58?</strong></a>
         
       </li>
     
@@ -371,6 +428,44 @@ the second SHA256 hash.</p>
 
 
 
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="calculate(check:Check,value,size)-class-method">
+      <div class="signature">
+        
+        def self.<strong>calculate</strong>(check : <a href="../Base58/Check.html">Check</a>, value, size)
+
+        <a class="method-permalink" href="#calculate%28check%3ACheck%2Cvalue%2Csize%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="register(type:Checksum,&amp;block:Base58::Check,Pointer(UInt8),Int32-&gt;Tuple(Pointer(UInt8),Slice(UInt8)))-class-method">
+      <div class="signature">
+        
+        def self.<strong>register</strong>(type : <a href="../Base58/Checksum.html">Checksum</a>, &block : <a href="../Base58/Check.html">Base58::Check</a>, Pointer(UInt8), Int32 -> Tuple(Pointer(UInt8), Slice(UInt8)))
+
+        <a class="method-permalink" href="#register%28type%3AChecksum%2C%26block%3ABase58%3A%3ACheck%2CPointer%28UInt8%29%2CInt32-%3ETuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
 
 
   <h2>
@@ -402,6 +497,20 @@ the second SHA256 hash.</p>
         def <strong>cb58?</strong>
 
         <a class="method-permalink" href="#cb58%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="ss58?-instance-method">
+      <div class="signature">
+        
+        def <strong>ss58?</strong>
+
+        <a class="method-permalink" href="#ss58%3F-instance-method">#</a>
       </div>
       
       <br/>

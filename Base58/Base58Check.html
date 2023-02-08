@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>Base58::Alphabet - base58 0.1.1</title>
+  <title>Base58::Base58Check - base58 0.1.1</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -61,7 +61,7 @@
       
         <ul>
   
-  <li class="parent open current" data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
+  <li class="parent " data-id="base58/Base58/Alphabet" data-name="base58::alphabet">
       <a href="../Base58/Alphabet.html">Alphabet</a>
       
         <ul>
@@ -106,7 +106,7 @@
       
     </li>
   
-  <li class=" " data-id="base58/Base58/Base58Check" data-name="base58::base58check">
+  <li class=" current" data-id="base58/Base58/Base58Check" data-name="base58::base58check">
       <a href="../Base58/Base58Check.html">Base58Check</a>
       
     </li>
@@ -230,26 +230,12 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">class</span> Base58::Alphabet
+  <span class="kind">struct</span> Base58::Base58Check
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Base58/Alphabet.html">Base58::Alphabet</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
-
-
-
-
-  <h2>
-    <a id="overview" class="anchor" href="#overview">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Overview
-  </h2>
-
-  <p>This is the base class for Base58 Alphabet implementations. It is not intended to be used directly.</p>
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Base58/Base58Check.html">Base58::Base58Check</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
@@ -259,25 +245,8 @@
 
 
 
-  <h2>
-    <a id="direct-known-subclasses" class="anchor" href="#direct-known-subclasses">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Direct Known Subclasses
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../Base58/Alphabet/Bitcoin.html">Base58::Alphabet::Bitcoin</a></li>
-    
-      <li class="other-type"><a href="../Base58/Alphabet/Flickr.html">Base58::Alphabet::Flickr</a></li>
-    
-      <li class="other-type"><a href="../Base58/Alphabet/Monero.html">Base58::Alphabet::Monero</a></li>
-    
-      <li class="other-type"><a href="../Base58/Alphabet/Ripple.html">Base58::Alphabet::Ripple</a></li>
-    
-  </ul>
+
+
 
 
 
@@ -294,42 +263,7 @@
   </h2>
   
     
-      base58/alphabet.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/avalanche.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/bitcoin.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/flickr.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/ipfs.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/monero.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/polkadot.cr
-    
-    <br/>
-  
-    
-      base58/alphabet/ripple.cr
+      base58/base58check.cr
     
     <br/>
   
@@ -338,9 +272,60 @@
 
 
 
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#checksum%28check%2Cvalue%2Csize%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method" class="signature"><strong>.checksum</strong>(check, value, size) : Tuple(Pointer(UInt8), Slice(UInt8))</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#initialize-instance-method" class="signature"><strong>#initialize</strong></a>
+        
+      </li>
+    
+  </ul>
 
 
 
@@ -368,12 +353,94 @@
 
 
   
+    
+
+
+    
+
+
+    
+
+
+  
 </div>
 
 
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>
+
+        <a class="method-permalink" href="#new-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="checksum(check,value,size):Tuple(Pointer(UInt8),Slice(UInt8))-class-method">
+      <div class="signature">
+        
+        def self.<strong>checksum</strong>(check, value, size) : Tuple(Pointer(UInt8), Slice(UInt8))
+
+        <a class="method-permalink" href="#checksum%28check%2Cvalue%2Csize%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="initialize-instance-method">
+      <div class="signature">
+        
+        def <strong>initialize</strong>
+
+        <a class="method-permalink" href="#initialize-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
 
 
 
