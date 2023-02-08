@@ -433,6 +433,5 @@ describe Base58::Encoder do
         String.new(slice[0, tc_string.bytesize]).should eq testcase["string"].as(String)
       end
     end
-
   end
 end

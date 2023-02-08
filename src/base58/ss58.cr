@@ -268,7 +268,7 @@ module Base58
 
     # :nodoc:
     def self.probable_decoded_size(length)
-      ( 1 + length / 1.365658237309761).to_i
+      (1 + length / 1.365658237309761).to_i
     end
 
     # :nodoc:
@@ -287,7 +287,6 @@ module Base58
 
       {decoded_format, format_length}
     end
-
   end
 end
 
