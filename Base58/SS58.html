@@ -230,15 +230,33 @@
 <div class="main-content">
 <h1 class="type-name">
 
-  <span class="kind">struct</span> Base58::SS58
+  <span class="kind">module</span> Base58::SS58
 
 </h1>
 
 
-  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Base58/SS58.html">Base58::SS58</a></li><li class="superclass">Struct</li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
 
 
 
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Overview
+  </h2>
+
+  <p>Substrate's SS58 encoding can be used generically in the same way that Base58Check and CB58 can be.
+However, the intention of the encoding is to encode Substrate addresses, specifically, and when used
+for that purpose, there are some additional specifications which apply to encoding and to decoding.
+There is a small, fixed set of byte sizes which can be encoded, and there are some strict rules
+regarding how the prefix is structured, how the checksum is calculated, and how many bytes of the
+checksum are used. Details can be found in the <a href="https://docs.substrate.io/reference/address-formats/">Substrate documentation</a>.</p>
+<p>The methods here provide implementations of the Substrate specific style of using SS58 for encoding
+and decoding Substrate compatible addresses.</p>
+<p><span class="flag orange">TODO</span>  Some of these overloads are implemented expediently, but there are places where extra memory
+copying is done, and so there is room for improvement with regard to performance and efficiency.</p>
 
 
 
@@ -287,21 +305,6 @@
       </dt>
       
     
-      <dt class="entry-const" id="CkSum1Lengths">
-        <strong>CkSum1Lengths</strong> = <code>{<span class="n">3</span>, <span class="n">4</span>, <span class="n">6</span>, <span class="n">10</span>}</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="CkSum3Lengths">
-        <strong>CkSum3Lengths</strong> = <code>{<span class="n">8</span>, <span class="n">12</span>}</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="CkSum4Lengths">
-        <strong>CkSum4Lengths</strong> = <code>{<span class="n">9</span>, <span class="n">13</span>}</code>
-      </dt>
-      
-    
       <dt class="entry-const" id="OneByteChecksumAddresses">
         <strong>OneByteChecksumAddresses</strong> = <code>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">4</span>, <span class="n">8</span>}</code>
       </dt>
@@ -315,23 +318,6 @@
   </dl>
 
 
-
-  <h2>
-    <a id="constructors" class="anchor" href="#constructors">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructors
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#new-class-method" class="signature"><strong>.new</strong></a>
-        
-      </li>
-    
-  </ul>
 
 
 
@@ -356,7 +342,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29.class%2Cformat%3AInt%7CNil%3Dnil%29-class-method" class="signature"><strong>.decode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, _).<span class="k">class</span>, format : Int | Nil = <span class="n">nil</span>)</a>
+        <a href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method" class="signature"><strong>.decode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, format : Int | Nil = <span class="n">nil</span>) forall N</a>
         
       </li>
     
@@ -411,7 +397,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29%2Cformat%3AInt%7CNil%3Dnil%29-class-method" class="signature"><strong>.decode_address</strong>(address, into : StaticArray(UInt8, _), format : Int | Nil = <span class="n">nil</span>)</a>
+        <a href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method" class="signature"><strong>.decode_address</strong>(address, into : StaticArray(UInt8, N), format : Int | Nil = <span class="n">nil</span>) forall N</a>
         
       </li>
     
@@ -426,7 +412,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29.class%2Cformat%3AInt%3D42%29-class-method" class="signature"><strong>.encode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, _).<span class="k">class</span>, format : Int = <span class="n">42</span>)</a>
+        <a href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%3D42%29forallN-class-method" class="signature"><strong>.encode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, format : Int = <span class="n">42</span>) forall N</a>
         
       </li>
     
@@ -481,7 +467,7 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29%2Cformat%3AInt%3D42%29-class-method" class="signature"><strong>.encode_address</strong>(address, into : StaticArray(UInt8, _), format : Int = <span class="n">42</span>)</a>
+        <a href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29%2Cformat%3AInt%3D42%29forallN-class-method" class="signature"><strong>.encode_address</strong>(address, into : StaticArray(UInt8, N), format : Int = <span class="n">42</span>) forall N</a>
         
       </li>
     
@@ -499,85 +485,14 @@
 
 
 
-  <h2>
-    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Summary
-  </h2>
-  <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#initialize-instance-method" class="signature"><strong>#initialize</strong></a>
-        
-      </li>
-    
-  </ul>
-
 
 
 
 
 <div class="methods-inherited">
   
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
-    
-
-
-    
-
-
-    
-
-
-  
 </div>
 
-
-  <h2>
-    <a id="constructor-detail" class="anchor" href="#constructor-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Constructor Detail
-  </h2>
-  
-    <div class="entry-detail" id="new-class-method">
-      <div class="signature">
-        
-        def self.<strong>new</strong>
-
-        <a class="method-permalink" href="#new-class-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
@@ -618,12 +533,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="decode_address(address,into:StaticArray(UInt8,_).class,format:Int|Nil=nil)-class-method">
+    <div class="entry-detail" id="decode_address(address,into:StaticArray(UInt8,N).class,format:Int|Nil=nil)forallN-class-method">
       <div class="signature">
         
-        def self.<strong>decode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, _).<span class="k">class</span>, format : Int | Nil = <span class="n">nil</span>)
+        def self.<strong>decode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, format : Int | Nil = <span class="n">nil</span>) forall N
 
-        <a class="method-permalink" href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29.class%2Cformat%3AInt%7CNil%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method">#</a>
       </div>
       
       <br/>
@@ -772,12 +687,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="decode_address(address,into:StaticArray(UInt8,_),format:Int|Nil=nil)-class-method">
+    <div class="entry-detail" id="decode_address(address,into:StaticArray(UInt8,N),format:Int|Nil=nil)forallN-class-method">
       <div class="signature">
         
-        def self.<strong>decode_address</strong>(address, into : <a href="../StaticArray.html">StaticArray</a>(UInt8, _), format : Int | Nil = <span class="n">nil</span>)
+        def self.<strong>decode_address</strong>(address, into : <a href="../StaticArray.html">StaticArray</a>(UInt8, N), format : Int | Nil = <span class="n">nil</span>) forall N
 
-        <a class="method-permalink" href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29%2Cformat%3AInt%7CNil%3Dnil%29-class-method">#</a>
+        <a class="method-permalink" href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method">#</a>
       </div>
       
       <br/>
@@ -814,12 +729,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_address(address,into:StaticArray(UInt8,_).class,format:Int=42)-class-method">
+    <div class="entry-detail" id="encode_address(address,into:StaticArray(UInt8,N).class,format:Int=42)forallN-class-method">
       <div class="signature">
         
-        def self.<strong>encode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, _).<span class="k">class</span>, format : Int = <span class="n">42</span>)
+        def self.<strong>encode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, format : Int = <span class="n">42</span>) forall N
 
-        <a class="method-permalink" href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29.class%2Cformat%3AInt%3D42%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%3D42%29forallN-class-method">#</a>
       </div>
       
       <br/>
@@ -968,12 +883,12 @@
       </div>
     </div>
   
-    <div class="entry-detail" id="encode_address(address,into:StaticArray(UInt8,_),format:Int=42)-class-method">
+    <div class="entry-detail" id="encode_address(address,into:StaticArray(UInt8,N),format:Int=42)forallN-class-method">
       <div class="signature">
         
-        def self.<strong>encode_address</strong>(address, into : <a href="../StaticArray.html">StaticArray</a>(UInt8, _), format : Int = <span class="n">42</span>)
+        def self.<strong>encode_address</strong>(address, into : <a href="../StaticArray.html">StaticArray</a>(UInt8, N), format : Int = <span class="n">42</span>) forall N
 
-        <a class="method-permalink" href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2C_%29%2Cformat%3AInt%3D42%29-class-method">#</a>
+        <a class="method-permalink" href="#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29%2Cformat%3AInt%3D42%29forallN-class-method">#</a>
       </div>
       
       <br/>
@@ -1012,30 +927,6 @@
   
 
 
-
-  <h2>
-    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Instance Method Detail
-  </h2>
-  
-    <div class="entry-detail" id="initialize-instance-method">
-      <div class="signature">
-        
-        def <strong>initialize</strong>
-
-        <a class="method-permalink" href="#initialize-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-      </div>
-    </div>
-  
 
 
 
