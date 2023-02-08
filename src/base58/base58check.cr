@@ -5,7 +5,7 @@ require "./singletons/shaengine1"
 require "./singletons/shaengine2"
 
 module Base58
-  struct Base58Check
+  module Base58Check
     @[AlwaysInline]
     def self.checksum(check, value, size) : {Pointer(UInt8), Slice(UInt8)}
       Base58::SHAEngine1 << check.prefix

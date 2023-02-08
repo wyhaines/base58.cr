@@ -8,6 +8,14 @@ class String
       {size, size}
     end
   end
+
+  # This will return the allocated capacity of the string. This number is not normally interesting on its own,
+  # in a world where Crystal's string immutability is honored. If, however, one is mutating strings, knowing
+  # the capacity of the string becomes important.
+  # :nodoc:
+  def capacity
+    @capacity
+  end
 end
 
 # This provides a very efficient reusable StringBuffer.
@@ -84,8 +92,7 @@ class StringBuffer
   def mutate(val)
     byte_limit = val.bytesize < @capacity ? val.bytesize : @capacity
     char_limit = val.single_byte_optimizable? ? byte_limit : val.byte_slice(0, byte_limit).size
-    (@buffer.as(UInt8*) + String::HEADER_SIZE).copy_from(val.to_s.to_slice.to_unsafe, byte_limit)
-    header = @buffer.as({Int32, Int32, Int32}*)
+    to_unsafe.copy_from(val.to_s.to_slice.to_unsafe, byte_limit)
     header.value = {String::TYPE_ID, byte_limit, char_limit}
 
     @buffer
@@ -104,6 +111,16 @@ class StringBuffer
   @[AlwaysInline]
   def to_s(io : IO)
     io << @buffer
+  end
+
+  @[AlwaysInline]
+  def to_unsafe
+    @buffer.as(UInt8*) + String::HEADER_SIZE
+  end
+
+  @[AlwaysInline]
+  def header
+    @buffer.as({Int32, Int32, Int32}*)
   end
 
   forward_missing_to @buffer

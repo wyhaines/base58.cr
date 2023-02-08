@@ -370,10 +370,69 @@ describe Base58::Encoder do
   end
 
   context "Polkadot/SS58 encoding works as expected" do
-    it "can encode substrate addresses" do
+    it "can encode substrate addresses to new String" do
       TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
         Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, format: testcase["format"].as(Int)).should eq testcase["string"].as(String)
       end
     end
+
+    it "can encode substrate addressed to new Slice(UInt8)" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: Slice(UInt8), format: testcase["format"].as(Int)).should eq testcase["string"].as(String).to_slice
+      end
+    end
+
+    it "can encode substrate addresses to new StaticArray(UInt8, N)" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        result, final_size = Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: StaticArray(UInt8, 50), format: testcase["format"].as(Int))
+        result.to_slice[0, final_size].should eq testcase["string"].as(String).to_slice
+      end
+    end
+
+    it "can encode substrate addresses to new Array(UInt8)" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: Array(UInt8), format: testcase["format"].as(Int)).should eq testcase["string"].as(String).to_slice.to_a
+      end
+    end
+
+    it "can encode substrate addresses to new Array(Char)" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: Array(Char), format: testcase["format"].as(Int)).should eq testcase["string"].as(String).to_slice.to_a.map(&.chr)
+      end
+    end
+
+    it "can encode substrate addresses to a new raw memory buffer (Pointer(UInt8))" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        result, final_size = Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: Pointer(UInt8).malloc(50), format: testcase["format"].as(Int))
+        result.to_slice(final_size).should eq testcase["string"].as(String).to_slice
+      end
+    end
+
+    it "can encode substrate addresses into an existing String, without mutation" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        string = String.new("encoded:")
+        new_string = Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: string, format: testcase["format"].as(Int))
+        string.object_id.should_not eq new_string.object_id
+        new_string.should eq "encoded:#{testcase["string"].as(String)}"
+      end
+    end
+
+    it "can encode substrate addresses into an existing String, with mutation" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        string = String.new("x" * 50)
+        Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: string, format: testcase["format"].as(Int), mutate: true)
+        string.should eq testcase["string"].as(String)
+      end
+    end
+
+    it "can encode substrate addresses into an existing Slice(UInt8)" do
+      TestData::Strings.select { |tc| tc["alphabet"] == Base58::Alphabet::Polkadot }.each do |testcase|
+        slice = Slice(UInt8).new(50)
+        Base58::SS58.encode_address(testcase["hex"].as(String).hexbytes, into: slice, format: testcase["format"].as(Int))
+        tc_string = testcase["string"].as(String)
+        String.new(slice[0, tc_string.bytesize]).should eq testcase["string"].as(String)
+      end
+    end
+
   end
 end

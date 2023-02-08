@@ -4,7 +4,7 @@ require "./decoder_check"
 require "./singletons/shaengine1"
 
 module Base58
-  struct CB58
+  module CB58
     @[AlwaysInline]
     def self.checksum(check, value, size) : {Pointer(UInt8), Slice(UInt8)}
       Base58::SHAEngine1 << check.prefix
