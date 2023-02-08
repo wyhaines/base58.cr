@@ -14,18 +14,23 @@ module Base58
   enum Checksum
     Base58Check
     CB58
-  end
+    SS58
 
-  # Use this structure to specify that some form of checksumming should be used with the encoding or the decoding.
-  #
-  # ```
-  # Base58.encode("some data", check: Base58::Check.new(:Base58Check, "\x31"))
-  # ```
-  #
-  record Check,
-    prefix : String = "\x31",
-    type : Checksum = :Base58Check
+    @@calculators = Array((Base58::Check, Pointer(UInt8), Int32 -> {Pointer(UInt8), Slice(UInt8)})?).new(4) { nil }
 
-  class ChecksumMismatch < Exception
+    def self.calculate(check : Check, value, size)
+      if calculator_proc = @@calculators[check.type.to_i]?
+        calculator_proc.call(check, value, size)
+      else
+        raise "Unknown checksum type: #{check.type}"
+      end
+    end
+
+    def self.register(type : Checksum, &block : Base58::Check, Pointer(UInt8), Int32 -> {Pointer(UInt8), Slice(UInt8)})
+      @@calculators[type.to_i] = block
+    end
   end
 end
+
+require "./check"
+require "./checksum_mismatch"

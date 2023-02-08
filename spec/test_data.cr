@@ -304,5 +304,40 @@ class TestData
       "check_prefix" => "\x00",
       "check_type"   => "base58check",
     },
+    {
+      "alphabet"   => Base58::Alphabet::Polkadot,
+      "string"     => "KWCv1L3QX9LDPwY4VzvLmarEmXjVJidUzZcinvVnmxAJJCBou",
+      "hex"        => "03b9dc646dd71118e5f7fda681ad9eca36eb3ee96f344f582fbe7b5bcdebb13077",
+      "format"     => 42,
+      "check_type" => "ss58",
+    },
+    {
+      "alphabet"   => Base58::Alphabet::Polkadot,
+      "string"     => "zswfoZa",
+      "hex"        => "01020304",
+      "format"     => 2,
+      "check_type" => "ss58",
+    },
+    {
+      "alphabet"   => Base58::Alphabet::Polkadot,
+      "string"     => "848Gh2GcGaZia",
+      "hex"        => "2a2c0a0000000000",
+      "format"     => 2,
+      "check_type" => "ss58",
+    },
+    {
+      "alphabet"   => Base58::Alphabet::Polkadot,
+      "string"     => "5GoKvZWG5ZPYL1WUovuHW3zJBWBP5eT8CbqjdRY4Q6iMaQua",
+      "hex"        => "d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f",
+      "format"     => 42,
+      "check_type" => "ss58",
+    },
+    {
+      "alphabet"   => Base58::Alphabet::Polkadot,
+      "string"     => "yGHU8YKprxHbHdEv7oUK4rzMZXtsdhcXVG2CAMyC9WhzhjH2k",
+      "hex"        => "d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f",
+      "format"     => 255,
+      "check_type" => "ss58",
+    },
   ]
 end

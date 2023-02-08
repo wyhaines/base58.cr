@@ -1,0 +1,8 @@
+require "./version"
+require "./extensions/array"
+require "./extensions/string"
+require "./extensions/static_array"
+require "./encoder"
+require "./decoder"
+require "./alphabet/polkadot"
+require "./ss58"

@@ -1,4 +1,5 @@
 require "../alphabet"
+require "./bitcoin"
 
 module Base58
   class Alphabet
