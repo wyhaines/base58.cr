@@ -1,15 +1,22 @@
 module Base58
-  # There are two checksum variants that are supported.
+  # There are three checksum variants that are supported.
   #
-  # * [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding) is the checksum algorithm used by Bitcoin. It combines an (optional) version/prefix to
+  # - [Base58Check](https://en.bitcoin.it/wiki/Base58Check_encoding) is the checksum algorithm used by Bitcoin. It combines an (optional) version/prefix to
   # the front of the data payload with the data payload, and then an SHA256 hash is calculated from the combined prefix + payload. After that calculation,
   # a second SHA256 hash is calculated from the first, and the first 4 bytes of that second hash are appended to the combined prefix + payload. The result
   # is then Base58 encoded.
   #
-  # * [CB58](https://support.avax.network/en/articles/4587395-what-is-cb58) is the checksum algorithm used by Avalanche. It combines an (optional) version/prefix to
+  # - [CB58](https://support.avax.network/en/articles/4587395-what-is-cb58) is the checksum algorithm used by Avalanche. It combines an (optional) version/prefix to
   # the front of the data payload with the data payload, and then an SHA256 hash is calculated from the combined prefix + payload. After that calculation,
   # the first 4 bytes of the hash are appended to the combined prefix + payload. The result is then Base58 encoded. i.e. it is essentialy Base58Check without
   # the second SHA256 hash.
+  #
+  # - [SS58](https://docs.substrate.io/reference/address-formats/) is the address format and checksum algorithm used by Substrate, the SDK for building Polkadot based
+  # blockchains. It combines an (optional) prefix/format code prepended to the data/address, with a variable length checksum appended to the end of the data/address.
+  # It uses the Blake2b hash function to calculate the checksum. The address specification for Substrate has a highly constrained definition regarding what
+  # a valid input and output looks like. When encoding Substrate addresses, those conventions must be followed. See the `Base58::SS58` documentation for more
+  # details about this, as well as methods specifically for encoding and decoding Substrate addresses. The algorithm can be used for any data, however, just
+  # as with the other two checksum variants.
   #
   enum Checksum
     Base58Check

@@ -5,7 +5,7 @@
 
 # base58
 
-This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet/encoding-variation. It also supports both Base58Check and CB58 checksum algorithms.
+This library provides a very fast implementation of Base58 encoding and decoding for Crystal. This implementation supports all of the major Base58 alphabet variations, including Bitcoin, Flickr, Ripple, and Monero. In addition, it supports Monero's block based encoding approach, and it supports checksums using the Bitcoin Base58Check algorithm, the Avalanche CB58 algorithm, and the Polkadot SS58 algorithm along with encoding and decoding of Substrate addresses.
 
 ## API Documentation
 
@@ -43,15 +43,16 @@ It will run a variety of encode/decode tests against both this package as well a
 require "base58"
 ```
 
-The `encode` and `decode` methods should operate off of just about any sensible input, and can return most output types that a person may want. To encode into Base58, the basic form is this:
+Basic usage is via two methods, `Base58.encode` and `Base58.decode`. These methods can take a variety of input types, and can decode/encode into a variety of output types -- `String.class`, `Slice(UInt8).class`, `StaticArray(UInt8, N).class`, `Array(UInt8).class`, `Array(Char).class`, `StringBuffer.class`, `Pointer(UInt8).class`, `String`, `Slice(UInt8)`, `StaticArray(UInt8, N)`, `Array(UInt8)`, `Array(Char)`, `StringBuffer`, and `Pointer(UInt8)`.
+
 
 ```crystal
 Base58.encode("Hello, World!")
 ```
 
-This will return the Base58 version of `Hello, World!` as a `String`.
+The default return type is `String.class`, which returns a new instance of `String`. Thus, this example will return the Base58 version of `Hello, World!` as a `String`.
 
-You might want that value returned as a `Slice(UInt8)` instead:
+If you wanted that value returned as a `Slice(UInt8)` instead:
 
 ```crystal
 Base58.encode("Hello, World!", into: Slice(UInt8))
@@ -86,7 +87,7 @@ Base58.decode(recv_buffer, into: decoded_buffer)
 
 ### Alphabets
 
-There are four supported alphabets. These are the Bitcoin alphabet, the Flickr alphabet, the Ripple alphabet, and the Monero alphabet. Of these, all are encoded and decoded the same except for the Monero alphabet, which for encoding operates on blocks of 8 bytes, padding to 11 bytes, except for the final block. For decoding, it operates on blocks of 11 bytes, returning 8 bytes of decoded data, except for the final block which can be smaller. For the other three alphabets, the final size of the encoded data is variable, but the Monero encoding ensures a consistent final size. Thus, Monero addresses, which are 69 bytes of data, always encode to 95 byte Base58 strings.
+There are four supported alphabets, the Bitcoin alphabet, the Flickr alphabet, the Ripple alphabet, and the Monero alphabet. Of these, all are encoded and decoded the same except for the Monero alphabet, which for encoding operates on blocks of 8 bytes, padding to 11 bytes, except for the final block. For decoding, it operates on blocks of 11 bytes, returning 8 bytes of decoded data, except for the final block which can be smaller. For the other three alphabets, the final size of the encoded data is variable, but the Monero encoding ensures a consistent final size. Thus, Monero addresses, which are 69 bytes of data, always encode to 95 byte Base58 strings.
 
 The bitcoin alphabet is the default. To use another alphabet, pass the class of the alphabet as an argument:
 
@@ -109,6 +110,89 @@ Base58::Alphabet::Bitcoin.inverse?(Base58::Alphabet::Bitcoin[some_UTF8_character
 ```
 
 If the character is not found in the alphabet, the forward lookup, via `#[]`, will return an exception, but if called via `#[]?`, `nil` will be returned if it is not found. The inverse lookup returns a `0` for any ASCII character code that is not found in the alphabet when called with `#inverse`, and an exception for any non-ASCII character code. When called with `inverse?`, it returns nil for any code that is not found in the alphabet, ASCII or not.  
+
+### Checksumming
+
+In addition to the various alphabets, three different checksum algorithms are supported, Base58Check, CB58, and SS58. To use a checksum, pass an instance of `Base58::Check` into the `encode` or `decode` methods:
+
+```crystal
+base58check_data = Base58.encode(
+  "Hello, World!",
+  into: Slice(UInt8),
+  check: Base58::Check.new)
+```
+
+Without parameters, an instance of `Check` specifies Base58Check encoding with a prefix of `0x31` (`1`). To specify a different prefix, pass is as the first argument to `new`, or via a named argument, `prefix`.
+
+```crystal
+base58check_data = Base58.encode(
+  "Hello, World!",
+  into: StringBuffer,
+  check: Base58::Check.new(0x32))
+)
+```
+
+```crystal
+base58check_data = Base58.encode(
+  "Hello, World!",
+  into: StringBuffer,
+  check: Base58::Check.new(prefix: 0x32))
+)
+```
+
+To specify a different checksum algorithm, use the `type` named argument:
+
+```crystal
+cb58_data = Base58.encode(
+  "Hello, World!",
+  into: StringBuffer,
+  check: Base58::Check.new(type: Base58::Check::CB58))
+)
+```
+
+The [SS58 checksum algorithm for Substrate](https://docs.substrate.io/reference/address-formats/) has more moving parts than the Base58Check or the CB58 algorithms, with a variable prefix, variable checksum length, and a prefix that is applied to the data to be checksummed before checksumming. Thus, using it takes a few more parameters:
+
+```crystal
+ss58_data = Base58.encode(
+  "Hello, World!",
+  into: StringBuffer,
+  check: Base58::Check.new(
+    type: :SS58,
+    prefix: "*",
+    checksum_length: 2,
+    checksum_prefix: "SS58PRE"))
+)
+```
+
+If you look at the [Substrate Address Format Specification](https://docs.substrate.io/reference/address-formats/), you will see that encoding and decoding Substrate addresses with SS58 is a bit more complicated than just setting a prefix and running a hashing algorithm. The `Base58::SS58` class provides convenience methods for encoding and decoding Substrate addresses, and it is recommended that you are using this library to interact with Substrate, you should use those methods instead of the `Base58.encode` and `Base58.decode` methods directly.
+
+```crystal
+substrate_address = Base58::SS58.encode("d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f".hexbytes)
+```
+
+Just like the basic `encode`/`decode` methods, the `SS58` variants support all of the same input and output types, and in addition, they support a `format` argument which specifies the format prefix, as defined in the above URL.
+
+```crystal
+substrate_address = Base58::SS58.encode(
+  "d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f".hexbytes,
+  into: Slice(UInt8),
+  format: 255)
+```
+
+Exceptions will be raised if an invalid format is provided, or if the data to be encoded is not a valid length for SS58 encoding.
+
+The same invocation syntax is used when decoding encoded Substrate addresses.
+
+```crystal
+encoded_address = Base58::SS58.encode(
+  "d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f".hexbytes,
+  into: Slice(UInt8),
+  format: 255)
+
+decoded_address = Base58::SS58.decode(encoded_address)
+```
+
+If the `format` argument is provided when decoding, it will be used to guarantee that the encoded address was encoded with the same format. An exception will be raised if the format does not match.
 
 ### Alternative, method chaining based syntax.
 
