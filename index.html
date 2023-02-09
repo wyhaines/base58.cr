@@ -236,7 +236,7 @@
     <use href="#octicon-link"/>
   </svg>
 </a>base58</h1>
-<p>This library provides a very fast implementation of Base58 encoding and decoding for Crystal. It supports the Bitcoin Base58 alphabet, which is the default alphabet, as well as the Flickr alphabet, the Ripple alphabet, and the Minero alphabet/encoding-variation. It also supports both Base58Check and CB58 checksum algorithms.</p>
+<p>This library provides a very fast implementation of Base58 encoding and decoding for Crystal. This implementation supports all of the major Base58 alphabet variations, including Bitcoin, Flickr, Ripple, and Monero. In addition, it supports Monero's block based encoding approach, and it supports checksums using the Bitcoin Base58Check algorithm, the Avalanche CB58 algorithm, and the Polkadot SS58 algorithm along with encoding and decoding of Substrate addresses.</p>
 <h2><a id="api-documentation" class="anchor" href="#api-documentation">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -276,10 +276,10 @@ bin/benchmark</code></pre>
   </svg>
 </a>Usage</h2>
 <pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;base58&quot;</span></code></pre>
-<p>The <code>encode</code> and <code>decode</code> methods should operate off of just about any sensible input, and can return most output types that a person may want. To encode into Base58, the basic form is this:</p>
+<p>Basic usage is via two methods, <code>Base58.encode</code> and <code>Base58.decode</code>. These methods can take a variety of input types, and can decode/encode into a variety of output types -- <code>String.class</code>, <code>Slice(UInt8).class</code>, <code><a href="StaticArray.html">StaticArray</a>(UInt8, N).class</code>, <code><a href="Array.html">Array</a>(UInt8).class</code>, <code><a href="Array.html">Array</a>(Char).class</code>, <code>StringBuffer.class</code>, <code>Pointer(UInt8).class</code>, <code><a href="String.html">String</a></code>, <code>Slice(UInt8)</code>, <code><a href="StaticArray.html">StaticArray</a>(UInt8, N)</code>, <code><a href="Array.html">Array</a>(UInt8)</code>, <code><a href="Array.html">Array</a>(Char)</code>, <code><a href="StringBuffer.html">StringBuffer</a></code>, and <code>Pointer(UInt8)</code>.</p>
 <pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>)</code></pre>
-<p>This will return the Base58 version of <code>Hello, World!</code> as a <code><a href="String.html">String</a></code>.</p>
-<p>You might want that value returned as a <code>Slice(UInt8)</code> instead:</p>
+<p>The default return type is <code>String.class</code>, which returns a new instance of <code><a href="String.html">String</a></code>. Thus, this example will return the Base58 version of <code>Hello, World!</code> as a <code><a href="String.html">String</a></code>.</p>
+<p>If you wanted that value returned as a <code>Slice(UInt8)</code> instead:</p>
 <pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: <span class="t">Slice</span>(<span class="t">UInt8</span>))</code></pre>
 <p>If you have an existing <code>Slice(UInt8)</code> that you are using as a reusable buffer, you can use that, too:</p>
 <pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">Slice</span>(<span class="t">UInt8</span>).new(<span class="n">100</span>)
@@ -300,7 +300,7 @@ bin/benchmark</code></pre>
     <use href="#octicon-link"/>
   </svg>
 </a>Alphabets</h3>
-<p>There are four supported alphabets. These are the Bitcoin alphabet, the Flickr alphabet, the Ripple alphabet, and the Monero alphabet. Of these, all are encoded and decoded the same except for the Monero alphabet, which for encoding operates on blocks of 8 bytes, padding to 11 bytes, except for the final block. For decoding, it operates on blocks of 11 bytes, returning 8 bytes of decoded data, except for the final block which can be smaller. For the other three alphabets, the final size of the encoded data is variable, but the Monero encoding ensures a consistent final size. Thus, Monero addresses, which are 69 bytes of data, always encode to 95 byte Base58 strings.</p>
+<p>There are four supported alphabets, the Bitcoin alphabet, the Flickr alphabet, the Ripple alphabet, and the Monero alphabet. Of these, all are encoded and decoded the same except for the Monero alphabet, which for encoding operates on blocks of 8 bytes, padding to 11 bytes, except for the final block. For decoding, it operates on blocks of 11 bytes, returning 8 bytes of decoded data, except for the final block which can be smaller. For the other three alphabets, the final size of the encoded data is variable, but the Monero encoding ensures a consistent final size. Thus, Monero addresses, which are 69 bytes of data, always encode to 95 byte Base58 strings.</p>
 <p>The bitcoin alphabet is the default. To use another alphabet, pass the class of the alphabet as an argument:</p>
 <pre><code class="language-crystal"><span class="t">Base58</span>.encode(<span class="s">&quot;Hello, World!&quot;</span>, into: <span class="t">Slice</span>(<span class="t">UInt8</span>), alphabet: <span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Monero</span>)</code></pre>
 <p>Alphabets support both forward and inverse lookup. Thus, the following will return the original character:</p>
@@ -309,6 +309,59 @@ bin/benchmark</code></pre>
 <p>Nil-returning variants of both forward and backward lookups are also supported:</p>
 <pre><code class="language-crystal"><span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>.inverse?(<span class="t">Base58</span><span class="t">::</span><span class="t">Alphabet</span><span class="t">::</span><span class="t">Bitcoin</span>[some_UTF8_character]?)</code></pre>
 <p>If the character is not found in the alphabet, the forward lookup, via <code>#[]</code>, will return an exception, but if called via <code>#[]?</code>, <code>nil</code> will be returned if it is not found. The inverse lookup returns a <code>0</code> for any ASCII character code that is not found in the alphabet when called with <code>#inverse</code>, and an exception for any non-ASCII character code. When called with <code>inverse?</code>, it returns nil for any code that is not found in the alphabet, ASCII or not.</p>
+<h3><a id="checksumming" class="anchor" href="#checksumming">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Checksumming</h3>
+<p>In addition to the various alphabets, three different checksum algorithms are supported, Base58Check, CB58, and SS58. To use a checksum, pass an instance of <code><a href="Base58/Check.html">Base58::Check</a></code> into the <code>encode</code> or <code>decode</code> methods:</p>
+<pre><code class="language-crystal">base58check_data <span class="o">=</span> <span class="t">Base58</span>.encode(
+  <span class="s">&quot;Hello, World!&quot;</span>,
+  into: <span class="t">Slice</span>(<span class="t">UInt8</span>),
+  check: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span>.new)</code></pre>
+<p>Without parameters, an instance of <code>Check</code> specifies Base58Check encoding with a prefix of <code>0x31</code> (<code>1</code>). To specify a different prefix, pass is as the first argument to <code>new</code>, or via a named argument, <code>prefix</code>.</p>
+<pre><code class="language-crystal">base58check_data <span class="o">=</span> <span class="t">Base58</span>.encode(
+  <span class="s">&quot;Hello, World!&quot;</span>,
+  into: <span class="t">StringBuffer</span>,
+  check: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span>.new(<span class="n">0x32</span>))
+)</code></pre>
+<pre><code class="language-crystal">base58check_data <span class="o">=</span> <span class="t">Base58</span>.encode(
+  <span class="s">&quot;Hello, World!&quot;</span>,
+  into: <span class="t">StringBuffer</span>,
+  check: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span>.new(prefix: <span class="n">0x32</span>))
+)</code></pre>
+<p>To specify a different checksum algorithm, use the <code>type</code> named argument:</p>
+<pre><code class="language-crystal">cb58_data <span class="o">=</span> <span class="t">Base58</span>.encode(
+  <span class="s">&quot;Hello, World!&quot;</span>,
+  into: <span class="t">StringBuffer</span>,
+  check: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span>.new(<span class="k">type</span>: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span><span class="t">::</span><span class="t">CB58</span>))
+)</code></pre>
+<p>The <a href="https://docs.substrate.io/reference/address-formats/">SS58 checksum algorithm for Substrate</a> has more moving parts than the Base58Check or the CB58 algorithms, with a variable prefix, variable checksum length, and a prefix that is applied to the data to be checksummed before checksumming. Thus, using it takes a few more parameters:</p>
+<pre><code class="language-crystal">ss58_data <span class="o">=</span> <span class="t">Base58</span>.encode(
+  <span class="s">&quot;Hello, World!&quot;</span>,
+  into: <span class="t">StringBuffer</span>,
+  check: <span class="t">Base58</span><span class="t">::</span><span class="t">Check</span>.new(
+    <span class="k">type</span>: <span class="n">:SS58</span>,
+    prefix: <span class="s">&quot;*&quot;</span>,
+    checksum_length: <span class="n">2</span>,
+    checksum_prefix: <span class="s">&quot;SS58PRE&quot;</span>))
+)</code></pre>
+<p>If you look at the <a href="https://docs.substrate.io/reference/address-formats/">Substrate Address Format Specification</a>, you will see that encoding and decoding Substrate addresses with SS58 is a bit more complicated than just setting a prefix and running a hashing algorithm. The <code><a href="Base58/SS58.html">Base58::SS58</a></code> class provides convenience methods for encoding and decoding Substrate addresses, and it is recommended that you are using this library to interact with Substrate, you should use those methods instead of the <code>Base58.encode</code> and <code>Base58.decode</code> methods directly.</p>
+<pre><code class="language-crystal">substrate_address <span class="o">=</span> <span class="t">Base58</span><span class="t">::</span><span class="t">SS58</span>.encode(<span class="s">&quot;d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f&quot;</span>.hexbytes)</code></pre>
+<p>Just like the basic <code>encode</code>/<code>decode</code> methods, the <code>SS58</code> variants support all of the same input and output types, and in addition, they support a <code>format</code> argument which specifies the format prefix, as defined in the above URL.</p>
+<pre><code class="language-crystal">substrate_address <span class="o">=</span> <span class="t">Base58</span><span class="t">::</span><span class="t">SS58</span>.encode(
+  <span class="s">&quot;d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f&quot;</span>.hexbytes,
+  into: <span class="t">Slice</span>(<span class="t">UInt8</span>),
+  format: <span class="n">255</span>)</code></pre>
+<p>Exceptions will be raised if an invalid format is provided, or if the data to be encoded is not a valid length for SS58 encoding.</p>
+<p>The same invocation syntax is used when decoding encoded Substrate addresses.</p>
+<pre><code class="language-crystal">encoded_address <span class="o">=</span> <span class="t">Base58</span><span class="t">::</span><span class="t">SS58</span>.encode(
+  <span class="s">&quot;d172a74cda4c865912c32ba0a80a57ae69abae410e5ccb59dee84e2f4432db4f&quot;</span>.hexbytes,
+  into: <span class="t">Slice</span>(<span class="t">UInt8</span>),
+  format: <span class="n">255</span>)
+
+decoded_address <span class="o">=</span> <span class="t">Base58</span><span class="t">::</span><span class="t">SS58</span>.decode(encoded_address)</code></pre>
+<p>If the <code>format</code> argument is provided when decoding, it will be used to guarantee that the encoded address was encoded with the same format. An exception will be raised if the format does not match.</p>
 <h3><a id="alternative-method-chaining-based-syntax." class="anchor" href="#alternative-method-chaining-based-syntax.">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
