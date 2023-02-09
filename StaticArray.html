@@ -333,7 +333,9 @@ constant.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#strip-instance-method" class="signature"><strong>#strip</strong></a>
+        <a href="#strip%28left%3ABool%3Dfalse%2Cright%3ABool%3Dtrue%29-instance-method" class="signature"><strong>#strip</strong>(left : Bool = <span class="n">false</span>, right : Bool = <span class="n">true</span>)</a>
+        
+          <div class="summary"><p>A static array has a fixed size.</p></div>
         
       </li>
     
@@ -431,13 +433,29 @@ constant.</p>
     Instance Method Detail
   </h2>
   
-    <div class="entry-detail" id="strip-instance-method">
+    <div class="entry-detail" id="strip(left:Bool=false,right:Bool=true)-instance-method">
       <div class="signature">
         
-        def <strong>strip</strong>
+        def <strong>strip</strong>(left : Bool = <span class="n">false</span>, right : Bool = <span class="n">true</span>)
 
-        <a class="method-permalink" href="#strip-instance-method">#</a>
+        <a class="method-permalink" href="#strip%28left%3ABool%3Dfalse%2Cright%3ABool%3Dtrue%29-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>A static array has a fixed size. If a value smaller than the size of the static array is
+inserted into it, there may be trailing zeros after the data. This method removes those
+trailing zeros, and optionally any leading zeros, and returns a Slice containing the
+stripped data.</p>
+<p>Example:</p>
+<pre><code class="language-crystal">ary <span class="o">=</span> <span class="t">StaticArray</span>[<span class="n">0</span>, <span class="n">1</span>, <span class="n">2</span>, <span class="n">3</span>, <span class="n">4</span>, <span class="n">0</span>]
+ary.strip                            <span class="c"># =&gt; StaticArray[0, 1, 2, 3, 4]</span>
+ary.strip(left: <span class="n">false</span>, right: <span class="n">false</span>) <span class="c"># =&gt; StaticArray[0, 1, 2, 3, 4, 0]</span>
+ary.strip(left: <span class="n">true</span>, right: <span class="n">false</span>)  <span class="c"># =&gt; StaticArray[1, 2, 3, 4, 0]</span>
+ary.strip(left: <span class="n">false</span>, right: <span class="n">true</span>)  <span class="c"># =&gt; StaticArray[0, 1, 2, 3, 4]</span>
+ary.strip(left: <span class="n">true</span>)                <span class="c"># =&gt; StaticArray[1, 2, 3, 4]</span>
+ary.strip(left: <span class="n">true</span>, right: <span class="n">true</span>)   <span class="c"># =&gt; StaticArray[1, 2, 3, 4]</span></code></pre>
+        </div>
       
       <br/>
       <div>

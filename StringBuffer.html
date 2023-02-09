@@ -249,7 +249,20 @@
     Overview
   </h2>
 
-  <p>This provides a very efficient reusable StringBuffer.</p>
+  <p>A StringBuffer is intended to be used as buffer for strings or binary data. Crystal does not
+permit the String class to be subclassed, so the StringBuffer is implemented as a very light
+wrapper around a String. It works by a String with a specific maximum capacity, which should
+be larger than the largest piece of data that will be stored within it. The string's contents
+will be changed by mutating the string's memory buffer and header information directly,
+avoiding extra copying of data.</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">StringBuffer</span>.new(<span class="n">256</span>)
+buffer.mutate(<span class="s">&quot;Hello, world!&quot;</span>)
+puts buffer <span class="c"># =&gt; &quot;Hello, world!&quot;</span>
+
+buffer <span class="o">&lt;&lt;</span> <span class="s">&quot;This is a test.&quot;</span>
+puts buffer <span class="c"># =&gt; &quot;This is a test.&quot;</span></code></pre>
+<p>The StringBuffer will truncate any data that exceeds the capacity of its underlying string,
+so there is no risk of the string's memory buffer being overrun.</p>
 
 
 
@@ -296,15 +309,21 @@
       <li class="entry-summary">
         <a href="#new%28string%3AString%29-class-method" class="signature"><strong>.new</strong>(string : String)</a>
         
+          <div class="summary"><p>Initialize the buffer with a String.</p></div>
+        
       </li>
     
       <li class="entry-summary">
-        <a href="#new%28string%3ASlice%28UInt8%29%29-class-method" class="signature"><strong>.new</strong>(string : Slice(UInt8))</a>
+        <a href="#new%28slice%3ASlice%28UInt8%29%29-class-method" class="signature"><strong>.new</strong>(slice : Slice(UInt8))</a>
+        
+          <div class="summary"><p>Initialize the buffer with a Slice(UInt8).</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#new%28capacity%3AInt%3D256%29-class-method" class="signature"><strong>.new</strong>(capacity : Int = <span class="n">256</span>)</a>
+        
+          <div class="summary"><p>Initialize the buffer with a specific capacity, but do nothing to clear the underlying memory buffer.</p></div>
         
       </li>
     
@@ -327,10 +346,14 @@
       <li class="entry-summary">
         <a href="#%3C%3C%28val%29-instance-method" class="signature"><strong>#<<</strong>(val)</a>
         
+          <div class="summary"><p>Shorthand, convenience method for <code><a href="StringBuffer.html#mutate%28val%29-instance-method">#mutate</a></code>.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#buffer%3AString-instance-method" class="signature"><strong>#buffer</strong> : String</a>
+        
+          <div class="summary"><p>Returns the underlying String.</p></div>
         
       </li>
     
@@ -341,6 +364,8 @@
     
       <li class="entry-summary">
         <a href="#header-instance-method" class="signature"><strong>#header</strong></a>
+        
+          <div class="summary"><p>Retuns the object header of the underlying String.</p></div>
         
       </li>
     
@@ -354,12 +379,14 @@
       <li class="entry-summary">
         <a href="#to_s%28io%3AIO%29-instance-method" class="signature"><strong>#to_s</strong>(io : IO)</a>
         
-          <div class="summary"><p>Appends a short String representation of this object which includes its class name and its object address.</p></div>
+          <div class="summary"><p>Outputs the contents of the underlying String to the given IO.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_unsafe-instance-method" class="signature"><strong>#to_unsafe</strong></a>
+        
+          <div class="summary"><p>Returns a Pointer(UInt8) to the underlying String's data.</p></div>
         
       </li>
     
@@ -428,19 +455,31 @@
         <a class="method-permalink" href="#new%28string%3AString%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Initialize the buffer with a String.</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">StringBuffer</span>.new(<span class="s">&quot;0x00&quot;</span> <span class="o">*</span> <span class="n">256</span>)</code></pre>
+        </div>
+      
       <br/>
       <div>
         
       </div>
     </div>
   
-    <div class="entry-detail" id="new(string:Slice(UInt8))-class-method">
+    <div class="entry-detail" id="new(slice:Slice(UInt8))-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(string : Slice(UInt8))
+        def self.<strong>new</strong>(slice : Slice(UInt8))
 
-        <a class="method-permalink" href="#new%28string%3ASlice%28UInt8%29%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28slice%3ASlice%28UInt8%29%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Initialize the buffer with a Slice(UInt8).</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">StringBuffer</span>.new(<span class="t">Slice</span>(<span class="t">UInt8</span>).new(<span class="n">256</span>, <span class="n">0</span>))</code></pre>
+        </div>
       
       <br/>
       <div>
@@ -455,6 +494,15 @@
 
         <a class="method-permalink" href="#new%28capacity%3AInt%3D256%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Initialize the buffer with a specific capacity, but do nothing to clear the underlying
+memory buffer. Until data is assigned to the buffer, it's contents will be undefined
+and meaningless.</p>
+<pre><code class="language-crystal">buffer <span class="o">=</span> <span class="t">StringBuffer</span>.new(<span class="n">256</span>)
+pp buffer.buffer.to_slice[<span class="n">0</span>, <span class="n">8</span>] <span class="c"># =&gt; Bytes[0, 0, 27, 28, 33, 0, 0, 0]</span></code></pre>
+        </div>
       
       <br/>
       <div>
@@ -484,6 +532,11 @@
         <a class="method-permalink" href="#%3C%3C%28val%29-instance-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Shorthand, convenience method for <code><a href="StringBuffer.html#mutate%28val%29-instance-method">#mutate</a></code>.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -497,6 +550,11 @@
 
         <a class="method-permalink" href="#buffer%3AString-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns the underlying String.</p>
+        </div>
       
       <br/>
       <div>
@@ -525,6 +583,13 @@
 
         <a class="method-permalink" href="#header-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Retuns the object header of the underlying String. Like <code><a href="StringBuffer.html#to_unsafe-instance-method">#to_unsafe</a></code>, this method
+is exposed because other internals use it, but it's unlikley that you will want or
+need to use it directly.</p>
+        </div>
       
       <br/>
       <div>
@@ -591,18 +656,7 @@ crashing.</p>
       
         <div class="doc">
           
-            <div class="doc-inherited">
-              Description copied from class Reference
-            </div>
-          
-          <p>Appends a short String representation of this object
-which includes its class name and its object address.</p>
-<pre><code class="language-crystal"><span class="k">class</span> <span class="t">Person</span>
-  <span class="k">def</span> <span class="m">initialize</span>(@name : <span class="t">String</span>, @age : <span class="t">Int32</span>)
-  <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="t">Person</span>.new(<span class="s">&quot;John&quot;</span>, <span class="n">32</span>).to_s <span class="c"># =&gt; #&lt;Person:0x10a199f20&gt;</span></code></pre>
+          <p>Outputs the contents of the underlying String to the given IO.</p>
         </div>
       
       <br/>
@@ -618,6 +672,13 @@ which includes its class name and its object address.</p>
 
         <a class="method-permalink" href="#to_unsafe-instance-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Returns a Pointer(UInt8) to the underlying String's data. This method is exposed
+because other internals use it, but it's unlikley that you will want or need to use
+it directly.</p>
+        </div>
       
       <br/>
       <div>
