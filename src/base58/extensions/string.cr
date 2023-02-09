@@ -1,8 +1,13 @@
 class String
+  # This string constructor exists to create a new string which is a copy of an existing
+  # string, with a separately allocated memory buffer.
   def self.new(string : String)
     new(string.to_slice)
   end
 
+  # This string constructor creates a string of a specific size, without regard to the contents
+  # of the string. It is used by the StringBuffer class to create a string which will later
+  # mutated, with content inserted.
   def self.new(size : Int)
     new(size) do |ptr|
       {size, size}
@@ -18,21 +23,60 @@ class String
   end
 end
 
-# This provides a very efficient reusable StringBuffer.
+# A StringBuffer is intended to be used as buffer for strings or binary data. Crystal does not
+# permit the String class to be subclassed, so the StringBuffer is implemented as a very light
+# wrapper around a String. It works by a String with a specific maximum capacity, which should
+# be larger than the largest piece of data that will be stored within it. The string's contents
+# will be changed by mutating the string's memory buffer and header information directly,
+# avoiding extra copying of data.
+#
+# ```
+# buffer = StringBuffer.new(256)
+# buffer.mutate("Hello, world!")
+# puts buffer # => "Hello, world!"
+#
+# buffer << "This is a test."
+# puts buffer # => "This is a test."
+# ```
+#
+# The StringBuffer will truncate any data that exceeds the capacity of its underlying string,
+# so there is no risk of the string's memory buffer being overrun.
+#
 class StringBuffer
   getter capacity : Int32
   @buffer : String = ""
 
+  # Initialize the buffer with a String.
+  #
+  # ```
+  # buffer = StringBuffer.new("0x00" * 256)
+  # ```
+  #
   def initialize(string : String)
     @capacity = string.size
     @buffer = String.new(string)
   end
 
-  def initialize(string : Slice(UInt8))
-    @capacity = string.size
-    @buffer = String.new(string)
+  # Initialize the buffer with a Slice(UInt8).
+  #
+  # ```
+  # buffer = StringBuffer.new(Slice(UInt8).new(256, 0))
+  # ```
+  #
+  def initialize(slice : Slice(UInt8))
+    @capacity = slice.size
+    @buffer = String.new(slice)
   end
 
+  # Initialize the buffer with a specific capacity, but do nothing to clear the underlying
+  # memory buffer. Until data is assigned to the buffer, it's contents will be undefined
+  # and meaningless.
+  #
+  # ```
+  # buffer = StringBuffer.new(256)
+  # pp buffer.buffer.to_slice[0, 8] # => Bytes[0, 0, 27, 28, 33, 0, 0, 0]
+  # ```
+  #
   def initialize(@capacity : Int = 256)
     if capacity = @capacity
       @buffer = String.new(capacity) do |ptr|
@@ -98,26 +142,35 @@ class StringBuffer
     @buffer
   end
 
+  # Shorthand, convenience method for `mutate`.
   @[AlwaysInline]
   def <<(val)
     mutate(val)
   end
 
+  # Returns the underlying String.
   @[AlwaysInline]
   def buffer
     @buffer
   end
 
+  # Outputs the contents of the underlying String to the given IO.
   @[AlwaysInline]
   def to_s(io : IO)
     io << @buffer
   end
 
+  # Returns a Pointer(UInt8) to the underlying String's data. This method is exposed
+  # because other internals use it, but it's unlikley that you will want or need to use
+  # it directly.
   @[AlwaysInline]
   def to_unsafe
     @buffer.as(UInt8*) + String::HEADER_SIZE
   end
 
+  # Retuns the object header of the underlying String. Like `to_unsafe`, this method
+  # is exposed because other internals use it, but it's unlikley that you will want or
+  # need to use it directly.
   @[AlwaysInline]
   def header
     @buffer.as({Int32, Int32, Int32}*)
