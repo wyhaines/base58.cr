@@ -304,15 +304,9 @@ is done, and so there is room for improvement with regard to performance and eff
         <strong>ChecksumPrefix</strong> = <code><span class="s">&quot;SS58PRE&quot;</span></code>
       </dt>
       
-    
-      <dt class="entry-const" id="OneByteChecksumAddresses">
-        <strong>OneByteChecksumAddresses</strong> = <code>{<span class="n">1</span>, <span class="n">2</span>, <span class="n">4</span>, <span class="n">8</span>}</code>
-      </dt>
-      
-    
-      <dt class="entry-const" id="TwoByteChecksumAddresses">
-        <strong>TwoByteChecksumAddresses</strong> = <code>{<span class="n">32</span>, <span class="n">33</span>}</code>
-      </dt>
+      <dd class="entry-const-doc">
+        <p>This is the standard prefix used for Substrate addresses.</p>
+      </dd>
       
     
   </dl>
@@ -334,10 +328,14 @@ is done, and so there is room for improvement with regard to performance and eff
       <li class="entry-summary">
         <a href="#checksum%28check%2Cvalue%3APointer%28UInt8%29%2Csize%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method" class="signature"><strong>.checksum</strong>(check, value : Pointer(UInt8), size) : Tuple(Pointer(UInt8), Slice(UInt8))</a>
         
+          <div class="summary"><p>Calculate a Blake2b checksum on the data referenced by the pointer and size.</p></div>
+        
       </li>
     
       <li class="entry-summary">
         <a href="#checksum%28check%2Cdata%3ASlice%28UInt8%29%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method" class="signature"><strong>.checksum</strong>(check, data : Slice(UInt8)) : Tuple(Pointer(UInt8), Slice(UInt8))</a>
+        
+          <div class="summary"><p>Calculate a Blake2b checksum on the data referenced by the slice.</p></div>
         
       </li>
     
@@ -513,6 +511,12 @@ is done, and so there is room for improvement with regard to performance and eff
         <a class="method-permalink" href="#checksum%28check%2Cvalue%3APointer%28UInt8%29%2Csize%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method">#</a>
       </div>
       
+        <div class="doc">
+          
+          <p>Calculate a Blake2b checksum on the data referenced by the pointer and size.
+A tuple containing the pointer to the checksum and the checksum itself is returned.</p>
+        </div>
+      
       <br/>
       <div>
         
@@ -526,6 +530,12 @@ is done, and so there is room for improvement with regard to performance and eff
 
         <a class="method-permalink" href="#checksum%28check%2Cdata%3ASlice%28UInt8%29%29%3ATuple%28Pointer%28UInt8%29%2CSlice%28UInt8%29%29-class-method">#</a>
       </div>
+      
+        <div class="doc">
+          
+          <p>Calculate a Blake2b checksum on the data referenced by the slice.
+A tuple containing the pointer to the checksum and the checksum itself is returned.</p>
+        </div>
       
       <br/>
       <div>
