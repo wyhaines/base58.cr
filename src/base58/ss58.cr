@@ -17,31 +17,47 @@ module Base58
   # NOTE: Some of these overloads are implemented expediently, but there are places where extra memory copying
   # is done, and so there is room for improvement with regard to performance and efficiency.
   module SS58
+    # This is the standard prefix used for Substrate addresses.
     ChecksumPrefix = "SS58PRE"
 
+    # :nodoc:
     TwoByteChecksumAddresses = {32, 33}
+
+    # :nodoc:
     OneByteChecksumAddresses = {1, 2, 4, 8}
 
+    # :nodoc:
     @[AlwaysInline]
-    def self.checksum(check, value : Pointer(UInt8), size) : {Pointer(UInt8), Slice(UInt8)}
+    private def self.checksum_prefix(check)
       Base58::Blake2bEngine << check.checksum_prefix
       Base58::Blake2bEngine << check.prefix
-      Base58::Blake2bEngine << Slice.new(value, size)
+    end
+
+    # :nodoc:
+    @[AlwaysInline]
+    private def self.checksum_postfix
       Base58::Blake2bEngine.final(Base58::BlakeBuffer)
       Base58::Blake2bEngine.reset
 
       {Base58::BlakeBufferPtr, Base58::BlakeBuffer}
     end
 
+    # Calculate a Blake2b checksum on the data referenced by the pointer and size.
+    # A tuple containing the pointer to the checksum and the checksum itself is returned.
+    @[AlwaysInline]
+    def self.checksum(check, value : Pointer(UInt8), size) : {Pointer(UInt8), Slice(UInt8)}
+      checksum_prefix
+      Base58::Blake2bEngine << Slice.new(value, size)
+      checksum_postfix
+    end
+
+    # Calculate a Blake2b checksum on the data referenced by the slice.
+    # A tuple containing the pointer to the checksum and the checksum itself is returned.
     @[AlwaysInline]
     def self.checksum(check, data : Slice(UInt8)) : {Pointer(UInt8), Slice(UInt8)}
-      Base58::Blake2bEngine << check.checksum_prefix
-      Base58::Blake2bEngine << check.prefix
+      checksum_prefix
       Base58::Blake2bEngine << data
-      Base58::Blake2bEngine.final(Base58::BlakeBuffer)
-      Base58::Blake2bEngine.reset
-
-      {Base58::BlakeBufferPtr, Base58::BlakeBuffer}
+      checksum_postfix
     end
 
     # :nodoc:
