@@ -46,7 +46,7 @@ module Base58
     # A tuple containing the pointer to the checksum and the checksum itself is returned.
     @[AlwaysInline]
     def self.checksum(check, value : Pointer(UInt8), size) : {Pointer(UInt8), Slice(UInt8)}
-      checksum_prefix
+      checksum_prefix check
       Base58::Blake2bEngine << Slice.new(value, size)
       checksum_postfix
     end
@@ -55,7 +55,7 @@ module Base58
     # A tuple containing the pointer to the checksum and the checksum itself is returned.
     @[AlwaysInline]
     def self.checksum(check, data : Slice(UInt8)) : {Pointer(UInt8), Slice(UInt8)}
-      checksum_prefix
+      checksum_prefix check
       Base58::Blake2bEngine << data
       checksum_postfix
     end
