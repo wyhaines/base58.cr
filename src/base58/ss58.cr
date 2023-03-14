@@ -62,10 +62,6 @@ module Base58
 
     # :nodoc:
     def self.check_args(address, format)
-      if format < 0 || format > 16383 || format == 46 || format == 47
-        raise ArgumentError.new("Invalid address format: #{format}")
-      end
-
       address_size = address.size
       if TwoByteChecksumAddresses.includes?(address_size)
         checksum_length = 2
@@ -75,20 +71,36 @@ module Base58
         raise ArgumentError.new("Invalid address size: #{address_size}; Substrate addresses can only be 1, 2, 4, 8, 32, or 33 bytes long")
       end
 
+      {
+        type:            Base58::Checksum::SS58,
+        prefix:          String.new(derive_format(format)),
+        checksum_length: checksum_length,
+        checksum_prefix: ChecksumPrefix,
+      }
+    end
+
+    # :nodoc:
+    def self.derive_format(format)
+      if format < 0 || format > 16383 || format == 46 || format == 47
+        raise ArgumentError.new("Invalid address format: #{format}")
+      end
+
       if format < 64
-        format_bytes = Slice[format.to_u8]
+        Slice[format.to_u8]
       else
-        format_bytes = Slice[
+        Slice[
           (((format & 0b0000_000011111100) >> 2) | 0b01000000).to_u8,
           ((format >> 8) | ((format & 0b0000000000000011) << 6)).to_u8,
         ]
       end
-      {
-        type:            Base58::Checksum::SS58,
-        prefix:          String.new(format_bytes),
-        checksum_length: checksum_length,
-        checksum_prefix: ChecksumPrefix,
-      }
+    end
+
+    # To encode content with an arbitrary length payload, use the `encode` method instead
+    # of `encode_address`. The Substrate SS58 spec only prescribes checksum lengths for
+    # payloads which are 1, 2, 4, 8, or 32 bytes long. So, for other payloads, this library
+    # is defaulting to a 2 byte checksum.
+    def self.encode(payload, into, format : Int = 42)
+      Base58.encode(payload, into: into, check: Check.new(type: Base58::Checksum::SS58, prefix: String.new(derive_format(format)), checksum_length: checksum_length(payload), checksum_prefix: ChecksumPrefix))
     end
 
     def self.encode_address(address, into : String.class = String, format : Int = 42)
@@ -145,6 +157,11 @@ module Base58
 
     def self.encode_address(address, into : Pointer(UInt8), format : Int = 42)
       Base58.encode(address, into: into, check: Check.new(**check_args(address, format)))
+    end
+
+    # To decode content with an arbitrary length payload, use `decode` instead of `decode_address`.
+    def self.decode(payload, into, format = 42)
+      decode_address(payload, into: into, format: format)
     end
 
     def self.decode_address(address, into : String.class = String, format : Int? = nil)
@@ -278,7 +295,7 @@ module Base58
       when 17
         8
       else
-        0
+        2
       end
     end
 
