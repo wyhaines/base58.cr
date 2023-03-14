@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="generator" content="Crystal Docs 1.6.2">
-<meta name="crystal_docs.project_version" content="0.2.0">
+<meta name="crystal_docs.project_version" content="0.2.1">
 <meta name="crystal_docs.project_name" content="base58">
 
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="../js/doc.js"></script>
 
   <meta name="repository-name" content="base58">
-  <title>Base58::SS58 - base58 0.2.0</title>
+  <title>Base58::SS58 - base58 0.2.1</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../";
   </script>
@@ -39,7 +39,7 @@
       </h1>
 
       <span class="project-version">
-        0.2.0
+        0.2.1
       </span>
     </div>
   </div>
@@ -340,6 +340,13 @@ is done, and so there is room for improvement with regard to performance and eff
       </li>
     
       <li class="entry-summary">
+        <a href="#decode%28payload%2Cinto%2Cformat%3D42%29-class-method" class="signature"><strong>.decode</strong>(payload, into, format = <span class="n">42</span>)</a>
+        
+          <div class="summary"><p>To decode content with an arbitrary length payload, use <code><a href="../Base58/SS58.html#decode%28payload%2Cinto%2Cformat%3D42%29-class-method">.decode</a></code> instead of <code><a href="../Base58/SS58.html#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method">.decode_address</a></code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method" class="signature"><strong>.decode_address</strong>(address, into : <span class="t">StaticArray</span>(<span class="t">UInt8</span>, <span class="t">N</span>).<span class="k">class</span>, format : Int | Nil = <span class="n">nil</span>) forall N</a>
         
       </li>
@@ -406,6 +413,13 @@ is done, and so there is room for improvement with regard to performance and eff
     
       <li class="entry-summary">
         <a href="#decode_address%28address%2Cinto%3APointer%28UInt8%29%2Cformat%3AInt%7CNil%3Dnil%29-class-method" class="signature"><strong>.decode_address</strong>(address, into : Pointer(UInt8), format : Int | Nil = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#encode%28payload%2Cinto%2Cformat%3AInt%3D42%29-class-method" class="signature"><strong>.encode</strong>(payload, into, format : Int = <span class="n">42</span>)</a>
+        
+          <div class="summary"><p>To encode content with an arbitrary length payload, use the <code><a href="../Base58/SS58.html#encode%28payload%2Cinto%2Cformat%3AInt%3D42%29-class-method">.encode</a></code> method instead of <code><a href="../Base58/SS58.html#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%3D42%29forallN-class-method">.encode_address</a></code>.</p></div>
         
       </li>
     
@@ -535,6 +549,25 @@ A tuple containing the pointer to the checksum and the checksum itself is return
           
           <p>Calculate a Blake2b checksum on the data referenced by the slice.
 A tuple containing the pointer to the checksum and the checksum itself is returned.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="decode(payload,into,format=42)-class-method">
+      <div class="signature">
+        
+        def self.<strong>decode</strong>(payload, into, format = <span class="n">42</span>)
+
+        <a class="method-permalink" href="#decode%28payload%2Cinto%2Cformat%3D42%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>To decode content with an arbitrary length payload, use <code><a href="../Base58/SS58.html#decode%28payload%2Cinto%2Cformat%3D42%29-class-method">.decode</a></code> instead of <code><a href="../Base58/SS58.html#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method">.decode_address</a></code>.</p>
         </div>
       
       <br/>
@@ -732,6 +765,28 @@ A tuple containing the pointer to the checksum and the checksum itself is return
 
         <a class="method-permalink" href="#decode_address%28address%2Cinto%3APointer%28UInt8%29%2Cformat%3AInt%7CNil%3Dnil%29-class-method">#</a>
       </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="encode(payload,into,format:Int=42)-class-method">
+      <div class="signature">
+        
+        def self.<strong>encode</strong>(payload, into, format : Int = <span class="n">42</span>)
+
+        <a class="method-permalink" href="#encode%28payload%2Cinto%2Cformat%3AInt%3D42%29-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>To encode content with an arbitrary length payload, use the <code><a href="../Base58/SS58.html#encode%28payload%2Cinto%2Cformat%3AInt%3D42%29-class-method">.encode</a></code> method instead
+of <code><a href="../Base58/SS58.html#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%3D42%29forallN-class-method">.encode_address</a></code>. The Substrate SS58 spec only prescribes checksum lengths for
+payloads which are 1, 2, 4, 8, or 32 bytes long. So, for other payloads, this library
+is defaulting to a 2 byte checksum.</p>
+        </div>
       
       <br/>
       <div>
