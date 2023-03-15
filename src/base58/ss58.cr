@@ -11,8 +11,11 @@ module Base58
   # regarding how the prefix is structured, how the checksum is calculated, and how many bytes of the
   # checksum are used. Details can be found in the [Substrate documentation](https://docs.substrate.io/reference/address-formats/).
   #
-  # The methods here provide implementations of the Substrate specific style of using SS58 for encoding
+  # The `encode_address` and `decode_address` methods here provide implementations of the Substrate specific style of using SS58 for encoding
   # and decoding Substrate compatible addresses.
+  #
+  # To use this library to encode and decode data of any arbitrary length, use the `encode` and `decode`
+  # methods instead. These will use a 2 byte checksum for any data that is not 1, 2, 4, 8, or 32 bytes
   #
   # NOTE: Some of these overloads are implemented expediently, but there are places where extra memory copying
   # is done, and so there is room for improvement with regard to performance and efficiency.
