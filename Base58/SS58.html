@@ -253,8 +253,10 @@ for that purpose, there are some additional specifications which apply to encodi
 There is a small, fixed set of byte sizes which can be encoded, and there are some strict rules
 regarding how the prefix is structured, how the checksum is calculated, and how many bytes of the
 checksum are used. Details can be found in the <a href="https://docs.substrate.io/reference/address-formats/">Substrate documentation</a>.</p>
-<p>The methods here provide implementations of the Substrate specific style of using SS58 for encoding
+<p>The <code><a href="../Base58/SS58.html#encode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%3D42%29forallN-class-method">.encode_address</a></code> and <code><a href="../Base58/SS58.html#decode_address%28address%2Cinto%3AStaticArray%28UInt8%2CN%29.class%2Cformat%3AInt%7CNil%3Dnil%29forallN-class-method">.decode_address</a></code> methods here provide implementations of the Substrate specific style of using SS58 for encoding
 and decoding Substrate compatible addresses.</p>
+<p>To use this library to encode and decode data of any arbitrary length, use the <code><a href="../Base58/SS58.html#encode%28payload%2Cinto%2Cformat%3AInt%3D42%29-class-method">.encode</a></code> and <code><a href="../Base58/SS58.html#decode%28payload%2Cinto%2Cformat%3D42%29-class-method">.decode</a></code>
+methods instead. These will use a 2 byte checksum for any data that is not 1, 2, 4, 8, or 32 bytes</p>
 <p><span class="flag purple">NOTE</span>  Some of these overloads are implemented expediently, but there are places where extra memory copying
 is done, and so there is room for improvement with regard to performance and efficiency.</p>
 
