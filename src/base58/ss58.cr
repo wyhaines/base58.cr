@@ -184,7 +184,7 @@ module Base58
     def self.decode_address(address, into : Slice(UInt8).class, format : Int? = nil)
       buffer = Base58.decode(address, into: Slice(UInt8))
 
-      decoded_format, format_length = decode_and_validate_format(buffer, format)
+      _, format_length = decode_and_validate_format(buffer, format)
 
       buffer_size = buffer.size
 
@@ -259,7 +259,7 @@ module Base58
       checksum_length = checksum_length(buffer_size)
       Base58.decode(address, into: buffer)
 
-      format_length, decoded_format = decode_and_validate_format(buffer, format)
+      _, format_length = decode_and_validate_format(buffer, format)
 
       checksum = Slice.new(buffer + buffer_size - checksum_length, checksum_length)
       data = Slice.new(buffer + format_length, buffer_size - checksum_length - format_length)

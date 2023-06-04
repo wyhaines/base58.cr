@@ -66,7 +66,6 @@ module Base58
   def self.decode(value : Pointer(UInt8), size : Int32, check : Check, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     original_size = into.bytesize
     buffer_size = original_size + size + 1
-    bigptr = GC.malloc_atomic(buffer_size * 2).as(UInt8*)
     String.new(buffer_size) do |ptr|
       ptr.copy_from(into.to_slice.to_unsafe, original_size)
       _, final_size = decode_into_pointer(value, ptr + original_size, size, check, alphabet)
@@ -155,7 +154,7 @@ module Base58
   @[AlwaysInline]
   def self.validate_checksum?(pointer, pointer_index, check)
     slice = Slice.new(pointer, pointer_index)
-    payload = slice[..-4]
+    # payload = slice[..-4] -- this is the payload, but we don't need it
     checksum = slice[-4..]
 
     case check.type
@@ -187,7 +186,7 @@ module Base58
     index = 0
     pointer_index = 0
 
-    index, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
+    _, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
     pointer_index = zero_padding(value, pointer, size, pointer_index, alphabet[0])
     reverse_decoding(pointer, pointer_index)
     validate_checksum(pointer, pointer_index, check)

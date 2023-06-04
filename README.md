@@ -1,4 +1,6 @@
-![Base58 CI](https://img.shields.io/github/actions/workflow/status/wyhaines/base58.cr/ci.yml?branch=main&logo=GitHub)
+[![Base58 CI](https://github.com/wyhaines/base58.cr/actions/workflows/ci.yml/badge.svg)](https://github.com/wyhaines/base58.cr/actions/workflows/ci.yml)
+[![Base58 Build Docs](https://github.com/wyhaines/base58.cr/actions/workflows/build_docs.yml/badge.svg)](https://github.com/wyhaines/base58.cr/actions/workflows/build_docs.yml)
+
 [![GitHub release](https://img.shields.io/github/release/wyhaines/base58.cr.svg?style=for-the-badge)](https://github.com/wyhaines/base58.cr/releases)
 ![GitHub commits since latest release (by SemVer)](https://img.shields.io/github/commits-since/wyhaines/base58.cr/latest?style=for-the-badge)
 

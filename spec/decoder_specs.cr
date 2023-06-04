@@ -73,6 +73,7 @@ describe Base58::Decoder do
         should_be_the_same, len = Base58.decode(
           Base58.encode(testcase["hex"].as(String).hexbytes, into: Slice(UInt8)),
           into: slice)
+        should_be_the_same.should eq slice
         slice[..(len - 1)].hexstring.should eq testcase["hex"]
       end
     end
@@ -185,6 +186,7 @@ describe Base58::Decoder do
         buffer = Base58.encode(testcase["hex"].as(String).hexbytes, into: Slice(UInt8))
         stringbuffer = StringBuffer.new(32)
         should_be_the_same_buffer = Base58.decode(buffer, into: stringbuffer)
+        stringbuffer.buffer.should be should_be_the_same_buffer
         (stringbuffer.buffer == String.new(testcase["hex"].as(String).hexbytes)).should be_true
       end
     end
@@ -309,7 +311,7 @@ describe Base58::Decoder do
 
     it "can decode encoded strings to a new StringBuffer, with Base58Check" do
       TestData::Strings.select { |tc| tc["check_prefix"]? }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
-        res = Base58.decode(
+        Base58.decode(
           Base58.encode(
             String.new(testcase["hex"].as(String).hexbytes),
             check: Base58::Check.new(testcase["check_prefix"].as(String))
@@ -516,7 +518,7 @@ describe Base58::Decoder do
 
     it "can decode encoded strings to a new StringBuffer, with Base58Check" do
       TestData::Strings.select { |tc| tc["check_prefix"]? }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
-        res = Base58.decode(
+        Base58.decode(
           Base58.encode(
             String.new(testcase["hex"].as(String).hexbytes),
             check: Base58::Check.new(type: :CB58, prefix: testcase["check_prefix"].as(String))

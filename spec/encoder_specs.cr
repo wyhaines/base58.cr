@@ -15,11 +15,12 @@ describe Base58::Encoder do
     end
 
     it "encodes static arrays to strings with the default (Bitcoin) alphabet" do
-      testcase = TestData::Strings.reject { |tc| tc["check_prefix"]? }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.first
-      stat_ary = StaticArray(UInt8, 12).new(0)
-      bytes = testcase["hex"].as(String).hexbytes
-      stat_ary.to_unsafe.copy_from(bytes.to_unsafe, bytes.size)
-      Base58.encode(stat_ary).should eq testcase["string"]
+      if testcase = TestData::Strings.reject { |tc| tc["check_prefix"]? }.find { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }
+        stat_ary = StaticArray(UInt8, 12).new(0)
+        bytes = testcase["hex"].as(String).hexbytes
+        stat_ary.to_unsafe.copy_from(bytes.to_unsafe, bytes.size)
+        Base58.encode(stat_ary).should eq testcase["string"]
+      end
     end
 
     it "encodes stringbuffers to strings with the default (Bitcoin) alphabet" do
@@ -81,7 +82,8 @@ describe Base58::Encoder do
       TestData::Strings.reject { |tc| tc["check_prefix"]? }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
         bytes = testcase["hex"].as(String).hexbytes
         len = testcase["string"].as(String).size
-        ptr, len = Base58.encode(bytes, into: Pointer)
+        ptr, new_len = Base58.encode(bytes, into: Pointer)
+        len.should eq new_len
         Slice.new(ptr, len).should eq testcase["string"].as(String).to_slice
       end
     end
@@ -121,6 +123,7 @@ describe Base58::Encoder do
         len = testcase["string"].as(String).size
         buffer = StaticArray(UInt8, 256).new(0)
         should_be_the_same_buffer, newlen = Base58.encode(bytes, into: buffer) # But it really isn't, since StaticArrays are passed by Copy.
+        len.should eq newlen
         Slice.new(should_be_the_same_buffer.to_unsafe, newlen).should eq testcase["string"].as(String).to_slice
       end
     end
@@ -174,8 +177,9 @@ describe Base58::Encoder do
     it "uses the Encoder.into() syntax to encode strings to a raw buffer" do
       TestData::Strings.reject { |tc| tc["check_prefix"]? }.select { |tc| tc["alphabet"] == Base58::Alphabet::Bitcoin }.each do |testcase|
         bytes = testcase["hex"].as(String).hexbytes
-        len = testcase["string"].as(String).size
+        test_len = testcase["string"].as(String).size
         ptr, len = Base58::Encoder.into(Pointer).encode(bytes).as(Tuple(Pointer(UInt8), Int32))
+        test_len.should eq len
         Slice.new(ptr, len.as(Int32)).should eq testcase["string"].as(String).to_slice
       end
     end

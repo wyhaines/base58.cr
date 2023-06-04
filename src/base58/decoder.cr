@@ -33,8 +33,8 @@ module Base58
   @[AlwaysInline]
   def self.decode(value : Array(UInt8), into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer = GC.malloc_atomic(value.size).as(UInt8*)
-    value.each_with_index do |value, i|
-      pointer[i] = value
+    value.each_with_index do |inner_value, i|
+      pointer[i] = inner_value
     end
     decode(pointer, value.size, into, alphabet)
   end
@@ -42,8 +42,8 @@ module Base58
   @[AlwaysInline]
   def self.decode(value : Array(Char), into = String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     pointer = GC.malloc_atomic(value.size).as(UInt8*)
-    value.each_with_index do |value, i|
-      pointer[i] = value.ord.to_u8
+    value.each_with_index do |inner_value, i|
+      pointer[i] = inner_value.ord.to_u8
     end
     decode(pointer, value.size, into, alphabet)
   end
@@ -110,7 +110,6 @@ module Base58
   def self.decode(value : Pointer(UInt8), size : Int32, into : String, alphabet : Alphabet.class = Alphabet::Bitcoin)
     original_size = into.bytesize
     buffer_size = original_size + size + 1
-    bigptr = GC.malloc_atomic(buffer_size * 2).as(UInt8*)
     String.new(buffer_size) do |ptr|
       ptr.copy_from(into.to_slice.to_unsafe, original_size)
       _, final_size = decode_into_pointer(value, ptr + original_size, size, alphabet)
@@ -211,6 +210,7 @@ module Base58
 
   @[AlwaysInline]
   def self.primary_decoding(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, index : Int, pointer_index : Int, alphabet : Alphabet.class)
+    # ameba:disable Lint/ShadowedArgument
     pointer_index = 0
     while index < size
       val = alphabet.inverse(value[index]).to_u16
@@ -262,7 +262,7 @@ module Base58
     index = 0
     pointer_index = 0
 
-    index, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
+    _, pointer_index = primary_decoding(value, pointer, size, index, pointer_index, alphabet)
     pointer_index = zero_padding(value, pointer, size, pointer_index, alphabet[0])
     reverse_decoding(pointer, pointer_index)
 
@@ -275,7 +275,7 @@ module Base58
     aggregate_pointer_index = 0
     ntimes, remainder = size.divmod(11)
     iterations = (remainder.zero? ? ntimes : ntimes + 1)
-    iterations.times do |nth_iteration|
+    iterations.times do |_|
       index = aggregate_index
       pointer_index = aggregate_pointer_index
       target_size = index + 11

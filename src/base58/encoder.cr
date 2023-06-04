@@ -436,7 +436,6 @@ module Base58
   # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer.
   @[AlwaysInline]
   def self.encode_to_pointer(value : Pointer(UInt8), size : Int, alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
-    index = 0
     buffer_size = SizeLookup[size]? || size * 2
     ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
     encode_into_pointer(value, ptr, size, alphabet)
@@ -484,6 +483,7 @@ module Base58
 
   # This encodes the contents of a memory buffer referenced by a Pointer(UInt8) into another existing memory buffer, for Monero. All Monero encoding eventually
   # ends up with this method.
+  # ameba:disable Metrics/CyclomaticComplexity
   private def self.encode_into_pointer(value : Pointer(UInt8), pointer : Pointer(UInt8), size : Int, alphabet : Alphabet::Monero.class)
     zer0 = alphabet[0]
     aggregate_index = 0

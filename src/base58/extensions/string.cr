@@ -9,7 +9,7 @@ class String
   # of the string. It is used by the StringBuffer class to create a string which will later
   # mutated, with content inserted.
   def self.new(size : Int)
-    new(size) do |ptr|
+    new(size) do |_|
       {size, size}
     end
   end
@@ -79,7 +79,7 @@ class StringBuffer
   #
   def initialize(@capacity : Int = 256)
     if capacity = @capacity
-      @buffer = String.new(capacity) do |ptr|
+      @buffer = String.new(capacity) do |_|
         {capacity, capacity}
       end
     end

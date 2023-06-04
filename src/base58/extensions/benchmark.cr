@@ -57,7 +57,7 @@ module Benchmark
     end
 
     class Job
-      property fullscreen_report : Bool = false
+      property? fullscreen_report : Bool = false
       property scrollback : Int32 = 0
 
       def initialize(calculation = 5, warmup = 2, interactive = STDOUT.tty?)
@@ -73,7 +73,7 @@ module Benchmark
       def separator(label) : Benchmark::IPS::Entry
         self.fullscreen_report = true
 
-        item = Entry.new(label, ->(x : Int32) {})
+        item = Entry.new(label, ->(_x : Int32) {})
         item.separator = true
         @items << item
 
@@ -174,7 +174,7 @@ module Benchmark
             end
             bytes += bytes_taken
             cycles += item.cycles
-            measurements << elapsed.not_nil!
+            measurements << elapsed if elapsed
             break if Time.monotonic >= target
           end
 

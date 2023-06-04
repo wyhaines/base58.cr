@@ -18,9 +18,11 @@ module MyBenchmark
     SliceBuffer    = Slice(UInt8).new(256)
     PRNG           = Random.new
 
+    # ameba:disable Style/ConstantNames
     Encoded_16777215 = ::Base58.encode(16777215)
-    Encoded_ffffff   = ::Base58.encode("\xff\xff\xff")
-    MoneroAddress    = "12c09d10f3c5f580ddd0765063d9246007f45ef025a76c7d117fe4e811fa78f3959c66f7487c1bef43c64ee0ace763116456666a389eea3b693cd7670c3515a0c043794fbf".hexbytes
+    # ameba:disable Style/ConstantNames
+    Encoded_ffffff = ::Base58.encode("\xff\xff\xff")
+    MoneroAddress  = "12c09d10f3c5f580ddd0765063d9246007f45ef025a76c7d117fe4e811fa78f3959c66f7487c1bef43c64ee0ace763116456666a389eea3b693cd7670c3515a0c043794fbf".hexbytes
 
     def self.run
       Benchmark.ips(warmup: 0.5, calculation: 1.25) do |ips|
@@ -118,16 +120,18 @@ module MyBenchmark
     def self.run_rust_benchmarks(ips)
       ips.separator "Rust Benchmarks".colorize.green.bold
       ips.separator("(if Rust is installed and available...)".colorize.light_yellow.dim) do |max_label|
-        begin
-          Dir.cd("./rustbench")
-          Process.run("cargo", args: {"bench"}) do |io|
-            io.output.gets_to_end.lines.select(&.index("time:")).each do |line|
-              label = line.split("time:").first.strip
-              data = line.scan(/(\d+\.\d+)\s+(\w+)/)[1][0]
-              puts "#{"".rjust(max_label.not_nil! - label.size)}#{label} (#{data.colorize.light_red})"
+        if max_label
+          begin
+            Dir.cd("./rustbench")
+            Process.run("cargo", args: {"bench"}) do |io|
+              io.output.gets_to_end.lines.select(&.index("time:")).each do |line|
+                label = line.split("time:").first.strip
+                data = line.scan(/(\d+\.\d+)\s+(\w+)/)[1][0]
+                puts "#{"".rjust(max_label - label.size)}#{label} (#{data.colorize.light_red})"
+              end
             end
+          rescue Exception
           end
-        rescue Exception
         end
       end
     end

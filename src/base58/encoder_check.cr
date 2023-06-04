@@ -263,7 +263,6 @@ module Base58
   # Encodes the contents of a memory buffer, referenced by a Pointer(UInt8), into a newly allocated memory buffer, with checksumming.
   @[AlwaysInline]
   def self.encode_to_pointer(value : Pointer(UInt8), size : Int, check : Base58::Check, alphabet : Alphabet.class = Alphabet::Bitcoin) : {Pointer(UInt8), Int32}
-    index = 0
     buffer_size = SizeLookup[size + check.prefix.bytesize + 4]? || (size + check.prefix.bytesize + 4) * 2
     ptr = GC.malloc_atomic(buffer_size).as(UInt8*)
     encode_into_pointer(value, ptr, size, check, alphabet)
@@ -291,7 +290,6 @@ module Base58
       index = primary_encoding(vptr, pointer, vsize, index)
     end
 
-    not_finished_zero_padding = true
     { {prefix_slice.to_unsafe, check.prefix.bytesize}, {value, size}, {checksum_ptr, check.checksum_length} }.each do |vptr, vsize|
       index = zero_padding(vptr, pointer, vsize, index)
     end

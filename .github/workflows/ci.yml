@@ -23,7 +23,5 @@ jobs:
       run: crystal spec -t -s
     - name: Linting
       run: crystal tool format --check
-#    - name: Run Ameba
-#      run: bin/ameba
-    - name: Build docs
-      run: crystal docs
+    - name: Run Ameba
+      run: bin/ameba
